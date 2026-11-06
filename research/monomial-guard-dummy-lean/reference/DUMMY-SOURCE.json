@@ -1,0 +1,28 @@
+{
+  "source_repository": "https://github.com/SHIN09-git/integer-mult-bounds",
+  "upstream_pr": "https://github.com/CrocSwap/integer-mult-bounds/pull/6712",
+  "commit": "03caa7f6cb5bd21c834024e9d81f6b43eb325b91",
+  "path": "research/monomial-guard-settlement/PROOF.md",
+  "sha256": "23ccd896bc8bc20f3e6171d45eb41648ed512b16b0719a099f437719004141e7",
+  "date_local": "2026-11-07",
+  "source_sections": [
+    "Arbitrary binary families",
+    "The separation distance"
+  ],
+  "scope": [
+    "Arbitrary-field concentration cost h-Zstar for a nonzero prescribed total",
+    "Exact original principal-minor cost for any nonempty normalized binary guard family"
+  ],
+  "operational_coordinate_type": "I",
+  "bookkeeping_coordinate_type": "Option I; none is the dummy and some i denotes each real label",
+  "dummy_ever_operated_on": false,
+  "empty_guard_family": "excluded by Nonempty R",
+  "zero_total": "excluded from the general concentration theorem by tau != 0",
+  "inherited_hz": {
+    "repository": "https://github.com/SHIN09-git/integer-mult-bounds",
+    "commit": "b87752d0291dc8b1df46b9abbccdc739d7c5be57",
+    "path": "research/monomial-guard-hz-lean",
+    "receipt": "reference/HZ-VERIFICATION.json",
+    "unchanged_lean_sources": 7
+  }
+}

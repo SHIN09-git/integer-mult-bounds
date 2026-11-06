@@ -1,0 +1,7 @@
+.lake/
+.verification-runs/
+.verification-tools/
+*.olean
+*.ilean
+/endpoint-build.log
+/.work/

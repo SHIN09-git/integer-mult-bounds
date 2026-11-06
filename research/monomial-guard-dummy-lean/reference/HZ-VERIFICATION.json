@@ -1,0 +1,33 @@
+{
+  "status": "PASS",
+  "date_utc": "2026-11-06T18:54:56.6974245Z",
+  "lean_version": "Lean (version 4.24.0, x86_64-w64-windows-gnu, commit 797c613eb9b6d4ec95db23e3e00af9ac6657f24b, Release)",
+  "build_exit_code": 0,
+  "warnings_as_errors": true,
+  "forbidden_source_construct_matches": 0,
+  "axiom_declarations": 22,
+  "allowed_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "unexpected_axioms": [],
+  "fresh_kernel_replay_exit_code": 0,
+  "fresh_kernel_replay_seconds": 651.1379995,
+  "checker_sha256": "8ba83cd65a76c2ae2feb95dba71241368c3c50145881247cb12b21c3c7dafafc",
+  "target": "ProofCheck",
+  "input_sha256": {
+    "HZ.lean": "04ed9857e9ccbfc29d156af0589d2966b98d2df5c30e9dde104b62d72e63eba4",
+    "ProofCheck.lean": "23ebacb73dfc2f72589beaefe42e3c6562a2e2efe79116e75b6744edbdeff0d3",
+    "Audit.lean": "92c0cececae2bebbd6b1b1dfa2bc3b07c5352a7be65ba3d6e493eed82e694bf6",
+    "lakefile.lean": "b7b26dd2a38022781fecf5f43235048d5c38d69646d4d55a3b93fe51503980d3",
+    "HZ/Construction.lean": "7d0f72844b82e6e68492234da5c17550a6b654b0e180cf6ab80c45e80b200141",
+    "HZ/Examples.lean": "5069c938f9fcd7e5f0d737b4de13cf982896018c94daabb08cd3b26bcac83d4b",
+    "HZ/Guards.lean": "1582e2a7033b033d8a30c21acc7eeafd4dc1a89132afca693e35cc9b1f48978f",
+    "HZ/Operations.lean": "8df232eb28d04f20441121f3a95eae491a5fbac0424e1f3b98c00b3af6eac4f5",
+    "HZ/Optimality.lean": "dab48d30b5438e1f8e381a45ebe9f86cce58be8a888032537e77592f9c21fc2c",
+    "HZ/Partitions.lean": "bb53fcc5ff1fa79081d465d09188a7d77be7469cbd5d01c0abf6aaa4b4953277",
+    "lean-toolchain": "42779d67b81608af8a12aa4328d2ab47ca201925b3b2bd68369587b5340bb434",
+    "lake-manifest.json": "fedef287e70b245f536862a686de0a7bd107c6aa5be59c08fd9033c010208d35"
+  }
+}

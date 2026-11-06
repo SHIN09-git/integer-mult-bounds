@@ -1,0 +1,16 @@
+Integer-multiplication dummy-charge and binary guard Lean formalization
+Prepared in SHIN09-git's research project with substantial OpenAI Codex assistance.
+Apache-2.0.
+
+The formalization follows research/monomial-guard-settlement/PROOF.md at
+03caa7f6cb5bd21c834024e9d81f6b43eb325b91 (CrocSwap/integer-mult-bounds PR 6712).
+The exact note and original NOTICE are retained in reference/.
+The general nonzero-total concentration theorem is the source's arbitrary-field
+extension; its binary guard corollary covers arbitrary nonempty normalized rows.
+
+The HZ sources are unchanged from b87752d0291dc8b1df46b9abbccdc739d7c5be57.
+Prior attribution to the debt-partition literature, ToikY, Nick Petalas and the
+standard determinant/row-operation results is retained. This work adds a Lean
+formalization; it does not claim a new multiplication exponent or new ownership
+of preceding mathematical contributions.
+

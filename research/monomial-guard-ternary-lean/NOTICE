@@ -1,0 +1,17 @@
+Integer-multiplication h-Z and ternary price-envelope Lean formalization
+Prepared in SHIN09-git's research project with substantial OpenAI Codex assistance.
+Apache-2.0.
+
+The formalization follows research/monomial-guard-settlement/PROOF.md and GAP.md at
+03caa7f6cb5bd21c834024e9d81f6b43eb325b91 (CrocSwap/integer-mult-bounds PR 6712).
+The exact mathematical notes and original NOTICE are retained in reference/.
+Prior attribution to the debt-partition literature, ToikY, Nick Petalas and the
+standard determinant/row-operation results is retained. This work adds a Lean
+formalization; it does not claim a new multiplication exponent or new ownership
+of those preceding mathematical contributions.
+
+The HZ sources are unchanged from the previously verified formalization at
+b87752d0291dc8b1df46b9abbccdc739d7c5be57. The Ternary modules add the full-affine-
+family envelope and parameterized sharp endpoints. Their endpoint constructions
+uniformly retain one zero-image helper coordinate; see README.md for the exact
+scope and the difference from the source construction.

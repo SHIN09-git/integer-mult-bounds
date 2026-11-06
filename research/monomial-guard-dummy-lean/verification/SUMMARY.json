@@ -1,0 +1,49 @@
+{
+  "date_local": "2026-11-07",
+  "status": "PASS",
+  "general_theorem": "Dummy.minimumCost_eq",
+  "domain": "arbitrary field K, K-module V, finite real coordinate set I; nonzero tau and sum_i u_i*w_i=tau",
+  "optimal_cost": "h-Zstar",
+  "h": "number of nonzero real initial vector charges",
+  "Zstar": "maximum zero-sum block count after adjoining a separately labeled -tau",
+  "real_operational_coordinate_type": "I",
+  "bookkeeping_coordinate_type": "Option I",
+  "dummy_ever_operated_on": false,
+  "general_attainment": "Dummy.cost_attained",
+  "arbitrary_execution_lower_bound": "Dummy.cost_lower_bound",
+  "binary_theorem": "Binary.cost_eq_h_sub_Zstar",
+  "binary_domain": "F2; arbitrary nonempty normalized family of guard rows, with no independence or affine-completeness assumption",
+  "binary_guard_index_finiteness_required": false,
+  "literal_principal_minor_bridge": "Binary.principalMinor_submatrix",
+  "fixed_order_operational_equivalence": "Binary.fullguard_run_iff",
+  "fixed_order_optimality": "Binary.fixed_order_optimal",
+  "operation_model": "nonzero elementary row additions cost one; arbitrary interleaved permutations and nonzero diagonal scalings cost zero",
+  "initial_real_zero_helpers": "retained and allowed in all executions",
+  "validation": {
+    "warnings_as_errors": true,
+    "key_axiom_declarations": 28,
+    "allowed_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "fresh_replay_exit_code": 0,
+    "fresh_replay_seconds": 507.1389434,
+    "checker_commit": "da26eb05e9959402afcb9bd6dfe5dc4f700f70d6",
+    "different_kernel_implementation": false,
+    "inherited_hz_sources_unchanged": 7,
+    "portable_runner_full_execution": "completed",
+    "verification_inputs_unchanged": true
+  },
+  "source_correspondence_review": {
+    "performed_by": "AI assistant",
+    "external_human_review": false
+  },
+  "exclusions": [
+    "zero target tau",
+    "empty binary guard family",
+    "exact general odd-field guard formula",
+    "algorithmic complexity or efficient partition computation",
+    "integer-multiplication complexity exponent"
+  ]
+}

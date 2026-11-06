@@ -1,0 +1,13 @@
+{
+  "status": "PASS",
+  "source_commit": "03caa7f6cb5bd21c834024e9d81f6b43eb325b91",
+  "source_path": "research/monomial-guard-settlement/PROOF.md",
+  "source_sha256": "23ccd896bc8bc20f3e6171d45eb41648ed512b16b0719a099f437719004141e7",
+  "reviewed_by": "AI assistant",
+  "operational_coordinates": "I",
+  "dummy_coordinates": "Option I used only for augmentation and partitions",
+  "general_target_nonzero": true,
+  "binary_guard_family_nonempty": true,
+  "original_minor_and_fixed_order_bridges": true,
+  "external_human_review": false
+}

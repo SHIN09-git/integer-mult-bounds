@@ -1,0 +1,19 @@
+{
+  "source_commit": "03caa7f6cb5bd21c834024e9d81f6b43eb325b91",
+  "git_blob_verified_files": [
+    "reference/GAP.md",
+    "reference/families.py",
+    "reference/PRICE-ENVELOPE.json"
+  ],
+  "sha256_verified_files": [
+    "reference/GAP.md",
+    "reference/families.py",
+    "reference/PRICE-ENVELOPE.json",
+    "reference/PROOF.md",
+    "reference/NOTICE"
+  ],
+  "endpoint_parameters": "all natural numbers r,n, including zero",
+  "implementation_variation": "Both formal families always include one extra coordinate u=0,b=0,w=1. The reference adds it only for r=0. Exact optimality includes this helper; minimal dimension is not claimed.",
+  "reviewed_by": "AI assistant",
+  "external_human_review": false
+}

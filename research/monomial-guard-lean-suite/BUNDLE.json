@@ -1,0 +1,39 @@
+{
+  "date_local": "2026-11-07",
+  "repository": "SHIN09-git/integer-mult-bounds",
+  "branch": "research/monomial-guard-lean-suite-20261107",
+  "base_commit": "b87752d0291dc8b1df46b9abbccdc739d7c5be57",
+  "mathematical_source_commit": "03caa7f6cb5bd21c834024e9d81f6b43eb325b91",
+  "proof_packages": [
+    {
+      "directory": "research/monomial-guard-ternary-lean",
+      "status": "PASS",
+      "main_theorems": [
+        "Ternary.envelope",
+        "Ternary.sharp_endpoints"
+      ],
+      "axiom_reports": 40,
+      "fresh_kernel_replay_seconds": 527.8595578,
+      "archive_sha256": "3c8ebedbc89825eec707f49a5946464d075999319630a7a926d20a7a3fcadab0",
+      "receipt_sha256": "f8abbcfdd58bc43c10bd4dc50dd6bb16ce628475eb8dcfa6883f853ba0b9de7b"
+    },
+    {
+      "directory": "research/monomial-guard-dummy-lean",
+      "status": "PASS",
+      "main_theorems": [
+        "Dummy.minimumCost_eq",
+        "Binary.cost_eq_h_sub_Zstar",
+        "Binary.fixed_order_optimal"
+      ],
+      "axiom_reports": 28,
+      "fresh_kernel_replay_seconds": 507.1389434,
+      "archive_sha256": "aca93728278ada8d444ac586fe604de0170b180b98c15a9ea77c084382c85e5c",
+      "receipt_sha256": "65439518c4f17cd21486502f516292dba49fbc7f4a2689305406b03a1d5f655a"
+    }
+  ],
+  "scope": "formalization of the pinned operation-cost theorems; no multiplication exponent claim",
+  "publication_layer": "each proof package is an exact archive expansion plus .gitattributes to preserve bytes",
+  "prior_hz_package": "research/monomial-guard-hz-lean (unchanged)",
+  "review": "local Lean compilation, axiom allowlists and fresh official-kernel replay; no external human review claim",
+  "hosted_lean_verification_claimed": false
+}

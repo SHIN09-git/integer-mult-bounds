@@ -1,0 +1,53 @@
+{
+  "date_local": "2026-11-07",
+  "status": "PASS",
+  "core_theorem": "Ternary.envelope",
+  "normalized_domain": "F3, arbitrary finite labeled coordinate set and arbitrary finite parameter set; sum u_i*b_i=1 and sum u_i*w_i=0",
+  "success": "Every proper prefix principal minor of I-u*v(a) is nonzero for every parameter a in the full affine family; coordinate ordering is free",
+  "cost_definition": "Ternary.C",
+  "envelope": "max(S,L) <= C <= 2*S+L",
+  "separation_diagnostic": "S=h-Z, using the inherited HZ optimality proof",
+  "scalar_diagnostic": "L=min(|D-1|,|D+2|)/3, D the signed integer scalar imbalance",
+  "sharpness_theorem": "Ternary.sharp_endpoints",
+  "endpoint_parameter_domain": "all natural r,n, including r=0, n=0, and r=n=0",
+  "lower_endpoint": "S=r, L=n, C=max(r,n)",
+  "upper_endpoint": "S=r, L=n, C=2*r+n",
+  "endpoint_legal_executions": [
+    "Ternary.lower_attained",
+    "Ternary.upper_attained"
+  ],
+  "arbitrary_execution_upper_family_lower_bound": "Ternary.upper_word_lower_bound",
+  "literal_principal_minor_bridge": "HZ.principalMinor_submatrix",
+  "fixed_order_operational_equivalence": "Ternary.fullguard_run_iff",
+  "operation_model": "nonzero elementary row additions cost one; arbitrary interleaved permutations and nonzero diagonal scalings cost zero",
+  "initial_zero_helpers": "retained and allowed throughout every execution",
+  "construction_variation": "one u=0,b=0,w=1 helper is included for every r, whereas the source adds it only for r=0",
+  "validation": {
+    "warnings_as_errors": true,
+    "key_axiom_declarations": 40,
+    "allowed_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "fresh_replay_exit_code": 0,
+    "fresh_replay_seconds": 527.8595578,
+    "checker_commit": "da26eb05e9959402afcb9bd6dfe5dc4f700f70d6",
+    "different_kernel_implementation": false,
+    "inherited_hz_sources_unchanged": 7,
+    "portable_runner_full_execution": "completed",
+    "verification_inputs_unchanged": true
+  },
+  "source_correspondence_review": {
+    "performed_by": "AI assistant",
+    "external_human_review": false
+  },
+  "not_claimed": [
+    "minimal endpoint dimensions",
+    "every intermediate integer cost occurs at fixed S,L",
+    "fixed-dimension sharpness",
+    "orbit censuses",
+    "complexity reductions or DP complexity",
+    "a new integer-multiplication complexity exponent"
+  ]
+}

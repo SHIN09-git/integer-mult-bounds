@@ -1,0 +1,23 @@
+{
+  "lean": {
+    "version": "4.24.0",
+    "commit": "797c613eb9b6d4ec95db23e3e00af9ac6657f24b",
+    "archive": "https://github.com/leanprover/lean4/releases/download/v4.24.0/lean-4.24.0-windows.zip",
+    "sha256": "c2fcf1cba1089e526e184de2a6f6763a6e15596a2991f096dfacd4a6e3ce2cdd",
+    "checksum_verified_against_github_release_metadata": true
+  },
+  "mathlib": {
+    "repository": "https://github.com/leanprover-community/mathlib4",
+    "tag": "v4.24.0",
+    "commit": "f897ebcf72cd16f89ab4577d0c826cd14afaafc7",
+    "source_modifications": false
+  },
+  "lean4checker": {
+    "repository": "https://github.com/leanprover/lean4checker",
+    "tag": "v4.24.0",
+    "commit": "da26eb05e9959402afcb9bd6dfe5dc4f700f70d6",
+    "built_locally": true,
+    "independent_kernel_implementation": false
+  },
+  "validation_reference": "https://lean-lang.org/doc/reference/latest/ValidatingProofs/"
+}

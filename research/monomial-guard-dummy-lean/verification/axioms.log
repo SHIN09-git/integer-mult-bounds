@@ -1,0 +1,61 @@
+'HZ.gather' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HZ.settle_family' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HZ.active_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HZ.minimumCost_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HZ.principalMinor_submatrix' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Dummy.active_augment_card' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Dummy.real_parts' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Dummy.execution_partition' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Dummy.cost_lower_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Dummy.gather_block' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Dummy.concentrate_partition' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Dummy.cost_attained' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Dummy.optimal_cost_eq_h_sub_Zstar' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Dummy.minimumCost_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Binary.normalized_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Binary.principalMinor_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Binary.principalMinor_submatrix' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Binary.prefix_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Binary.passes_concentrated' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Binary.fullguard_concentrated' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Binary.concentrated_fullguard' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Binary.fullguard_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Binary.fullguard_run_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Binary.guard_cost_lower_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Binary.guard_cost_attained' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Binary.cost_eq_h_sub_Zstar' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Binary.cost_eq_concentration' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Binary.fixed_order_optimal' depends on axioms: [propext, Classical.choice, Quot.sound]
+@Dummy.augment : {I : Type u_1} → {V : Type u_2} → [AddCommGroup V] → (I → V) → V → Option I → V
+@Dummy.Zstar : {I : Type u_1} → {V : Type u_2} → [DecidableEq I] → [Fintype I] → [AddCommGroup V] → (I → V) → V → ℕ
+@Dummy.minimumCost : {I : Type u_1} →
+  {K : Type u_2} →
+    {V : Type u_3} →
+      [DecidableEq I] → [inst : Field K] → [inst_1 : AddCommGroup V] → [Module K V] → HZ.State I K V → V → ℕ
+@Dummy.minimumCost_eq : ∀ {I : Type u_1} {K : Type u_2} {V : Type u_3} [inst : DecidableEq I] [inst_1 : Fintype I]
+  [inst_2 : Field K] [inst_3 : AddCommGroup V] [inst_4 : Module K V] (s : HZ.State I K V) (τ : V),
+  τ ≠ 0 → ∑ i, s.charge i = τ → Dummy.minimumCost s τ = HZ.activeCount s - Dummy.Zstar s.charge τ
+@Dummy.optimal_cost_eq_h_sub_Zstar : ∀ {I : Type u_1} {K : Type u_2} {V : Type u_3} [inst : DecidableEq I]
+  [inst_1 : Fintype I] [inst_2 : Field K] [inst_3 : AddCommGroup V] [inst_4 : Module K V] (s : HZ.State I K V) (τ : V),
+  τ ≠ 0 →
+    ∑ i, s.charge i = τ →
+      (∃ t, HZ.Run s (HZ.activeCount s - Dummy.Zstar s.charge τ) t ∧ Dummy.Concentrated t τ) ∧
+        ∀ (n : ℕ) (t : HZ.State I K V),
+          HZ.Run s n t → Dummy.Concentrated t τ → HZ.activeCount s - Dummy.Zstar s.charge τ ≤ n
+@Dummy.cost_lower_bound : ∀ {I : Type u_1} {K : Type u_2} {V : Type u_3} [inst : DecidableEq I] [inst_1 : Fintype I]
+  [inst_2 : Field K] [inst_3 : AddCommGroup V] [inst_4 : Module K V] {s t : HZ.State I K V} {n : ℕ} {τ : V},
+  τ ≠ 0 → HZ.Run s n t → Dummy.Concentrated t τ → HZ.activeCount s - Dummy.Zstar s.charge τ ≤ n
+@Dummy.cost_attained : ∀ {I : Type u_1} {K : Type u_2} {V : Type u_3} [inst : DecidableEq I] [inst_1 : Fintype I]
+  [inst_2 : Field K] [inst_3 : AddCommGroup V] [inst_4 : Module K V] (s : HZ.State I K V) (τ : V),
+  τ ≠ 0 → ∑ i, s.charge i = τ → ∃ t, HZ.Run s (HZ.activeCount s - Dummy.Zstar s.charge τ) t ∧ Dummy.Concentrated t τ
+@Binary.Normalized : {I : Type u_1} → {R : Type u_2} → [Fintype I] → HZ.State I Binary.F (R → Binary.F) → Prop
+@Binary.C : {I : Type u_1} → {R : Type u_2} → [DecidableEq I] → HZ.State I Binary.F (R → Binary.F) → ℕ
+@Binary.fullguard_iff : ∀ {I : Type u_1} {R : Type u_2} [inst : DecidableEq I] [inst_1 : Fintype I] [Nonempty R]
+  (s : HZ.State I Binary.F (R → Binary.F)), Binary.Normalized s → (Binary.FullGuard s ↔ Dummy.Concentrated s 1)
+@Binary.cost_eq_h_sub_Zstar : ∀ {I : Type u_1} {R : Type u_2} [inst : DecidableEq I] [inst_1 : Fintype I] [Nonempty R]
+  (s : HZ.State I Binary.F (R → Binary.F)), Binary.Normalized s → Binary.C s = HZ.activeCount s - Dummy.Zstar s.charge 1
+@Binary.fixed_order_optimal : ∀ {R : Type u_1} [Nonempty R] {m : ℕ} (s : HZ.State (Fin m) Binary.F (R → Binary.F)),
+  Binary.Normalized s →
+    (∃ t, HZ.Run s (HZ.activeCount s - Dummy.Zstar s.charge 1) t ∧ Binary.Passes t) ∧
+      ∀ (n : ℕ) (t : HZ.State (Fin m) Binary.F (R → Binary.F)),
+        HZ.Run s n t → Binary.Passes t → HZ.activeCount s - Dummy.Zstar s.charge 1 ≤ n

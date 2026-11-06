@@ -1,0 +1,51 @@
+{
+  "source_repository": "https://github.com/SHIN09-git/integer-mult-bounds",
+  "upstream_pr": "https://github.com/CrocSwap/integer-mult-bounds/pull/6712",
+  "commit": "03caa7f6cb5bd21c834024e9d81f6b43eb325b91",
+  "date_local": "2026-11-07",
+  "scope": [
+    "Ternary full-affine-family envelope max(S,L) <= C <= 2S+L",
+    "Both sharp endpoints for every nonnegative pair S=r, L=n"
+  ],
+  "files": [
+    {
+      "path": "research/monomial-guard-settlement/GAP.md",
+      "local_path": "reference/GAP.md",
+      "git_blob": "38004b4ca8da69c2406708b2626bae129dadd91c",
+      "sha256": "dceb8b1abead09c0c632d0988c5875ca1058835a4191f13c18f2b060c6527dcb"
+    },
+    {
+      "path": "research/monomial-guard-settlement/families.py",
+      "local_path": "reference/families.py",
+      "git_blob": "b05cef6e1e4fd8117c962fbff82e71032765b1f0",
+      "sha256": "ab26f1bd63fb59335e661567f394ddb61299c4a2df65f79acf65fd1f54d39a05"
+    },
+    {
+      "path": "research/monomial-guard-settlement/PRICE-ENVELOPE.json",
+      "local_path": "reference/PRICE-ENVELOPE.json",
+      "git_blob": "7d0aa21f216d78b0ede19adc1ebb719313233cea",
+      "sha256": "a1faf1008aab06ce978ab51ac8af27b2117edf37d38402c0b7b90bc657c75066"
+    },
+    {
+      "path": "research/monomial-guard-settlement/PROOF.md",
+      "local_path": "reference/PROOF.md",
+      "git_blob": null,
+      "sha256": "23ccd896bc8bc20f3e6171d45eb41648ed512b16b0719a099f437719004141e7"
+    },
+    {
+      "path": "research/monomial-guard-settlement/NOTICE",
+      "local_path": "reference/NOTICE",
+      "git_blob": null,
+      "sha256": "a1dbffd855be85d5228ffeb7d1eea68b19b8ed708c17a51684b8e1373ff59c63"
+    }
+  ],
+  "construction_variation": "Both formal families always include one extra coordinate u=0,b=0,w=1. The reference adds it only for r=0. Exact optimality includes this helper; minimal dimension is not claimed.",
+  "inherited_hz": {
+    "repository": "https://github.com/SHIN09-git/integer-mult-bounds",
+    "commit": "b87752d0291dc8b1df46b9abbccdc739d7c5be57",
+    "path": "research/monomial-guard-hz-lean",
+    "receipt": "reference/HZ-VERIFICATION.json",
+    "unchanged_lean_sources": 7
+  },
+  "reference_evidence_scope": "PRICE-ENVELOPE.json contains finite source evidence only; universal endpoint proofs are Lean theorems and do not rely on this JSON."
+}

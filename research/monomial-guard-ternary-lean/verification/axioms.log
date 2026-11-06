@@ -1,0 +1,75 @@
+'HZ.cost_lower_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HZ.cost_attained' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HZ.minimumCost_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HZ.principalMinor_submatrix' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HZ.passes_implies_separated' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HZ.twice_partitionCount_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ternary.price_formula' depends on axioms: [propext, Quot.sound]
+'Ternary.imbalance_counts' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ternary.run_price' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ternary.safe_lift_sum' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ternary.exists_safe_order' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ternary.separated_repair' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ternary.minor_separated' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ternary.fullguard_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ternary.guard_lower_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ternary.guard_upper_attained' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ternary.C_attained' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ternary.envelope' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ternary.fullguard_run_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ternary.execution_components' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ternary.component_budget' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ternary.strong_execution_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ternary.strong_guard_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ternary.phase_run' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ternary.phase_S' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ternary.lower_S' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ternary.upper_S' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ternary.lower_L' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ternary.upper_L' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ternary.lower_normalized' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ternary.upper_normalized' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ternary.lower_total_charge' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ternary.upper_total_charge' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ternary.lower_attained' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ternary.upper_attained' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ternary.upper_word_lower_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ternary.lower_cost' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ternary.upper_cost' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ternary.sharp_endpoints' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Ternary.endpoint_nonzero_slopes' depends on axioms: [propext, Classical.choice, Quot.sound]
+@Ternary.envelope : ∀ {I : Type u_1} {D : Type u_2} [inst : DecidableEq I] [inst_1 : Fintype I] [inst_2 : Fintype D]
+  (s : HZ.State I Ternary.F (D → Ternary.F)),
+  ∑ i, s.charge i = 0 →
+    ∑ i, Ternary.scalar s i = 1 →
+      max (Ternary.S s) (Ternary.L s) ≤ Ternary.C s ∧ Ternary.C s ≤ 2 * Ternary.S s + Ternary.L s
+@Ternary.fullguard_iff : ∀ {I : Type u_1} {D : Type u_2} [DecidableEq I] [inst : Fintype I] [inst_1 : Fintype D]
+  (s : HZ.State I Ternary.F (D → Ternary.F)),
+  ∑ i, s.charge i = 0 →
+    ∑ i, Ternary.scalar s i = 1 →
+      (Ternary.FullGuard s ↔ HZ.Separated s ∧ (Ternary.imbalance s = 1 ∨ Ternary.imbalance s = -2))
+@Ternary.fullguard_run_iff : ∀ {D : Type u_1} [inst : Fintype D] {m n : ℕ}
+  (s : HZ.State (Fin m) Ternary.F (D → Ternary.F)),
+  (∃ t, HZ.Run s n t ∧ Ternary.FullGuard t) ↔ ∃ t, HZ.Run s n t ∧ HZ.Passes t
+@Ternary.guard_lower_bound : ∀ {I : Type u_1} {D : Type u_2} [inst : DecidableEq I] [inst_1 : Fintype I]
+  [inst_2 : Fintype D] {s t : HZ.State I Ternary.F (D → Ternary.F)} {n : ℕ},
+  ∑ i, s.charge i = 0 →
+    ∑ i, Ternary.scalar s i = 1 → HZ.Run s n t → Ternary.FullGuard t → max (Ternary.S s) (Ternary.L s) ≤ n
+@Ternary.guard_upper_attained : ∀ {I : Type u_1} {D : Type u_2} [inst : DecidableEq I] [inst_1 : Fintype I]
+  [inst_2 : Fintype D] (s : HZ.State I Ternary.F (D → Ternary.F)),
+  ∑ i, s.charge i = 0 →
+    ∑ i, Ternary.scalar s i = 1 → ∃ n t, HZ.Run s n t ∧ Ternary.FullGuard t ∧ n ≤ 2 * Ternary.S s + Ternary.L s
+@Ternary.strong_guard_bound : ∀ {I : Type u_1} [inst : DecidableEq I] [inst_1 : Fintype I] {D : Type u_2}
+  [inst_2 : Fintype D] {s t : HZ.State I Ternary.F (D → Ternary.F)} {n : ℕ},
+  (∀ (i : I), s.w i = 0 → Ternary.scalar s i = 1) →
+    ∑ i, s.charge i = 0 →
+      ∑ i, Ternary.scalar s i = 1 → HZ.Run s n t → Ternary.FullGuard t → Ternary.weightSum s ≤ 3 * ↑n + 1
+Ternary.sharp_endpoints : ∀ (r n : ℕ),
+  (Ternary.S (Ternary.lower r n) = r ∧ Ternary.L (Ternary.lower r n) = n ∧ Ternary.C (Ternary.lower r n) = max r n) ∧
+    Ternary.S (Ternary.upper r n) = r ∧ Ternary.L (Ternary.upper r n) = n ∧ Ternary.C (Ternary.upper r n) = 2 * r + n
+Ternary.lower_attained : ∀ (r n : ℕ), ∃ t, HZ.Run (Ternary.lower r n) (max r n) t ∧ Ternary.FullGuard t
+Ternary.upper_attained : ∀ (r n : ℕ), ∃ t, HZ.Run (Ternary.upper r n) (2 * r + n) t ∧ Ternary.FullGuard t
+Ternary.upper_word_lower_bound : ∀ (r n k : ℕ) (t : Ternary.Pencil (Ternary.Coord (Fin r) (2 * r + 3 * n + 1))),
+  HZ.Run (Ternary.upper r n) k t → Ternary.FullGuard t → 2 * r + n ≤ k
+Ternary.endpoint_nonzero_slopes : ∀ (r n : ℕ),
+  (∃ i, (Ternary.lower r n).w i () ≠ 0) ∧ ∃ i, (Ternary.upper r n).w i () ≠ 0
