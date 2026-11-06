@@ -1,0 +1,42 @@
+{
+  "date_local": "2026-11-07",
+  "status": "PASS",
+  "core_theorem": "HZ.minimumCost_eq",
+  "domain": "arbitrary field, module and finite labeled coordinate set; initial total charge zero",
+  "operation_model": "nonzero elementary row additions cost one; arbitrary interleaved permutations and nonzero diagonal scalings cost zero",
+  "initial_zero_helpers": "retained and allowed throughout every execution",
+  "attainment_theorem": "HZ.cost_attained",
+  "lower_bound_theorem": "HZ.cost_lower_bound",
+  "anchored_full_family_corollary": "HZ.anchored_guard_optimal",
+  "literal_principal_minor_bridge": "HZ.principalMinor_submatrix",
+  "examples": {
+    "paired_F5": 2,
+    "indivisible_F5": 3
+  },
+  "validation": {
+    "warnings_as_errors": true,
+    "key_axiom_declarations": 22,
+    "allowed_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "fresh_replay_exit_code": 0,
+    "fresh_replay_seconds": 651.1379995,
+    "checker_commit": "da26eb05e9959402afcb9bd6dfe5dc4f700f70d6",
+    "different_kernel_implementation": false,
+    "portable_runner_full_execution": "completed"
+  },
+  "source_correspondence_review": {
+    "performed_by": "AI assistant",
+    "external_human_review": false
+  },
+  "not_formalized": [
+    "binary dummy formula",
+    "ternary price envelope",
+    "NP-completeness",
+    "orbit censuses",
+    "DP complexity",
+    "integer-multiplication complexity exponent"
+  ]
+}

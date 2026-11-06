@@ -1,0 +1,43 @@
+'HZ.mergeParts_card' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HZ.pullback_pair' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HZ.zeroSum_permPartition' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HZ.card_avoid' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HZ.active_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HZ.charge_add_pair' depends on axioms: [propext, Quot.sound]
+'HZ.addRow_inverse' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HZ.elimination' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HZ.gather' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HZ.settle_block' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HZ.settle_family' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HZ.execution_partition' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HZ.cost_lower_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HZ.cost_attained' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HZ.minimumCost_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HZ.principalMinor_submatrix' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HZ.full_family_forces_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HZ.passes_implies_separated' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HZ.anchored_guard_attained' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HZ.anchored_guard_optimal' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HZ.Examples.paired_minimum' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HZ.Examples.indivisible_minimum' depends on axioms: [propext, Classical.choice, Quot.sound]
+@HZ.minimumCost_eq : ∀ {I : Type u_1} {K : Type u_2} {V : Type u_3} [inst : DecidableEq I] [inst_1 : Fintype I]
+  [inst_2 : Field K] [inst_3 : AddCommGroup V] [inst_4 : Module K V] (s : HZ.State I K V),
+  ∑ i, s.charge i = 0 → HZ.minimumCost s = HZ.activeCount s - HZ.partitionCount s
+@HZ.cost_lower_bound : ∀ {I : Type u_1} {K : Type u_2} {V : Type u_3} [inst : DecidableEq I] [inst_1 : Fintype I]
+  [inst_2 : Field K] [inst_3 : AddCommGroup V] [inst_4 : Module K V] {s t : HZ.State I K V} {n : ℕ},
+  HZ.Run s n t → HZ.Separated t → HZ.activeCount s - HZ.partitionCount s ≤ n
+@HZ.cost_attained : ∀ {I : Type u_1} {K : Type u_2} {V : Type u_3} [inst : DecidableEq I] [inst_1 : Fintype I]
+  [inst_2 : Field K] [inst_3 : AddCommGroup V] [inst_4 : Module K V] (s : HZ.State I K V),
+  ∑ i, s.charge i = 0 →
+    ∃ t,
+      HZ.Run s (HZ.activeCount s - HZ.partitionCount s) t ∧
+        HZ.Separated t ∧ HZ.AgreeOutside (HZ.active s.charge) s t ∧ ((∀ i ∈ HZ.active s.charge, s.b i = 0) → t.b = s.b)
+@HZ.anchored_guard_optimal : ∀ {K : Type u_1} {D : Type u_2} [inst : Field K] [inst_1 : Fintype D] {m : ℕ}
+  (s : HZ.State (Fin m) K (D → K)) (c : Fin m),
+  HZ.Anchored s c →
+    ∑ i, s.charge i = 0 →
+      (∃ t, HZ.Run s (HZ.activeCount s - HZ.partitionCount s) t ∧ HZ.Passes t) ∧
+        ∀ (n : ℕ) (t : HZ.State (Fin m) K (D → K)),
+          HZ.Run s n t → HZ.Passes t → HZ.activeCount s - HZ.partitionCount s ≤ n
+HZ.Examples.paired_minimum : HZ.minimumCost HZ.Examples.paired = 2
+HZ.Examples.indivisible_minimum : HZ.minimumCost HZ.Examples.indivisible = 3

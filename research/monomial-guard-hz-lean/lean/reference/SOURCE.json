@@ -1,0 +1,12 @@
+{
+  "source_repository": "https://github.com/SHIN09-git/integer-mult-bounds",
+  "upstream_pr": "https://github.com/CrocSwap/integer-mult-bounds/pull/6712",
+  "commit": "03caa7f6cb5bd21c834024e9d81f6b43eb325b91",
+  "path": "research/monomial-guard-settlement/PROOF.md",
+  "sha256": "23ccd896bc8bc20f3e6171d45eb41648ed512b16b0719a099f437719004141e7",
+  "date_local": "2026-11-07",
+  "scope": [
+    "The separation distance",
+    "When the separation price is the full guard price"
+  ]
+}

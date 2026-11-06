@@ -1,0 +1,140 @@
+{
+  "algorithm": "SHA-256",
+  "files": [
+    {
+      "path": ".gitignore",
+      "bytes": 64,
+      "sha256": "55fe8ea9813f829150efa0c22d3cfbb87ead2322c9f4c3d408491b62b9db8309"
+    },
+    {
+      "path": "Audit.lean",
+      "bytes": 965,
+      "sha256": "92c0cececae2bebbd6b1b1dfa2bc3b07c5352a7be65ba3d6e493eed82e694bf6"
+    },
+    {
+      "path": "HZ/Construction.lean",
+      "bytes": 6672,
+      "sha256": "7d0f72844b82e6e68492234da5c17550a6b654b0e180cf6ab80c45e80b200141"
+    },
+    {
+      "path": "HZ/Examples.lean",
+      "bytes": 4236,
+      "sha256": "5069c938f9fcd7e5f0d737b4de13cf982896018c94daabb08cd3b26bcac83d4b"
+    },
+    {
+      "path": "HZ/Guards.lean",
+      "bytes": 6703,
+      "sha256": "1582e2a7033b033d8a30c21acc7eeafd4dc1a89132afca693e35cc9b1f48978f"
+    },
+    {
+      "path": "HZ/Operations.lean",
+      "bytes": 3938,
+      "sha256": "8df232eb28d04f20441121f3a95eae491a5fbac0424e1f3b98c00b3af6eac4f5"
+    },
+    {
+      "path": "HZ/Optimality.lean",
+      "bytes": 5255,
+      "sha256": "dab48d30b5438e1f8e381a45ebe9f86cce58be8a888032537e77592f9c21fc2c"
+    },
+    {
+      "path": "HZ/Partitions.lean",
+      "bytes": 11545,
+      "sha256": "bb53fcc5ff1fa79081d465d09188a7d77be7469cbd5d01c0abf6aaa4b4953277"
+    },
+    {
+      "path": "HZ.lean",
+      "bytes": 57,
+      "sha256": "04ed9857e9ccbfc29d156af0589d2966b98d2df5c30e9dde104b62d72e63eba4"
+    },
+    {
+      "path": "lake-manifest.json",
+      "bytes": 3138,
+      "sha256": "fedef287e70b245f536862a686de0a7bd107c6aa5be59c08fd9033c010208d35"
+    },
+    {
+      "path": "lakefile.lean",
+      "bytes": 321,
+      "sha256": "b7b26dd2a38022781fecf5f43235048d5c38d69646d4d55a3b93fe51503980d3"
+    },
+    {
+      "path": "lean-toolchain",
+      "bytes": 25,
+      "sha256": "42779d67b81608af8a12aa4328d2ab47ca201925b3b2bd68369587b5340bb434"
+    },
+    {
+      "path": "LICENSE",
+      "bytes": 11357,
+      "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+    },
+    {
+      "path": "NOTICE",
+      "bytes": 662,
+      "sha256": "92e432204c3aeadde414a9ab5d48854b8bd85d62d0f786ab352c448b7c8cff75"
+    },
+    {
+      "path": "prepare.ps1",
+      "bytes": 847,
+      "sha256": "36467991f69350860c8ccc7cb9aa6c7bde26568c817c20cad7a375da62303bdf"
+    },
+    {
+      "path": "ProofCheck.lean",
+      "bytes": 10,
+      "sha256": "23ebacb73dfc2f72589beaefe42e3c6562a2e2efe79116e75b6744edbdeff0d3"
+    },
+    {
+      "path": "README.md",
+      "bytes": 7721,
+      "sha256": "df44b750713f42b06c27fcb1e23c420081f6a707be88c18e9473bcdf9194b02d"
+    },
+    {
+      "path": "reference/NOTICE",
+      "bytes": 714,
+      "sha256": "a1dbffd855be85d5228ffeb7d1eea68b19b8ed708c17a51684b8e1373ff59c63"
+    },
+    {
+      "path": "reference/PROOF.md",
+      "bytes": 9863,
+      "sha256": "23ccd896bc8bc20f3e6171d45eb41648ed512b16b0719a099f437719004141e7"
+    },
+    {
+      "path": "reference/SOURCE.json",
+      "bytes": 497,
+      "sha256": "ea512a05d5c530ff007e1e0575fdfedbc5b931f9d8f6deee12687ffb71155247"
+    },
+    {
+      "path": "reference/TOOLCHAIN.json",
+      "bytes": 911,
+      "sha256": "106d2a48d945d7fc921244be6b610bf2f566bcc4d5c6c5876f7e143189655309"
+    },
+    {
+      "path": "verification/axioms.log",
+      "bytes": 3444,
+      "sha256": "aa68dee2cd07d64fa00cecd577030c284d200c855a89dfbc73cd5fe087d6131d"
+    },
+    {
+      "path": "verification/build.log",
+      "bytes": 157,
+      "sha256": "b4ae0b7e64071887dc74c6c916022d793ac5205c26d81a644bce80ed395480e7"
+    },
+    {
+      "path": "verification/kernel-replay.log",
+      "bytes": 35,
+      "sha256": "26da320683c385b902514602823a7a07edb6102cdd38ba8ec905b8dd7fe8fea0"
+    },
+    {
+      "path": "verification/RESULT.json",
+      "bytes": 1777,
+      "sha256": "183ccaedc404eb4780f900c4c3d592b804e85b1162a0bd958633b90463fd5365"
+    },
+    {
+      "path": "verification/SUMMARY.json",
+      "bytes": 1430,
+      "sha256": "a2ff3d088818ff03545bd6333254d27dbe9fe682f171ad0fce6014d12fc679c8"
+    },
+    {
+      "path": "verify.ps1",
+      "bytes": 4053,
+      "sha256": "6718ee62b49913900266aac6a4af16bc249393199f66aed7a6d4c87059ab43aa"
+    }
+  ]
+}
