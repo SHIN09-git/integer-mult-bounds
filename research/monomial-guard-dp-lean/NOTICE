@@ -1,0 +1,15 @@
+Executable labeled subset DP and optimal row-operation reconstruction
+Prepared in SHIN09-git's research project with substantial OpenAI Codex assistance.
+Apache-2.0.
+
+The labeled recurrence and the row-operation construction follow ALGORITHM.md
+and PROOF.md at 03caa7f6cb5bd21c834024e9d81f6b43eb325b91, the mathematical
+source of CrocSwap/integer-mult-bounds PR 6712. The original attribution is
+retained in reference/ORIGINAL-NOTICE. It credits the debt-partition literature,
+ToikY, Nick Petalas and the earlier determinant and row-operation results.
+
+The HZ, Dummy and Binary Lean sources are reused byte-for-byte from
+SHIN09-git/integer-mult-bounds at a924d462c9cc4803a54664e4d093d20edb0073b4.
+This package adds the executable Lean DP, a proof of its optimal packing
+invariant, instruction reconstruction and correctness for the guard endpoints.
+

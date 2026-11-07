@@ -29,10 +29,28 @@
       "fresh_kernel_replay_seconds": 507.1389434,
       "archive_sha256": "aca93728278ada8d444ac586fe604de0170b180b98c15a9ea77c084382c85e5c",
       "receipt_sha256": "65439518c4f17cd21486502f516292dba49fbc7f4a2689305406b03a1d5f655a"
+    },
+    {
+      "directory": "research/monomial-guard-dp-lean",
+      "status": "PASS",
+      "predecessor_suite_commit": "a924d462c9cc4803a54664e4d093d20edb0073b4",
+      "main_theorems": [
+        "GuardDP.computes_Z",
+        "GuardDP.computes_Zstar",
+        "GuardDP.separationWord_optimal",
+        "GuardDP.concentrationWord_optimal",
+        "GuardDP.anchoredWord_optimal",
+        "GuardDP.binaryWord_optimal"
+      ],
+      "axiom_reports": 25,
+      "executable_replays": 5,
+      "fresh_kernel_replay_seconds": 645.5585264,
+      "receipt_sha256": "f119f39ab2299803b84601f20512e52368d07ee3e2450589dc07424866b16590",
+      "payload_manifest_sha256": "04e381eb4ce5d02bbacd8fd025ad1b2d26ebea112c59f0a6c2986bb8a41a168d"
     }
   ],
   "scope": "formalization of the pinned operation-cost theorems; no multiplication exponent claim",
-  "publication_layer": "each proof package is an exact archive expansion plus .gitattributes to preserve bytes",
+  "publication_layer": "The ternary and dummy packages retain their published archive bytes. The DP package includes its per-file SHA256SUMS and pinned verification inputs.",
   "prior_hz_package": "research/monomial-guard-hz-lean (unchanged)",
   "review": "local Lean compilation, axiom allowlists and fresh official-kernel replay; no external human review claim",
   "hosted_lean_verification_claimed": false
