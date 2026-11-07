@@ -1,0 +1,7 @@
+✔ [1791/1797] Built StrideDP.Scan (9.7s)
+✔ [1792/1797] Built StrideDP.Correctness (10s)
+✔ [1793/1797] Built StrideDP.Witness (9.8s)
+✔ [1794/1797] Built StrideDP (11s)
+✔ [1795/1797] Built StrideDP.Examples (12s)
+✔ [1796/1797] Built StrideProofCheck (11s)
+Build completed successfully (1797 jobs).

@@ -1,0 +1,10 @@
+(64, 160, 4476, 643)
+(441, 840, 22949, 4413)
+PASS all 64 cells, ties and cached sums
+PASS zero target: execute four real additions
+PASS 441 cells, exact edge count and twenty optimal additions
+PASS virtual charge coincides with a real charge
+PASS two-coordinate dense cache and real operation replay
+PASS empty alphabet and zero-dimensional charges
+PASS radix-one axis interleaved with live digits
+PASS empty real input and one real carrier

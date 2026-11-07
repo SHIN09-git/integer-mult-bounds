@@ -72,10 +72,35 @@
       "fresh_kernel_replay_seconds": 612.2129757,
       "receipt_sha256": "edca361bd31de8591a6599104ee7ec3dee686bea56d5be52f6fc01259c5e36cc",
       "payload_manifest_sha256": "0612c2a7bb13616a0f2cc35174f985a5ab553506f843d66ea03c1d813829cf82"
+    },
+    {
+      "directory": "research/monomial-guard-stride-dp-lean",
+      "status": "PASS",
+      "predecessor_suite_commit": "0556697229564cee61e16a18978f6c72b957ae80",
+      "predecessor_package": "research/monomial-guard-count-dp-lean",
+      "predecessor_receipt_sha256": "edca361bd31de8591a6599104ee7ec3dee686bea56d5be52f6fc01259c5e36cc",
+      "main_theorems": [
+        "StrideDP.predecessor_address",
+        "StrideDP.legal_predecessor_total",
+        "StrideDP.cell_eq_D",
+        "StrideDP.trace_eq_backtrack",
+        "StrideDP.separationWord_optimal",
+        "StrideDP.concentrationWord_optimal",
+        "StrideDP.fill_time_bound",
+        "StrideDP.fill_space_bound",
+        "StrideDP.dense_fill_time_bigO",
+        "StrideDP.dense_table_space_bigO"
+      ],
+      "axiom_reports": 35,
+      "executable_replays": 8,
+      "model": "word RAM, prepared axes, eager dense charges, output table words",
+      "fresh_kernel_replay_seconds": 636.0951285,
+      "receipt_sha256": "8c1fadb2748960c07a23c82c8112541b36626885f8de8ecd247465d37518c795",
+      "payload_manifest_sha256": "1ae2ae88711e6c6579a5c9cd8224b6bd8c2350dcae7f20d35663ded7c5246afa"
     }
   ],
   "scope": "formalization of the pinned operation-cost theorems; no multiplication exponent claim",
-  "publication_layer": "The ternary and dummy packages retain their archived bytes. Both dynamic-programming packages include per-file SHA256SUMS and pinned verification inputs. The count-vector project imports the adjacent labeled-DP package.",
+  "publication_layer": "The ternary and dummy packages retain their archived bytes. The three dynamic-programming packages include per-file SHA256SUMS and pinned verification inputs. The stride package imports the adjacent count-vector and labeled-DP packages.",
   "prior_hz_package": "research/monomial-guard-hz-lean (unchanged)",
   "review": "local Lean compilation, axiom allowlists and fresh official-kernel replay; no external human review claim",
   "hosted_lean_verification_claimed": false

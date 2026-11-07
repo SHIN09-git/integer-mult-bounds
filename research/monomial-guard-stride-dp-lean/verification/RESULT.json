@@ -1,0 +1,55 @@
+{
+  "status": "PASS",
+  "target": "StrideProofCheck",
+  "date_utc": "2026-11-07T07:47:08.5602290Z",
+  "lean_version": "Lean (version 4.24.0, x86_64-w64-windows-gnu, commit 797c613eb9b6d4ec95db23e3e00af9ac6657f24b, Release)",
+  "build_exit_code": 0,
+  "warnings_as_errors": true,
+  "executable_examples_exit_code": 0,
+  "executable_example_groups": 8,
+  "axiom_declarations": 35,
+  "allowed_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "unexpected_axioms": [],
+  "forbidden_source_construct_matches": 0,
+  "fresh_kernel_replay_exit_code": 0,
+  "fresh_kernel_replay_seconds": 636.0951285,
+  "checker_sha256": "8ba83cd65a76c2ae2feb95dba71241368c3c50145881247cb12b21c3c7dafafc",
+  "predecessor_packages": {
+    "integerMultCountDP": {
+      "hash": "edca361bd31de8591a6599104ee7ec3dee686bea56d5be52f6fc01259c5e36cc",
+      "count": 18,
+      "dir": "../monomial-guard-count-dp-lean"
+    },
+    "integerMultDP": {
+      "hash": "f119f39ab2299803b84601f20512e52368d07ee3e2450589dc07424866b16590",
+      "count": 37,
+      "dir": "../monomial-guard-dp-lean"
+    }
+  },
+  "inputs_unchanged_during_verification": true,
+  "input_sha256": {
+    "lakefile.lean": "923c94eca287eaafd6610bcc846300a9c43fa6f0184a5c10ef0c1dd7a68cb5b5",
+    "StrideDP.lean": "cf9d8dfc7300356a818cd47282b17abcf9b9f09293eb5a0e88a48ea8d41c63e1",
+    "StrideProofCheck.lean": "c70c2f13d7f35079fd3c9318b3e8b2b0f5bed285c4cae41a4f177833125175c5",
+    "Audit.lean": "b8cf194bb5c9e51663b87f13350039f8d0b5d870ecd92f7778ff058c83a041d1",
+    "Examples.lean": "24dffad4355b0f0a2880615d058936a774465e7687fe1112573d8361e34fde57",
+    "StrideDP/Asymptotics.lean": "d7fac57686c9bbe3b3a904554209a531eb542bd37ad4f60d68c04b02ab7e526f",
+    "StrideDP/Correctness.lean": "4b9e9c6505150ae882fd6d11249aa04989432908c35100767e6f1f5ed4fe1268",
+    "StrideDP/Cost.lean": "06ee00eb0ba1dd98d8d33e06db25a183a7f6c1ccedbe5f737f8c759ced9d1363",
+    "StrideDP/Dense.lean": "1652247ea4540d9136187c7dfabb182a8bf07783015f3355093ec4f4f8792954",
+    "StrideDP/Edges.lean": "0ce686783409985113d74fb2c91f54c768e27254d7100fd647518c6a99e5fe8e",
+    "StrideDP/Examples.lean": "af424cb4ef5ccc7c5f68acffab0fc8dba3f0ce7ae5392f3546729a30055c0fb6",
+    "StrideDP/Grid.lean": "41771894c9c9b6d6571cd121db48c671bcbe0aac04a08f32ae108e3c8dac4ce7",
+    "StrideDP/Machine.lean": "bcfe17fe7b0e5850e52318b62d850cf3df9d1780738d8396fd9f3b2866cf9ec2",
+    "StrideDP/Scan.lean": "b6d09773e1b6f252021d56198b6d9e64b51bce4b930e5bf145c44071802d39fc",
+    "StrideDP/Witness.lean": "d7aaf8801384f78310381a80f7ff6f3eea03d2e4c682fe757db807bbd8b25746",
+    "lean-toolchain": "42779d67b81608af8a12aa4328d2ab47ca201925b3b2bd68369587b5340bb434",
+    "lake-manifest.json": "73d2734111a8ab228aabe7c3c80b980b629cf5d2cf9a3b19258bd6be72c1a7c4",
+    "prepare.ps1": "1c92c3adac263e0f18c832bf3b8e9a0763793a52c991c4436897d49fd7f5a295",
+    "verify.ps1": "343e83b7d2b0c6e44c329de0f54160a2d9aa2687ed77d5059585f7a4da8614f4"
+  }
+}

@@ -1,0 +1,37 @@
+import StrideDP
+
+#print axioms StrideDP.stride_prefix
+#print axioms StrideDP.erase_add_stride
+#print axioms StrideDP.predecessor_address
+#print axioms StrideDP.unpack_fits
+#print axioms StrideDP.address_unpack
+#print axioms StrideDP.sum_legalDigits
+#print axioms StrideDP.edges_formula
+#print axioms StrideDP.edges_le
+#print axioms StrideDP.scan_choose
+#print axioms StrideDP.scan_reads
+#print axioms StrideDP.scan_ticks
+#print axioms StrideDP.legal_predecessor_total
+#print axioms StrideDP.fill_eq_built
+#print axioms StrideDP.built_size
+#print axioms StrideDP.new_cell_ok
+#print axioms StrideDP.built_ok
+#print axioms StrideDP.table_ok
+#print axioms StrideDP.cell_eq_D
+#print axioms StrideDP.trace_eq_backtrack
+#print axioms StrideDP.solve_eq
+#print axioms StrideDP.groups_eq
+#print axioms StrideDP.separationWord_optimal
+#print axioms StrideDP.concentrationWord_optimal
+#print axioms StrideDP.plusList_value
+#print axioms StrideDP.plusList_work
+#print axioms StrideDP.zeroList_work
+#print axioms StrideDP.denseAdd_ok
+#print axioms StrideDP.denseTest_ok
+#print axioms StrideDP.dense_costs
+#print axioms StrideDP.scalar_costs
+#print axioms StrideDP.ticks_prefix
+#print axioms StrideDP.fill_time_bound
+#print axioms StrideDP.fill_space_bound
+#print axioms StrideDP.dense_fill_time_bigO
+#print axioms StrideDP.dense_table_space_bigO

@@ -1,0 +1,15 @@
+Stride-address filling and complexity of the charge-count dynamic program
+Prepared in SHIN09-git's research project with substantial OpenAI Codex assistance.
+Apache-2.0.
+
+The count recurrence and parameterized complexity statement come from
+research/monomial-guard-settlement/ALGORITHM.md at
+03caa7f6cb5bd21c834024e9d81f6b43eb325b91 (CrocSwap/integer-mult-bounds PR 6712).
+The predecessor package published at 0556697229564cee61e16a18978f6c72b957ae80
+supplies the reference table D and its optimality and instruction semantics.
+Earlier contributors and debt-partition literature are credited in
+../monomial-guard-dp-lean/reference/ORIGINAL-NOTICE.
+
+This package adds the exact predecessor count and address, executable stride
+fill, cached charge arithmetic, address-only traceback, and word-RAM time
+and stored-table space proofs.
