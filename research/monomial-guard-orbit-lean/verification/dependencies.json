@@ -1,0 +1,53 @@
+[
+  {
+    "name": "integerMultTernary",
+    "path": "../monomial-guard-ternary-lean",
+    "receipt_sha256": "f8abbcfdd58bc43c10bd4dc50dd6bb16ce628475eb8dcfa6883f853ba0b9de7b",
+    "verified_inputs": 27
+  },
+  {
+    "name": "mathlib",
+    "commit": "f897ebcf72cd16f89ab4577d0c826cd14afaafc7",
+    "tracked_changes": 0
+  },
+  {
+    "name": "plausible",
+    "commit": "dfd06ebfe8d0e8fa7faba9cb5e5a2e74e7bd2805",
+    "tracked_changes": 0
+  },
+  {
+    "name": "LeanSearchClient",
+    "commit": "99657ad92e23804e279f77ea6dbdeebaa1317b98",
+    "tracked_changes": 0
+  },
+  {
+    "name": "importGraph",
+    "commit": "d768126816be17600904726ca7976b185786e6b9",
+    "tracked_changes": 0
+  },
+  {
+    "name": "proofwidgets",
+    "commit": "556caed0eadb7901e068131d1be208dd907d07a2",
+    "tracked_changes": 0
+  },
+  {
+    "name": "aesop",
+    "commit": "725ac8cd67acd70a7beaf47c3725e23484c1ef50",
+    "tracked_changes": 0
+  },
+  {
+    "name": "Qq",
+    "commit": "dea6a3361fa36d5a13f87333dc506ada582e025c",
+    "tracked_changes": 0
+  },
+  {
+    "name": "batteries",
+    "commit": "8da40b72fece29b7d3fe3d768bac4c8910ce9bee",
+    "tracked_changes": 0
+  },
+  {
+    "name": "Cli",
+    "commit": "91c18fa62838ad0ab7384c03c9684d99d306e1da",
+    "tracked_changes": 0
+  }
+]

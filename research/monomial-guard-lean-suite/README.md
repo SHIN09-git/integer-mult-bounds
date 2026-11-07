@@ -1,6 +1,6 @@
 # Monomial guard Lean proof suite
 
-本分支收录 $h-Z$ 最优性、三元域代价界、虚拟项最优性，以及生成最优行操作的标签动态规划和计数向量动态规划。从原始数组出发的求解器同时证明生成结果的最优性和总费用。
+本分支收录 $h-Z$ 最优性、三元域代价界、虚拟项最优性，以及生成最优行操作的标签动态规划和计数向量动态规划。从原始数组出发的求解器同时证明生成结果的最优性和总费用。 小有限域可直接计算 $Z$，一般三元完整仿射族则可通过最短路求出精确代价 $C$。
 
 | 证明包 | 已验证结论 | 公理检查 | 内核重放 |
 |---|---|---:|---:|
@@ -11,6 +11,7 @@
 | [按步长填表的复杂度](../monomial-guard-stride-dp-lean/README.md) | 合法前驱读数与地址公式，逐格等于原表，恢复两类最优操作。填表时间 $O((1+t+d)N)$，表空间 $O((1+d)N)$ | 35 条 | 636.095 秒 |
 | [从原始行到最短操作序列](../monomial-guard-bucket-dp-lean/README.md) | 自动求总电荷，分桶回溯每个非零真实标签一次。两类目标的总时间、总空间均计入原始输入与显式输出 | 46 条 | 687.483 秒 |
 | [小有限域直接计算 $Z$](../monomial-guard-small-fields-lean/README.md) | 加一对非零逆元使 $Z$ 恰增一；由原始行直接计算三元域、五元域标量电荷的闭式最优值 | 32 条 | 464.527 秒 |
+| [一般三元实例的精确最短路](../monomial-guard-orbit-lean/README.md) | 完整行状态按免费操作归类，最短路长度等于 $C$。搜索返回最优行加法及固定行序所需的免费置换 | 37 条 | 605.440 秒 |
 
 最优性比较允许使用真实零电荷坐标，以及任意穿插的免费置换和非零缩放。虚拟标签只参与分组，生成的操作只使用真实行号。[原有 $h-Z$ 证明](../monomial-guard-hz-lean/README.md) · [验证收据索引](BUNDLE.json)
 
@@ -28,8 +29,10 @@
 
 对零总和的标量电荷，三元域消去相反电荷后按三项成组。五元域先消去两种逆元对，再将残余电荷归一化为 $1,2$，由两种权重给出相合的上界与构造。两种闭式函数直接读取原始行重数；另用通用计数动态规划逐一核对了 130 种零总和直方图。[两种公式](../monomial-guard-small-fields-lean/README.md) · [直接求值定理](../monomial-guard-small-fields-lean/SmallFields/Direct.lean)
 
+对归一化的三元完整仿射族，程序按付费次数逐层搜索，每个免费等价类保留一个实际状态和一条操作序列。任意长度的路径都能还原为相同付费次数的合法执行。五行样例的最优值为 3，另用直接检查主子式的搜索核对了两行、一个斜率坐标的全部 72 个归一化输入。[路径与执行](../monomial-guard-orbit-lean/OrbitGuard/Distance.lean) · [求解器](../monomial-guard-orbit-lean/OrbitGuard/Solver.lean) · [固定行序输出](../monomial-guard-orbit-lean/OrbitGuard/Fixed.lean)
+
 数学来源固定于提交 `03caa7f6cb5bd21c834024e9d81f6b43eb325b91`，此前 $h-Z$ 形式化固定于 `b87752d0291dc8b1df46b9abbccdc739d7c5be57`。验证记录来自本地 Lean 编译、公理检查及官方检查器的新环境内核重放。各包保留署名与 Apache-2.0 许可，并披露 OpenAI Codex 的实质协助。[原研究 PR](https://github.com/CrocSwap/integer-mult-bounds/pull/6712)
 
 ## Open next questions
 
-形式化一般三元输入的免费等价类及其最短路算法。起点是证明免费操作前后具有相同的最小付费代价。[相关三元域研究](https://github.com/CrocSwap/integer-mult-bounds/pull/6793)
+在三步及更远的搜索中，哪些完整行数据还可以省去，并仍能从每个保留的状态恢复最优操作？已有的两步电荷判据给出了可比较的特例。[相关三元域研究](https://github.com/CrocSwap/integer-mult-bounds/pull/6793)

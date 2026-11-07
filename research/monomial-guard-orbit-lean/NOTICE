@@ -1,0 +1,17 @@
+Exact shortest paid paths for normalized full affine guards over F3
+Prepared in SHIN09-git's research project with substantial OpenAI Codex assistance.
+Released under the Apache License, Version 2.0.
+
+The operation model, proper principal minors, ternary guard characterization,
+and price envelope come from the adjacent monomial-guard-ternary-lean package.
+Its original mathematical source is CrocSwap/integer-mult-bounds PR 6712 at
+03caa7f6cb5bd21c834024e9d81f6b43eb325b91. See that package's NOTICE and
+reference directory for source-specific attribution. The verification receipt
+pins its files and earlier formalization.
+
+SHIN09-git's ORBITS.md in the same source commit gives the complete-row
+orbit construction, paid-edge lifting principle, and breadth-first search.
+This package formalizes those arguments in Lean, proves correctness for
+every length, and verifies the implementation that returns concrete paid
+words and an optional final permutation. Nick Petalas supplied the related
+radius-two charge criterion in PR 6793.

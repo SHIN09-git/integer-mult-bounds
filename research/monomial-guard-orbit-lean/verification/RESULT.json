@@ -1,0 +1,47 @@
+{
+  "status": "PASS",
+  "target": "OrbitProofCheck",
+  "date_utc": "2026-11-07T10:40:21.8244832Z",
+  "lean_version": "Lean (version 4.24.0, x86_64-w64-windows-gnu, commit 797c613eb9b6d4ec95db23e3e00af9ac6657f24b, Release)",
+  "build_exit_code": 0,
+  "warnings_as_errors": true,
+  "executable_examples_exit_code": 0,
+  "executable_example_groups": 8,
+  "axiom_declarations": 37,
+  "allowed_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "unexpected_axioms": [],
+  "forbidden_source_construct_matches": 0,
+  "fresh_kernel_replay_exit_code": 0,
+  "fresh_kernel_replay_seconds": 605.4396501,
+  "checker_sha256": "8ba83cd65a76c2ae2feb95dba71241368c3c50145881247cb12b21c3c7dafafc",
+  "predecessor_packages": {
+    "integerMultTernary": {
+      "dir": "../monomial-guard-ternary-lean",
+      "count": 27,
+      "hash": "f8abbcfdd58bc43c10bd4dc50dd6bb16ce628475eb8dcfa6883f853ba0b9de7b"
+    }
+  },
+  "inputs_unchanged_during_verification": true,
+  "input_sha256": {
+    "lakefile.lean": "8b975f0ff5c41091e8682394b493322268a960de92915eafb1bb850c67d26e58",
+    "OrbitGuard.lean": "c3550cd07b860bb5c5e4575253c67408798695c3c6ffad436f01ab2208769d34",
+    "OrbitProofCheck.lean": "61dc17ededde6a4efb33e875956973789e179873fe72d5360926dd70555c1ec7",
+    "Audit.lean": "35a2082913b27ca3ce9689724f68c4bcf1e7cdb35ad1c326c4c3b4fd1bd0afba",
+    "Examples.lean": "f0e698e7058e900763a52a1b7e6d6f1ed108b1d476509a26c68a0c6284fe262b",
+    "OrbitGuard/Classes.lean": "e4712754eb53f93a2a8e04454e2a6bdc052502d20f2cf9adb14e874264866669",
+    "OrbitGuard/Distance.lean": "c215f33e0b9e41d85d313014771f451db2b5529fb61abd2d7f5d88c65d276ca9",
+    "OrbitGuard/Examples.lean": "2610266d8399747e41a477a042178176ef7bc0bfcdc997656e7b8ae740bd5d4e",
+    "OrbitGuard/Fixed.lean": "9917f4f9ae83c709eeaf4abf4282cd40b1fdb40707bc72dd821a631801f0b773",
+    "OrbitGuard/Layers.lean": "d06b25038704511e0756a18dcf64394bee66c38e0d6bbea165524a6bbb2843eb",
+    "OrbitGuard/Moves.lean": "4fc78db35100fa258403e2b2805e3cff353c14b0268954d54b007914de0838fb",
+    "OrbitGuard/Solver.lean": "6149409cdddd0903b8ff3b07ca571bd173a3e3ff0dad1877c0f6e457dd113a7f",
+    "lean-toolchain": "42779d67b81608af8a12aa4328d2ab47ca201925b3b2bd68369587b5340bb434",
+    "lake-manifest.json": "5331716d807dd10bb1e3b02a5ee82120c7acb262c47c0c43e9cf67f11811f609",
+    "prepare.ps1": "4b34e22ab5e5913d81778dcc567a1b166bbfeea89e52daca83c5d9d7c010d25a",
+    "verify.ps1": "7491ca7a7fa1672693e2bd068bafbb530b06b93b7c7ae00e2b0382577e23d310"
+  }
+}

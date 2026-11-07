@@ -1,0 +1,4 @@
+.lake/
+.work/
+.verification-runs/
+!/verification/*.log

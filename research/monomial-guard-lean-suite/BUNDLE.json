@@ -152,6 +152,33 @@
       "fresh_kernel_replay_seconds": 464.5273301,
       "receipt_sha256": "73c4fdbecbe788b39e3771b9ec35ef8e45777d39d12ba8ea3334cc64153002b2",
       "payload_manifest_sha256": "02aacc488b9304584a10e094e65ebc99aa6fd276bafb4b62c95d79877da708d9"
+    },
+    {
+      "directory": "research/monomial-guard-orbit-lean",
+      "status": "PASS",
+      "predecessor_suite_commit": "d2066d259b810f7a04dbdb080160cc90ae5855b4",
+      "predecessor_package": "research/monomial-guard-ternary-lean",
+      "predecessor_receipt_sha256": "f8abbcfdd58bc43c10bd4dc50dd6bb16ce628475eb8dcfa6883f853ba0b9de7b",
+      "main_theorems": [
+        "OrbitGuard.vertex_eq_iff_frame",
+        "OrbitGuard.Gate.act_frame",
+        "OrbitGuard.edge_from",
+        "OrbitGuard.walk_iff_run",
+        "OrbitGuard.zero_run_iff",
+        "OrbitGuard.distance_eq_C",
+        "OrbitGuard.distance_minimum",
+        "OrbitGuard.C_congr",
+        "OrbitGuard.advance_layer",
+        "OrbitGuard.solve_correct",
+        "OrbitGuard.solve_optimal",
+        "OrbitGuard.solveFixed_correct"
+      ],
+      "axiom_reports": 37,
+      "executable_replays": 8,
+      "normalized_two_row_one_slope_inputs_cross_checked": 72,
+      "fresh_kernel_replay_seconds": 605.4396501,
+      "receipt_sha256": "d18eaa813f0594880d8cb1d909ec840d726866c6cbc07aeccafcf96029c5aaac",
+      "payload_manifest_sha256": "7ef989df192a76c3bad13184c96ab3b55f3c510e9b9f010487f1b1c06f3a8cd3"
     }
   ],
   "scope": "formalization of the pinned operation-cost theorems; no multiplication exponent claim",
