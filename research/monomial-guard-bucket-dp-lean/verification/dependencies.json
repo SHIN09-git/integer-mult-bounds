@@ -1,0 +1,65 @@
+[
+  {
+    "name": "integerMultStrideDP",
+    "path": "../monomial-guard-stride-dp-lean",
+    "receipt_sha256": "8c1fadb2748960c07a23c82c8112541b36626885f8de8ecd247465d37518c795",
+    "verified_inputs": 19
+  },
+  {
+    "name": "integerMultCountDP",
+    "path": "../monomial-guard-stride-dp-lean/../monomial-guard-count-dp-lean",
+    "receipt_sha256": "edca361bd31de8591a6599104ee7ec3dee686bea56d5be52f6fc01259c5e36cc",
+    "verified_inputs": 18
+  },
+  {
+    "name": "integerMultDP",
+    "path": "../monomial-guard-stride-dp-lean/../monomial-guard-count-dp-lean/../monomial-guard-dp-lean",
+    "receipt_sha256": "f119f39ab2299803b84601f20512e52368d07ee3e2450589dc07424866b16590",
+    "verified_inputs": 37
+  },
+  {
+    "name": "mathlib",
+    "commit": "f897ebcf72cd16f89ab4577d0c826cd14afaafc7",
+    "tracked_changes": 0
+  },
+  {
+    "name": "plausible",
+    "commit": "dfd06ebfe8d0e8fa7faba9cb5e5a2e74e7bd2805",
+    "tracked_changes": 0
+  },
+  {
+    "name": "LeanSearchClient",
+    "commit": "99657ad92e23804e279f77ea6dbdeebaa1317b98",
+    "tracked_changes": 0
+  },
+  {
+    "name": "importGraph",
+    "commit": "d768126816be17600904726ca7976b185786e6b9",
+    "tracked_changes": 0
+  },
+  {
+    "name": "proofwidgets",
+    "commit": "556caed0eadb7901e068131d1be208dd907d07a2",
+    "tracked_changes": 0
+  },
+  {
+    "name": "aesop",
+    "commit": "725ac8cd67acd70a7beaf47c3725e23484c1ef50",
+    "tracked_changes": 0
+  },
+  {
+    "name": "Qq",
+    "commit": "dea6a3361fa36d5a13f87333dc506ada582e025c",
+    "tracked_changes": 0
+  },
+  {
+    "name": "batteries",
+    "commit": "8da40b72fece29b7d3fe3d768bac4c8910ce9bee",
+    "tracked_changes": 0
+  },
+  {
+    "name": "Cli",
+    "commit": "91c18fa62838ad0ab7384c03c9684d99d306e1da",
+    "tracked_changes": 0
+  }
+]

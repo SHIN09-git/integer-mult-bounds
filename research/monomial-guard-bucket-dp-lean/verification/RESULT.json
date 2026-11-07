@@ -1,0 +1,66 @@
+{
+  "status": "PASS",
+  "target": "BucketProofCheck",
+  "date_utc": "2026-11-07T09:02:29.1737920Z",
+  "lean_version": "Lean (version 4.24.0, x86_64-w64-windows-gnu, commit 797c613eb9b6d4ec95db23e3e00af9ac6657f24b, Release)",
+  "build_exit_code": 0,
+  "warnings_as_errors": true,
+  "executable_examples_exit_code": 0,
+  "executable_example_groups": 8,
+  "axiom_declarations": 46,
+  "allowed_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "unexpected_axioms": [],
+  "forbidden_source_construct_matches": 0,
+  "fresh_kernel_replay_exit_code": 0,
+  "fresh_kernel_replay_seconds": 687.4827614,
+  "checker_sha256": "8ba83cd65a76c2ae2feb95dba71241368c3c50145881247cb12b21c3c7dafafc",
+  "predecessor_packages": {
+    "integerMultStrideDP": {
+      "dir": "../monomial-guard-stride-dp-lean",
+      "hash": "8c1fadb2748960c07a23c82c8112541b36626885f8de8ecd247465d37518c795",
+      "count": 19
+    },
+    "integerMultCountDP": {
+      "dir": "../monomial-guard-count-dp-lean",
+      "hash": "edca361bd31de8591a6599104ee7ec3dee686bea56d5be52f6fc01259c5e36cc",
+      "count": 18
+    },
+    "integerMultDP": {
+      "dir": "../monomial-guard-dp-lean",
+      "hash": "f119f39ab2299803b84601f20512e52368d07ee3e2450589dc07424866b16590",
+      "count": 37
+    }
+  },
+  "inputs_unchanged_during_verification": true,
+  "input_sha256": {
+    "lakefile.lean": "6a640b60f1b744a79dfba169fa666aa8a7d8455e011790d61f08911a366fc5f6",
+    "BucketDP.lean": "4e510d513864398c63597cb09ee8a1f07dab3c8b7b4541eb4aa7d199916534ff",
+    "BucketProofCheck.lean": "977571a6d173fe54c424b206dad37cd08bae36bb5c3b21e6182156f85fa957b1",
+    "Audit.lean": "a21d4988bd79a421911ec2d971c17bd52888f59fab932b6d0fa485eca4450916",
+    "Examples.lean": "018eda70c7db3cdcba4c998c925a41bb3ac9a6687b74a53b045c02915fe7e577",
+    "BucketDP/Accounting.lean": "58f7cd6f7530d0614aafac96ca5ef4ccaaaf301eb9071b1075f317aee20db146",
+    "BucketDP/Blocks.lean": "48c1015e2d26b042d1ec0098caa7b88225b8800535485fc14667a5bf1312a34a",
+    "BucketDP/Costs.lean": "6739b16f2c0842f8d423623b18b7221641c0e7fb583336e25eda3f5184fb44f9",
+    "BucketDP/Emit.lean": "29ec2b9539ae246ca5a394c82a4402ff74c103ed41a396037c6efc3e980ba7b7",
+    "BucketDP/EndToEnd.lean": "b79996b0ddcc54a0152a159c7855050b5bbbb38a76914675727051b09115e104",
+    "BucketDP/Examples.lean": "c4d3d9cf185e5e734c1796bfe36c4f4d6af6b3b86490adf69d14d93b70fdb2ef",
+    "BucketDP/Grid.lean": "d8e2d6bf54bac0d545891a32f02cc16197204740dc3687fb3feeb4286328b999",
+    "BucketDP/InputCost.lean": "e7cb7349912a1dff1ab10c8a3e84ca5756f1ca33ddab237d732498efea3eed8f",
+    "BucketDP/Prepare.lean": "759f6c45c2c768c16d22f77c094eb079434018e606166add3607358fafe1710b",
+    "BucketDP/Project.lean": "11300852b09a28b3393094ecc99b8196a10da2f8f22a0c320cc3672cc270950d",
+    "BucketDP/Queues.lean": "d58bff489af5b0a5129eae36097bf864cbfbd675200437405c1757baafca9f3c",
+    "BucketDP/Raw.lean": "21a7c28df4d41ef4187fe45c73ac015bd8db2e9b4e804591bcaf2a38764b47fd",
+    "BucketDP/Recover.lean": "353483ddafce3e71bb4240619c0e831584969586cd08a4783de598080787f96e",
+    "BucketDP/Size.lean": "8c59489bb47bc835f5b502349eee2e51ceff2a73452e1b97bb09fe62ae8b83b5",
+    "BucketDP/Solver.lean": "561c65cdcdd55b9e9d0c2c45b2786558b3b44b54aed2a42695da96ed44e4ac4d",
+    "BucketDP/Visits.lean": "1653529e61e97b377cd1cd78bbb2678bba4b2eed0083f5f8f1d5071d77bc562c",
+    "lean-toolchain": "42779d67b81608af8a12aa4328d2ab47ca201925b3b2bd68369587b5340bb434",
+    "lake-manifest.json": "084317188f2c87635de76b931477d089d8f34e5d2f503a906f95266775b218a0",
+    "prepare.ps1": "bea5cef131968d129197dfc5a232f1f28810b85529af537f4d787a65f7aaaba6",
+    "verify.ps1": "99c371cf6d1d209c4c05d318812963a035f67eb61aca6b5cb90ed5ed0be98326"
+  }
+}

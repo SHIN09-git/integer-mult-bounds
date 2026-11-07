@@ -1,0 +1,11 @@
+five rows=8 labels=8 types=4 cells=64 comparisons=10 bucketVisits=32 pops=8 realLabels=8 gates=4
+repeated rows=40 labels=40 types=2 cells=441 comparisons=39 bucketVisits=80 pops=40 realLabels=40 gates=20
+collision rows=5 labels=5 types=3 cells=18 comparisons=6 bucketVisits=15 pops=5 realLabels=4 gates=2
+PASS 8 distinct row identities, 64 cells, execute 4 minimum additions
+PASS two types of 20 each, 441 cells, execute 20 minimum additions
+PASS same-charge dummy and real row, zero row, non-unit coefficient
+PASS two dense coordinates and concentrated output
+PASS 25 inactive physical rows, one table cell
+PASS zero-row and zero-dimensional inputs
+PASS single real carrier plus dummy, no emitted addition
+PASS dense comparison exits on first difference and counts coordinates

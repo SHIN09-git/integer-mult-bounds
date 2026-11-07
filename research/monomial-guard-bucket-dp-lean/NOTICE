@@ -1,0 +1,14 @@
+End-to-end charge-count DP with identity buckets and optimal row additions
+Prepared in SHIN09-git's research project with substantial OpenAI Codex assistance.
+Apache-2.0.
+
+The operation model and count recurrence originate in the research submission
+at 03caa7f6cb5bd21c834024e9d81f6b43eb325b91 (CrocSwap/integer-mult-bounds PR 6712).
+The stride, count-vector and labeled proof packages used here are pinned by
+receipt, with the suite at d0aacad04b4c4ed48fbc62222c34b5793031ad3a.
+Prior contributors and debt-partition literature are credited in
+../monomial-guard-dp-lean/reference/ORIGINAL-NOTICE.
+
+This package adds raw-array preprocessing, identity-preserving bucket traceback,
+tagged projection, direct coefficient emission, and the end-to-end word-RAM
+resource proofs for zero and nonzero total charge.

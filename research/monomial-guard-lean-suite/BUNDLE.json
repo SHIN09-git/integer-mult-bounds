@@ -97,10 +97,36 @@
       "fresh_kernel_replay_seconds": 636.0951285,
       "receipt_sha256": "8c1fadb2748960c07a23c82c8112541b36626885f8de8ecd247465d37518c795",
       "payload_manifest_sha256": "1ae2ae88711e6c6579a5c9cd8224b6bd8c2350dcae7f20d35663ded7c5246afa"
+    },
+    {
+      "directory": "research/monomial-guard-bucket-dp-lean",
+      "status": "PASS",
+      "predecessor_suite_commit": "d0aacad04b4c4ed48fbc62222c34b5793031ad3a",
+      "predecessor_package": "research/monomial-guard-stride-dp-lean",
+      "predecessor_receipt_sha256": "8c1fadb2748960c07a23c82c8112541b36626885f8de8ecd247465d37518c795",
+      "main_theorems": [
+        "BucketDP.zero_pops_once",
+        "BucketDP.target_pops_once",
+        "BucketDP.recovery_shape",
+        "BucketDP.box_bounds",
+        "BucketDP.raw_phase_bounds",
+        "BucketDP.emit_phase_bound",
+        "BucketDP.zero_bigO",
+        "BucketDP.target_bigO",
+        "BucketDP.solve_correct",
+        "BucketDP.solve_resources",
+        "BucketDP.solve_bigO"
+      ],
+      "axiom_reports": 46,
+      "executable_replays": 8,
+      "model": "word RAM, physical dense row arrays, identity-preserving buckets, field operations including division, input/workspace/output words",
+      "fresh_kernel_replay_seconds": 687.4827614,
+      "receipt_sha256": "f3429a8fab4a43f44c2515d7a5269842649a57fad3fb04353977346390295e59",
+      "payload_manifest_sha256": "f88556951ff839202459676379026c489130c700d2fc69a7412cf7bc5c4c3280"
     }
   ],
   "scope": "formalization of the pinned operation-cost theorems; no multiplication exponent claim",
-  "publication_layer": "The ternary and dummy packages retain their archived bytes. The three dynamic-programming packages include per-file SHA256SUMS and pinned verification inputs. The stride package imports the adjacent count-vector and labeled-DP packages.",
+  "publication_layer": "The four dynamic-programming packages include per-file SHA256SUMS and pinned verification inputs. The raw-input solver depends on the stride, count-vector and labeled packages in adjacent directories.",
   "prior_hz_package": "research/monomial-guard-hz-lean (unchanged)",
   "review": "local Lean compilation, axiom allowlists and fresh official-kernel replay; no external human review claim",
   "hosted_lean_verification_claimed": false
