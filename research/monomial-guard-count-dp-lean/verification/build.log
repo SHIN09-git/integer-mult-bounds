@@ -1,0 +1,10 @@
+✔ [1614/1623] Built CountDP.Score (9.1s)
+✔ [1615/1623] Built CountDP.Trace (9.1s)
+✔ [1616/1623] Built CountDP.Restore (9.2s)
+✔ [1617/1623] Built CountDP.Groups (9.8s)
+✔ [1618/1623] Built CountDP.Operations (10s)
+✔ [1619/1623] Built CountDP.FixedOrder (10s)
+✔ [1620/1623] Built CountDP (10s)
+✔ [1621/1623] Built CountDP.Examples (15s)
+✔ [1622/1623] Built CountProofCheck (10s)
+Build completed successfully (1623 jobs).

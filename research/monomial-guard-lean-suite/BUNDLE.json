@@ -47,10 +47,35 @@
       "fresh_kernel_replay_seconds": 645.5585264,
       "receipt_sha256": "f119f39ab2299803b84601f20512e52368d07ee3e2450589dc07424866b16590",
       "payload_manifest_sha256": "04e381eb4ce5d02bbacd8fd025ad1b2d26ebea112c59f0a6c2986bb8a41a168d"
+    },
+    {
+      "directory": "research/monomial-guard-count-dp-lean",
+      "status": "PASS",
+      "predecessor_suite_commit": "549eaad16d52b48982c34b4b707fc33ce40b2111",
+      "predecessor_package": "research/monomial-guard-dp-lean",
+      "predecessor_receipt_sha256": "f119f39ab2299803b84601f20512e52368d07ee3e2450589dc07424866b16590",
+      "main_theorems": [
+        "CountDP.P_eq_D",
+        "CountDP.state_count",
+        "CountDP.reachable_state_bound",
+        "CountDP.compressed_certificate",
+        "CountDP.score_Z",
+        "CountDP.score_Zstar",
+        "CountDP.separationWord_optimal",
+        "CountDP.concentrationWord_optimal",
+        "CountDP.anchoredWord_optimal",
+        "CountDP.binaryWord_optimal"
+      ],
+      "axiom_reports": 32,
+      "executable_replays": 7,
+      "labeled_subset_scores_compared": 256,
+      "fresh_kernel_replay_seconds": 612.2129757,
+      "receipt_sha256": "edca361bd31de8591a6599104ee7ec3dee686bea56d5be52f6fc01259c5e36cc",
+      "payload_manifest_sha256": "0612c2a7bb13616a0f2cc35174f985a5ab553506f843d66ea03c1d813829cf82"
     }
   ],
   "scope": "formalization of the pinned operation-cost theorems; no multiplication exponent claim",
-  "publication_layer": "The ternary and dummy packages retain their published archive bytes. The DP package includes its per-file SHA256SUMS and pinned verification inputs.",
+  "publication_layer": "The ternary and dummy packages retain their archived bytes. Both dynamic-programming packages include per-file SHA256SUMS and pinned verification inputs. The count-vector project imports the adjacent labeled-DP package.",
   "prior_hz_package": "research/monomial-guard-hz-lean (unchanged)",
   "review": "local Lean compilation, axiom allowlists and fresh official-kernel replay; no external human review claim",
   "hosted_lean_verification_claimed": false

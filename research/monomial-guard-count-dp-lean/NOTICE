@@ -1,0 +1,14 @@
+Charge-count dynamic programming and reconstruction of optimal guard operations
+Prepared in SHIN09-git's research project with substantial OpenAI Codex assistance.
+Apache-2.0.
+
+The count-vector recurrence follows research/monomial-guard-settlement/ALGORITHM.md
+and algorithms.py at 03caa7f6cb5bd21c834024e9d81f6b43eb325b91, the source of
+CrocSwap/integer-mult-bounds PR 6712. The original attribution is preserved
+in ../monomial-guard-dp-lean/reference/ORIGINAL-NOTICE, including the
+debt-partition literature, ToikY, Nick Petalas and the preceding guard work.
+
+The existing labeled-DP and row-operation formalization is imported from
+the sibling package published at 549eaad16d52b48982c34b4b707fc33ce40b2111.
+This package contributes the verified mixed-radix array, pointwise equivalence,
+state bound, type-only witness and certified recovery of real row operations.

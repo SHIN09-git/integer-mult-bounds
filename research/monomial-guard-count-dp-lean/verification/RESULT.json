@@ -1,0 +1,43 @@
+{
+  "status": "PASS",
+  "target": "CountProofCheck",
+  "date_utc": "2026-11-07T05:59:09.0296388Z",
+  "lean_version": "Lean (version 4.24.0, x86_64-w64-windows-gnu, commit 797c613eb9b6d4ec95db23e3e00af9ac6657f24b, Release)",
+  "build_exit_code": 0,
+  "warnings_as_errors": true,
+  "executable_examples_exit_code": 0,
+  "axiom_declarations": 32,
+  "allowed_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "unexpected_axioms": [],
+  "forbidden_source_construct_matches": 0,
+  "fresh_kernel_replay_exit_code": 0,
+  "fresh_kernel_replay_seconds": 612.2129757,
+  "checker_sha256": "8ba83cd65a76c2ae2feb95dba71241368c3c50145881247cb12b21c3c7dafafc",
+  "predecessor_receipt_sha256": "f119f39ab2299803b84601f20512e52368d07ee3e2450589dc07424866b16590",
+  "verified_predecessor_inputs": 37,
+  "inputs_unchanged_during_verification": true,
+  "input_sha256": {
+    "lakefile.lean": "b489e3af0f28f1bfe1ca45159a0e760c2b5724458af8ddf147e5c84c421028a3",
+    "CountDP.lean": "964a7f6228a97a3a2898cb9da035de884293175b8e92643828715170cf5935e7",
+    "CountProofCheck.lean": "61f449799a3cf86a2ae59df1cecd9e2ccbc22b152a8e112376632172208e6abc",
+    "Audit.lean": "a943f1aeb30ef1e6a32f7dff37ba0bf7cb74cfd172475fe1183bad5345f31c48",
+    "Examples.lean": "191ddf4b92d374e70031ace8d7f947e0223556d7cc7e6f805939c1f7a1c910e0",
+    "CountDP/Address.lean": "386ca214127d2a265ace76907f0fecbc336f179d923ffd526a9d2f47c66f504e",
+    "CountDP/Examples.lean": "1928dbbecba7b119a05682359c24b89e7799614de7f74bd29d0a5199c1dbfff2",
+    "CountDP/FixedOrder.lean": "ec463acaba355a3d230c4d7a0673da5f0fc53eaeb6ca3df353da0c3e902d7b0d",
+    "CountDP/Groups.lean": "7f5657ef2da65bec8bc3d7879e7217d19118c410b2ebe19f8d869d126d71c9b4",
+    "CountDP/Operations.lean": "a870993c888fa9933a37b264db16295008b81171fc794fc3cd442bac1a8a1493",
+    "CountDP/Restore.lean": "bba7f7586307042639f35dc6aa43c4f993ba8dbcf03d4985d66067e523aa2602",
+    "CountDP/Score.lean": "6c382e0aa4030da6d80f90a5f1f34bd2e1d181a1b89dbef096d84012f215d696",
+    "CountDP/Table.lean": "eca0350248a3bb1c9a984673da12197f36239c209f2e0870549cd53441e23bcc",
+    "CountDP/Trace.lean": "71567294639d360cef1b28fbe1ac381a896dad50a8fa79a1e4f0ab44e19eadab",
+    "lean-toolchain": "42779d67b81608af8a12aa4328d2ab47ca201925b3b2bd68369587b5340bb434",
+    "lake-manifest.json": "89e9f7629eebc812ecb69b2b44cf19380916a72de5e2b2e502b279ca9aa3b28d",
+    "prepare.ps1": "d1ba924812ad2e56da8bfe78c620a5ff2cff3cef2ffe2f07cfa48c4f6f9eba0f",
+    "verify.ps1": "1e893075450d3887293bbff307a19362432a34a2468018141553107600642c9b"
+  }
+}

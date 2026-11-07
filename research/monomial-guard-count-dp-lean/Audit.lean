@@ -1,0 +1,34 @@
+import CountProofCheck
+
+#print axioms CountDP.slots_eq_prod
+#print axioms CountDP.address_lt_slots
+#print axioms CountDP.unpack_address
+#print axioms CountDP.address_injective_on_box
+#print axioms CountDP.address_erase_lt
+#print axioms CountDP.rows_size
+#print axioms CountDP.table_cells
+#print axioms CountDP.table_best
+#print axioms CountDP.P_recurrence
+#print axioms CountDP.P_eq_D_of_fits
+#print axioms CountDP.P_eq_D
+#print axioms CountDP.same_histogram_same_score
+#print axioms CountDP.layer_score_eq_D
+#print axioms CountDP.state_count
+#print axioms CountDP.reachable_state_bound
+#print axioms CountDP.Follows.contents
+#print axioms CountDP.backtrack_correct
+#print axioms CountDP.split_roundtrip
+#print axioms CountDP.closed_roundtrip
+#print axioms CountDP.restore_correct
+#print axioms CountDP.Lifted.full
+#print axioms CountDP.compressed_certificate
+#print axioms CountDP.compressed_score
+#print axioms CountDP.score_Z
+#print axioms CountDP.score_Zstar
+#print axioms CountDP.computes_Z
+#print axioms CountDP.computes_Zstar
+#print axioms CountDP.real_partition
+#print axioms CountDP.separationWord_optimal
+#print axioms CountDP.concentrationWord_optimal
+#print axioms CountDP.anchoredWord_optimal
+#print axioms CountDP.binaryWord_optimal
