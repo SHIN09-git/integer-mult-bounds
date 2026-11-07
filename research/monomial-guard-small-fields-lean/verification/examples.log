@@ -1,0 +1,11 @@
+F3 zero-total histograms checked against the general DP: 31
+F5 zero-total histograms checked against the general DP: 99
+Z([1,1,3]) over F5 = 1
+PASS all 31 zero-total F3 histograms through 12 active rows agree with the general DP
+PASS all 99 zero-total F5 histograms through 8 active rows agree with the general DP
+PASS opposite labels, repeated values, and a self-inverse value in characteristic two
+PASS empty and all-zero physical rows
+PASS F3 leftovers of both signs give triples
+PASS F5 opposite signs require exchanging the types
+PASS F5 either weight can be the strict upper bound
+PASS F5 four inverse pairs, one-type groups of five and counts without a table

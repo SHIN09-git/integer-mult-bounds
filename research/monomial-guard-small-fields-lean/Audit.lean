@@ -1,0 +1,34 @@
+import SmallFields
+
+#print axioms SmallFields.Blocks.card_bound
+#print axioms SmallFields.attaining
+#print axioms SmallFields.Blocks.pick
+#print axioms SmallFields.remove_inverse
+#print axioms SmallFields.Z_add_inverse
+#print axioms SmallFields.Z_add_pairs
+#print axioms SmallFields.peel
+#print axioms SmallFields.split_histogram
+#print axioms SmallFields.Blocks.lift
+#print axioms SmallFields.partition_blocks
+#print axioms SmallFields.maxBlocks_eq_Z
+#print axioms SmallFields.blockCount_eq_Z
+#print axioms SmallFields.input_attachPair
+#print axioms SmallFields.blockCount_attachPair
+#print axioms SmallFields.Blocks.weight_bound
+#print axioms SmallFields.Z_weight_bound
+#print axioms SmallFields.Z_scale
+#print axioms SmallFields.uniform_blocks
+#print axioms SmallFields.normalize_two
+#print axioms SmallFields.three_ones
+#print axioms SmallFields.five_construct
+#print axioms SmallFields.five_divisibility
+#print axioms SmallFields.five_ones_twos
+#print axioms SmallFields.three_of_counts
+#print axioms SmallFields.five_of_counts
+#print axioms SmallFields.Z_three
+#print axioms SmallFields.Z_five
+#print axioms SmallFields.input_count
+#print axioms SmallFields.blockCount_three
+#print axioms SmallFields.blockCount_five
+#print axioms SmallFields.direct3_correct
+#print axioms SmallFields.direct5_correct

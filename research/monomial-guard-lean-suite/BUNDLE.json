@@ -123,6 +123,35 @@
       "fresh_kernel_replay_seconds": 687.4827614,
       "receipt_sha256": "f3429a8fab4a43f44c2515d7a5269842649a57fad3fb04353977346390295e59",
       "payload_manifest_sha256": "f88556951ff839202459676379026c489130c700d2fc69a7412cf7bc5c4c3280"
+    },
+    {
+      "directory": "research/monomial-guard-small-fields-lean",
+      "status": "PASS",
+      "predecessor_suite_commit": "bd3d5b0013b012716b5d624fdbe4cabbee7b47bd",
+      "predecessor_package": "research/monomial-guard-count-dp-lean",
+      "predecessor_receipt_sha256": "edca361bd31de8591a6599104ee7ec3dee686bea56d5be52f6fc01259c5e36cc",
+      "main_theorems": [
+        "SmallFields.blockCount_attachPair",
+        "SmallFields.Z_add_inverse",
+        "SmallFields.maxBlocks_eq_Z",
+        "SmallFields.five_construct",
+        "SmallFields.five_divisibility",
+        "SmallFields.Z_three",
+        "SmallFields.Z_five",
+        "SmallFields.blockCount_three",
+        "SmallFields.blockCount_five",
+        "SmallFields.direct3_correct",
+        "SmallFields.direct5_correct"
+      ],
+      "axiom_reports": 32,
+      "executable_replays": 8,
+      "zero_total_histograms_compared": {
+        "F3": 31,
+        "F5": 99
+      },
+      "fresh_kernel_replay_seconds": 464.5273301,
+      "receipt_sha256": "73c4fdbecbe788b39e3771b9ec35ef8e45777d39d12ba8ea3334cc64153002b2",
+      "payload_manifest_sha256": "02aacc488b9304584a10e094e65ebc99aa6fd276bafb4b62c95d79877da708d9"
     }
   ],
   "scope": "formalization of the pinned operation-cost theorems; no multiplication exponent claim",

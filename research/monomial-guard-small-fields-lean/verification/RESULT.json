@@ -1,0 +1,54 @@
+{
+  "status": "PASS",
+  "target": "SmallFieldsProofCheck",
+  "date_utc": "2026-11-07T09:56:47.0688871Z",
+  "lean_version": "Lean (version 4.24.0, x86_64-w64-windows-gnu, commit 797c613eb9b6d4ec95db23e3e00af9ac6657f24b, Release)",
+  "build_exit_code": 0,
+  "warnings_as_errors": true,
+  "executable_examples_exit_code": 0,
+  "executable_example_groups": 8,
+  "axiom_declarations": 32,
+  "allowed_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "unexpected_axioms": [],
+  "forbidden_source_construct_matches": 0,
+  "fresh_kernel_replay_exit_code": 0,
+  "fresh_kernel_replay_seconds": 464.5273301,
+  "checker_sha256": "8ba83cd65a76c2ae2feb95dba71241368c3c50145881247cb12b21c3c7dafafc",
+  "predecessor_packages": {
+    "integerMultCountDP": {
+      "count": 18,
+      "hash": "edca361bd31de8591a6599104ee7ec3dee686bea56d5be52f6fc01259c5e36cc",
+      "dir": "../monomial-guard-count-dp-lean"
+    },
+    "integerMultDP": {
+      "count": 37,
+      "hash": "f119f39ab2299803b84601f20512e52368d07ee3e2450589dc07424866b16590",
+      "dir": "../monomial-guard-dp-lean"
+    }
+  },
+  "inputs_unchanged_during_verification": true,
+  "input_sha256": {
+    "lakefile.lean": "f60f0997904cf14cc95c2129686cdb710aafefcf2f9dbcec975062fe746283f8",
+    "SmallFields.lean": "5d65147ad49d4c8864e352dcedab1f681c0a662a2f37b4fd1d8fe7bfe70a04c4",
+    "SmallFieldsProofCheck.lean": "6580e643ea1ca5ac6f98653abcba7d46c5073c3343917aa186d79bc64c6cfef9",
+    "Audit.lean": "2ae3cd96e0a45fe8c201cc42cfd09a38520f08ad62b8b0cbc957697df4617ba5",
+    "Examples.lean": "d6ebfec536baac74a085abfd8f209b8e0fc00cbe6de154454add3d550e494767",
+    "SmallFields/Blocks.lean": "8882a15940f1ec5e77020856baaeaf27a2a3b76968dfefc0495f3a967d7cecbe",
+    "SmallFields/Direct.lean": "136edae5daecaf2d15299db4c8f499b6f0bca1ba30939c738286a234a225c84c",
+    "SmallFields/Examples.lean": "0da5bebef09f3ee5d3fe64a57fa3136a3048eabce1d407485a8320e29480b2f1",
+    "SmallFields/Formulas.lean": "3e935880689599d1715e3ee3843682e50ad79992986469e3ec1ceb12ad1c7d31",
+    "SmallFields/Inverse.lean": "ae8a53d2745e050c309942bfcddde418e6aad4d4901055c8281a0a9ddbb61689",
+    "SmallFields/Labels.lean": "afc6b5b544711b7f46bd1070029af4990b9f35884c0a511deceb229b04030187",
+    "SmallFields/PairLabels.lean": "bc3641201641976a094637d7965f7029c86951bab44c16200d635c9b32c50225",
+    "SmallFields/Residual.lean": "96763884d32afb1a10ff8140e1152d6069b158ca89bfdc53beeaccb526c4d3ae",
+    "SmallFields/Weights.lean": "eddbcb66e1db1265a90a58788133c6c0df0cb39319543f0a1f9441e014d70189",
+    "lean-toolchain": "42779d67b81608af8a12aa4328d2ab47ca201925b3b2bd68369587b5340bb434",
+    "lake-manifest.json": "145d50b69e54313c1136c4bd5c6fddcc8ddd88b5f70f237f807256096b5cb069",
+    "prepare.ps1": "18da5e7080dc3db59f1ebac38e9bdc666eea2a3450baccd531476f294d551814",
+    "verify.ps1": "ad1efedb3c540d333e796e1b5f3d4095ebd40b4bb4cdda090534c5d803c2a4b2"
+  }
+}

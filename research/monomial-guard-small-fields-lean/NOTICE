@@ -1,0 +1,16 @@
+Closed forms for the maximum number of zero-sum guard-charge groups in F3 and F5
+Prepared in SHIN09-git's research project with substantial OpenAI Codex assistance.
+Apache-2.0.
+
+Inverse-pair cancellation and both small-scalar-field formulas are from
+research/monomial-guard-settlement/ALGORITHM.md at
+03caa7f6cb5bd21c834024e9d81f6b43eb325b91 (CrocSwap/integer-mult-bounds PR 6712).
+The labeled optimum and histogram used here come from the adjacent labeled
+and charge-count DP packages pinned in verification/RESULT.json. Earlier
+contributors and debt-partition literature are credited in
+../monomial-guard-dp-lean/reference/ORIGINAL-NOTICE.
+
+This package formalizes the pair-exchange argument, proves that all multiplicity
+witnesses lift to labeled partitions, verifies both modular weight bounds and
+attaining decompositions, and identifies two executable count-based formulas
+with the existing HZ.blockCount. The general DP is used to cross-check examples.

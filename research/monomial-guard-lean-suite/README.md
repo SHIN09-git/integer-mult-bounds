@@ -10,6 +10,7 @@
 | [按电荷类型压缩的动态规划](../monomial-guard-count-dp-lean/README.md) | 对每个子集证明 $P(S)=D(c(S))$，证明状态数乘积上界，并从类型分组恢复两种目标的最优真实行操作 | 32 条 | 612.213 秒 |
 | [按步长填表的复杂度](../monomial-guard-stride-dp-lean/README.md) | 合法前驱读数与地址公式，逐格等于原表，恢复两类最优操作。填表时间 $O((1+t+d)N)$，表空间 $O((1+d)N)$ | 35 条 | 636.095 秒 |
 | [从原始行到最短操作序列](../monomial-guard-bucket-dp-lean/README.md) | 自动求总电荷，分桶回溯每个非零真实标签一次。两类目标的总时间、总空间均计入原始输入与显式输出 | 46 条 | 687.483 秒 |
+| [小有限域直接计算 $Z$](../monomial-guard-small-fields-lean/README.md) | 加一对非零逆元使 $Z$ 恰增一；由原始行直接计算三元域、五元域标量电荷的闭式最优值 | 32 条 | 464.527 秒 |
 
 最优性比较允许使用真实零电荷坐标，以及任意穿插的免费置换和非零缩放。虚拟标签只参与分组，生成的操作只使用真实行号。[原有 $h-Z$ 证明](../monomial-guard-hz-lean/README.md) · [验证收据索引](BUNDLE.json)
 
@@ -24,6 +25,8 @@
 按步长填表的程序扫描每个计数位，对正计数各读一次前驱，只对获胜前驱累加一次向量。两种电荷各有 20 个时共读 840 次前驱。复杂度从给定轴表起算，按机器字、坐标访问和标量运算计费。[实现与模型](../monomial-guard-stride-dp-lean/README.md) · [复杂度定理](../monomial-guard-stride-dp-lean/StrideDP/Asymptotics.lean)
 
 从全部 $m$ 行原始数据起算，设电荷维数为 $d$、实际有 $t$ 种电荷、表大小为 $N$、输出操作数为 $\ell$。求和、识别、建桶、填表、回溯及生成系数的总时间为 $O((m+1)(1+d)+(1+t+d)N+\ell)$，总空间为 $O((m+1)(1+d)+(1+d)N+\ell)$。空间包含输入、工作区及输出。虚拟项按身份移除，两个求解分支都返回可执行的真实行加法。[总入口](../monomial-guard-bucket-dp-lean/BucketDP/EndToEnd.lean) · [计费模型](../monomial-guard-bucket-dp-lean/README.md)
+
+对零总和的标量电荷，三元域消去相反电荷后按三项成组。五元域先消去两种逆元对，再将残余电荷归一化为 $1,2$，由两种权重给出相合的上界与构造。两种闭式函数直接读取原始行重数；另用通用计数动态规划逐一核对了 130 种零总和直方图。[两种公式](../monomial-guard-small-fields-lean/README.md) · [直接求值定理](../monomial-guard-small-fields-lean/SmallFields/Direct.lean)
 
 数学来源固定于提交 `03caa7f6cb5bd21c834024e9d81f6b43eb325b91`，此前 $h-Z$ 形式化固定于 `b87752d0291dc8b1df46b9abbccdc739d7c5be57`。验证记录来自本地 Lean 编译、公理检查及官方检查器的新环境内核重放。各包保留署名与 Apache-2.0 许可，并披露 OpenAI Codex 的实质协助。[原研究 PR](https://github.com/CrocSwap/integer-mult-bounds/pull/6712)
 
