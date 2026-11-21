@@ -1,0 +1,31 @@
+import AffineGuard
+
+#print axioms AffineGuard.family_step
+#print axioms AffineGuard.data_step
+#print axioms AffineGuard.word_congr
+#print axioms AffineGuard.word_order_iff
+#print axioms AffineGuard.data_reparam
+#print axioms AffineGuard.passIn_iff
+#print axioms AffineGuard.key_eq_iff
+#print axioms AffineGuard.edge_from
+#print axioms AffineGuard.guard_key
+#print axioms AffineGuard.winning_key
+#print axioms AffineGuard.project_run
+#print axioms AffineGuard.lift_walk
+#print axioms AffineGuard.winningCost_iff_word
+#print axioms AffineGuard.winningCost_iff
+#print axioms AffineGuard.distance_eq_C
+#print axioms AffineGuard.C_congr
+#print axioms AffineGuard.labeled_cost
+#print axioms AffineGuard.distance_minimum
+#print axioms AffineGuard.fixed_order_iff
+#print axioms AffineGuard.advance_nodup
+#print axioms AffineGuard.advance_layer
+#print axioms AffineGuard.search_complete
+#print axioms AffineGuard.solve_correct
+#print axioms AffineGuard.solve_optimal
+#print axioms AffineGuard.solveFixed_correct
+#print axioms AffineGuard.Examples.endpoint_example
+#print axioms AffineGuard.Examples.redundant_data
+#print axioms AffineGuard.Examples.five_passes
+#print axioms AffineGuard.Examples.five_distance

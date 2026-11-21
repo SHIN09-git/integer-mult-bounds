@@ -1,10 +1,35 @@
 # An affine-image quotient for ternary guard search
 
-[双语短稿 / Bilingual note (PDF)](paper/affine_quotient.pdf) · [LaTeX source](paper/main.tex) · [Exact verifier](verify.py)
+[双语短稿 / Bilingual note (PDF)](paper/affine_quotient.pdf) · [LaTeX source](paper/main.tex) · [Lean proofs](AffineGuard) · [Exact census](verify.py)
 
 For a normalized state $(u,W,b)$ over $\mathbb F_3$, the dual column $z=b+Wa$ runs over an affine set. Keeping $u$ and that set preserves which operation words make every proper leading principal minor of $I-uz^\top$ nonzero in one common row order. The search may also quotient by free row permutations and sign changes. A breadth-first search that retains one reachable, labeled representative per class recovers a shortest sequence of additions on the original input.
 
 In the predecessor's five-row example, the old row quotient has 166 classes at distance exactly three from the start. Adding parameter translations gives 126. Allowing all six affine changes of the single parameter gives 80. Each search returns a three-addition witness that passes in the original row order.
+
+## Lean formalization
+
+Lean 4.24.0 proves the following against the predecessor's definitions of legal operations, literal principal minors and paid cost $C$. The row set and both parameter sets may have arbitrary finite sizes.
+
+| Result | Lean declaration |
+| --- | --- |
+| Equal labeled affine data give the same answer for each operation word and each specified final order, even across parameter dimensions. Surjective affine reparametrizations preserve the data. | [word_order_iff, data_reparam](AffineGuard/Image.lean) |
+| Every paid edge can be executed from any representative of its signed affine class. Success is constant on a class. | [edge_from, winning_key](AffineGuard/Quotient.lean) |
+| At every paid length, a quotient walk to a successful class is equivalent to an actual successful execution. Its minimum on normalized inputs is attained and equals $C$. | [lift_walk, winningCost_iff_word, distance_eq_C, distance_minimum](AffineGuard/Distance.lean) |
+| The breadth-first solver retains one word per newly reached class. On normalized inputs it returns a shortest word on the original labels and a final free permutation that passes every proper prefix. | [advance_nodup, solve_optimal, solveFixed_correct](AffineGuard/Search.lean) |
+| The five-row example has optimal cost three. Its explicit word passes in the original order. The two translated states in Section 2 share a key and have no zero-cost execution between them. | [five_distance, five_passes, endpoint_example](AffineGuard/Examples.lean) |
+
+The Lean implementation enumerates the affine points and their signed row frames. This choice makes the equality test executable across parameter dimensions. The Python census uses the faster six-map encoding for one parameter and separately tests the homogeneous row-space encoding.
+
+With this package and both adjacent predecessor packages from the same branch, run the following commands in this directory. Lake reads the pinned mathlib revision from the manifest. A matching mathlib binary cache can be fetched with `lake exe cache get` before building.
+
+~~~sh
+lake build AffineGuard
+lake env lean -DwarningAsError=true Audit.lean
+lake env lean -DwarningAsError=true --run Checks.lean
+lake env lean4checker --fresh -v AffineGuard.Examples
+~~~
+
+The final command uses the official Lean 4.24.0 checker on the command path. Its target imports the solver, all general proofs and the concrete example theorems. The executable checks include all 72 normalized two-row, one-parameter inputs and replay each returned word. [Checker source](https://github.com/leanprover/lean4checker/tree/da26eb05e9959402afcb9bd6dfe5dc4f700f70d6) · [Verification record](verification/RESULT.json) · [Axiom audit](Audit.lean) · [Executable checks](Checks.lean)
 
 ## Reproduce the finite checks
 
@@ -22,6 +47,8 @@ The PDF contains three pages in each language. From the paper directory, two XeL
 
 The [original orbit construction](https://github.com/SHIN09-git/integer-mult-bounds/blob/03caa7f6cb5bd21c834024e9d81f6b43eb325b91/research/monomial-guard-settlement/ORBITS.md) and the [complete-row Lean search](https://github.com/SHIN09-git/integer-mult-bounds/blob/5703e56d6eb4b4f0a83af8c23a5d1dddd0b5474f/research/monomial-guard-orbit-lean/README.md) are due to SHIN09-git's research project. Nick Petalas's [charge-only criterion](https://github.com/CrocSwap/integer-mult-bounds/pull/6793) treats the sublevels through two paid additions. This note proves an all-depth statement for equality of the full affine images, measured by distance to the successful set. The endpoint example in Section 2 explains why a prescribed labeled target requires a different test. This package was prepared with OpenAI Codex assistance.
 
+The Lean code reuses the predecessor's legal gates, physical replay, list deduplication and final-order finder. Its breadth-first layer and fuel inductions adapt the predecessor proofs to affine-image classes. [Predecessor source and attribution](../monomial-guard-orbit-lean/NOTICE)
+
 ## Open next questions
 
-Can the affine-image path-lifting theorem and witness recovery be formalized against the predecessor Lean model? For several parameters, when does avoiding duplicate states outweigh the cost of computing the new key? The program measures graph sizes and exact distances.
+For several parameters, when does the smaller search offset the cost of computing the affine key? A comparison of homogeneous row reduction with point enumeration on the same inputs would measure this trade-off.

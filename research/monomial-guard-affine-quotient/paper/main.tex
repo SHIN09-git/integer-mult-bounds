@@ -168,9 +168,9 @@ $b=(1,1,1,1,0)^\top$。搜索在第 3 层首次成功，恢复出的零起始行
 两者给出完全相同的 $22$ 类。这项检查针对像集编码，不加归一化条件。
 复算使用 Python 3.12.10 标准库，在本研究包目录执行 \texttt{python -B verify.py} 即可。
 
-\medskip\noindent\textbf{后续问题。}
-新商图的路径提升和指令恢复在本文中给出数学证明，尚待在 Lean 中形式化。
-若用于多参数搜索，可以先比较齐次矩阵化简与逐个尝试公共换元的耗时，再判断何时值得采用新编码。
+\medskip\noindent\textbf{形式化与后续问题。}
+Lean 4.24.0 已验证定理~\ref{z:main} 的任意长度路径提升、最优指令恢复和五行例的三步最优性。
+Lean 直接枚举仿射像中的点。表中类数由 Python 脚本复算。多参数时，齐次矩阵化简与枚举换元的耗时仍待比较。
 \sources{z}
 
 \clearpage
@@ -324,9 +324,10 @@ same $22$ classes. This image-key check uses unrestricted $(W,b)$. All computati
 the Python 3.12.10 standard library and can be reproduced from the package directory with
 \texttt{python -B verify.py}.
 
-\medskip\noindent\textbf{Open next questions.}
-The lifting and recovery arguments for the new quotient are written proofs. Formalizing
-them in Lean remains open. For several parameters, timing homogeneous row reduction against
-explicit parameter changes would help determine when the smaller search pays off.
+\medskip\noindent\textbf{Formal verification and an open question.}
+Lean 4.24.0 verifies path lifting at every length, optimal witness recovery in Theorem~\ref{e:main},
+and the five-row optimum of three. Lean enumerates the affine points. The Python script
+reproduces the class counts. For several parameters, the runtime of homogeneous row reduction
+versus explicit parameter changes remains to be measured.
 \sources{e}
 \end{document}

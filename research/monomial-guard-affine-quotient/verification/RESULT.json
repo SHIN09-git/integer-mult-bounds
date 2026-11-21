@@ -1,0 +1,110 @@
+{
+  "status": "PASS",
+  "checked_at_utc": "2026-11-21T09:11:44.2013777Z",
+  "paper_branch_parent": "f462e0d1e265ee85ea2edb2380435316f28e9af9",
+  "predecessor_packages_commit": "5703e56d6eb4b4f0a83af8c23a5d1dddd0b5474f",
+  "lean": "Lean (version 4.24.0, x86_64-w64-windows-gnu, commit 797c613eb9b6d4ec95db23e3e00af9ac6657f24b, Release)",
+  "mathlib_commit": "f897ebcf72cd16f89ab4577d0c826cd14afaafc7",
+  "build": {
+    "command": "lake build AffineGuard",
+    "exit_code": 0,
+    "warnings_as_errors": true
+  },
+  "fresh_kernel_replay": {
+    "command": "lake env lean4checker --fresh -v AffineGuard.Examples",
+    "checker_commit": "da26eb05e9959402afcb9bd6dfe5dc4f700f70d6",
+    "windows_executable_sha256": "8ba83cd65a76c2ae2feb95dba71241368c3c50145881247cb12b21c3c7dafafc",
+    "exit_code": 0,
+    "elapsed_seconds": 557.6,
+    "stdout": [
+      "replaying AffineGuard.Examples with --fresh"
+    ]
+  },
+  "axiom_audit": {
+    "command": "lake env lean -DwarningAsError=true Audit.lean",
+    "exit_code": 0,
+    "declarations": [
+      "AffineGuard.family_step",
+      "AffineGuard.data_step",
+      "AffineGuard.word_congr",
+      "AffineGuard.word_order_iff",
+      "AffineGuard.data_reparam",
+      "AffineGuard.passIn_iff",
+      "AffineGuard.key_eq_iff",
+      "AffineGuard.edge_from",
+      "AffineGuard.guard_key",
+      "AffineGuard.winning_key",
+      "AffineGuard.project_run",
+      "AffineGuard.lift_walk",
+      "AffineGuard.winningCost_iff_word",
+      "AffineGuard.winningCost_iff",
+      "AffineGuard.distance_eq_C",
+      "AffineGuard.C_congr",
+      "AffineGuard.labeled_cost",
+      "AffineGuard.distance_minimum",
+      "AffineGuard.fixed_order_iff",
+      "AffineGuard.advance_nodup",
+      "AffineGuard.advance_layer",
+      "AffineGuard.search_complete",
+      "AffineGuard.solve_correct",
+      "AffineGuard.solve_optimal",
+      "AffineGuard.solveFixed_correct",
+      "AffineGuard.Examples.endpoint_example",
+      "AffineGuard.Examples.redundant_data",
+      "AffineGuard.Examples.five_passes",
+      "AffineGuard.Examples.five_distance"
+    ],
+    "axioms_used": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "unexpected_axioms": []
+  },
+  "executable_checks": {
+    "command": "lake env lean -DwarningAsError=true --run Checks.lean",
+    "exit_code": 0,
+    "stdout": [
+      "PASS translated presentations share an affine key and have different free row orbits",
+      "PASS equal keys across one and two parameter coordinates",
+      "PASS zero additions with a necessary final free swap",
+      "PASS one paid addition",
+      "PASS two paid additions with one parameter",
+      "PASS two paid additions with two independent parameters",
+      "PASS all 72 normalized two-row one-parameter inputs versus exhaustive labeled words",
+      "PASS three instructions replay on the original five labels in the identity order"
+    ]
+  },
+  "finite_census": {
+    "command": "python -I -B verify.py",
+    "python": "3.12.10",
+    "exit_code": 0,
+    "stdout": [
+      "Two rows, d=0,1,2: 819 presentations, 22 distinct affine images.",
+      "Three rows, rows: 58 classes; all 2106 individual distances agree.",
+      "Three rows, translations: 26 classes; all 2106 individual distances agree.",
+      "Three rows, affine: 24 classes; all 2106 individual distances agree.",
+      "Input counts at costs 0,1,2: 882, 1080, 144.",
+      "Five rows, rows: [1, 6, 40, 166]; replayed [(0, 1, 1), (0, 2, 1), (3, 4, 2)], final order (0, 1, 2, 3, 4).",
+      "Five rows, translations: [1, 6, 40, 126]; replayed [(0, 1, 1), (0, 2, 1), (3, 4, 2)], final order (0, 1, 2, 3, 4).",
+      "Five rows, affine: [1, 6, 35, 80]; replayed [(0, 1, 1), (0, 2, 1), (3, 4, 2)], final order (0, 1, 2, 3, 4)."
+    ]
+  },
+  "proof_inputs_unchanged_during_replay": true,
+  "proof_input_sha256": {
+    "AffineGuard.lean": "78ea7b3210cea7d187b079c06942267969bd4711e2999bbad6313f39034f1b24",
+    "AffineGuard/Distance.lean": "aa7fe879eb5781d41167bb62e3691d034695f18ffcfa1d0fd188e38d7f6bab4b",
+    "AffineGuard/Examples.lean": "93e303ce43a029ef0098b00d9b373cd3e0ca51d6db25293dfbd730be41425f7f",
+    "AffineGuard/Image.lean": "687a6afccd96a05f6e0e29d94c92157f10ff7694f7f24b4799dfe32d6f812cb4",
+    "AffineGuard/Quotient.lean": "a0e0a7acdb4be7f69591fb0b075a9e6b9321d2a1f62f5bc24af293c625b1de30",
+    "AffineGuard/Search.lean": "798f27acd21907eb54138428524bfe5defdac3fdab57dfa327582fb05958122c",
+    "lake-manifest.json": "0bfd8e4e652b3e2c5d557bf3052ab020848eb96d68303d7be5128c083975bf74",
+    "lakefile.lean": "456493f13fb6e07187ad7737f926fc8f5d56ef2fc2fcc8996a7516cc0b6a24f4",
+    "lean-toolchain": "42779d67b81608af8a12aa4328d2ab47ca201925b3b2bd68369587b5340bb434"
+  },
+  "verification_input_sha256": {
+    "Audit.lean": "56f6c71131da22d2f5682134ab64d05ed03bf4afdf1cef3acbda43fc38067c88",
+    "Checks.lean": "1f0d3ae076eebe47adc1785147530dd2e9d00aadc4951851d912db79ac58f7c5",
+    "verify.py": "ae79cfb367ec6e822f549107896a4204507c5874e9e379e9b7056ddca7b98c24"
+  }
+}
