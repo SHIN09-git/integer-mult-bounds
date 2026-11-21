@@ -97,6 +97,39 @@ private theorem affineKey_read (s : Model) : affineKey (readCode (affineKey s)) 
   exact ((affineKey_iff _ _).mpr (key_of_vertex (vertex_read t))).trans
     (((affineKey_iff t s).mpr (congrArg orbit (data_change s p.1 p.2 p.1.ne_zero))).trans he.symm)
 
+section BallMembership
+variable {V : Type*} {v : Model → V} {code : Model → Code} {walk : ℕ → V → Prop}
+  {ball : ℕ → Finset Code}
+  (eqv : ∀ s t, code s = code t ↔ v s = v t)
+  (spec : ∀ j c, c ∈ ball j ↔ ∃ s, code s = c ∧ Within walk j (v s))
+
+include eqv spec
+
+theorem key_mem_ball_iff (n : ℕ) (s : Model) : code s ∈ ball n ↔ Within walk n (v s) := by
+  constructor
+  · intro h
+    obtain ⟨t,ht,w⟩ := (spec _ _).mp h
+    rwa [← (eqv _ _).mp ht]
+  · intro w
+    exact (spec _ _).mpr ⟨s,rfl,w⟩
+
+theorem key_mem_shell_iff (n : ℕ) (s : Model) :
+    code s ∈ ball (n+1) \ ball n ↔ walk (n+1) (v s) ∧ ∀ j, walk j (v s) → n+1 ≤ j := by
+  rw [Finset.mem_sdiff, key_mem_ball_iff eqv spec, key_mem_ball_iff eqv spec]
+  constructor
+  · rintro ⟨⟨j,hj,w⟩,hout⟩
+    have low (i) (h : walk i (v s)) : n+1 ≤ i := by
+      by_contra! hi
+      exact hout ⟨i,by omega,h⟩
+    exact ⟨(le_antisymm hj (low j w)) ▸ w, low⟩
+  · rintro ⟨w,hmin⟩
+    refine ⟨⟨_,le_rfl,w⟩,?_⟩
+    rintro ⟨j,hj,h⟩
+    have := hmin j h
+    omega
+
+end BallMembership
+
 /-- A closed ball difference counts exactly the vertices whose least paid length is n+1. -/
 theorem count_shell {V : Type*} (v : Model → V) (code : Model → Code)
     (eqv : ∀ s t, code s = code t ↔ v s = v t)
@@ -106,13 +139,6 @@ theorem count_shell {V : Type*} (v : Model → V) (code : Model → Code)
     (spec : ∀ j c, c ∈ ball j ↔ ∃ s, code s = c ∧ Within walk j (v s)) (n : ℕ) :
     {x | walk (n+1) x ∧ ∀ j, walk j x → n+1 ≤ j}.ncard = (ball (n+1) \ ball n).card := by
   let shell := ball (n+1) \ ball n
-  have mem (j) (s : Model) : code s ∈ ball j ↔ Within walk j (v s) := by
-    constructor
-    · intro h
-      obtain ⟨t,ht,w⟩ := (spec _ _).mp h
-      rwa [← (eqv _ _).mp ht]
-    · intro w
-      exact (spec _ _).mpr ⟨s,rfl,w⟩
   have rep (c) (hc : c ∈ shell) : code (readCode c) = c := by
     obtain ⟨s,rfl,_⟩ := (spec _ _).mp (Finset.mem_sdiff.mp hc).1
     exact restore s
@@ -120,22 +146,12 @@ theorem count_shell {V : Type*} (v : Model → V) (code : Model → Code)
       (fun c => v (readCode c)) '' (shell : Set Code) := by
     ext x
     constructor
-    · rintro ⟨w,hmin⟩
-      obtain ⟨s,rfl⟩ := realized _ _ w
-      refine ⟨code s,Finset.mem_sdiff.mpr ⟨(mem _ _).mpr ⟨_,le_rfl,w⟩,?_⟩,(eqv _ _).mp (restore _)⟩
-      intro hold
-      obtain ⟨j,hj,h⟩ := (mem _ _).mp hold
-      have := hmin j h
-      omega
+    · intro h
+      obtain ⟨s,rfl⟩ := realized _ _ h.1
+      exact ⟨code s,(key_mem_shell_iff eqv spec n s).mpr h,(eqv _ _).mp (restore s)⟩
     · rintro ⟨c,hc,rfl⟩
-      obtain ⟨hin,hout⟩ := Finset.mem_sdiff.mp hc
-      rw [← rep c hc] at hin hout
-      obtain ⟨j,hj,w⟩ := (mem _ _).mp hin
-      have low (i) (h : walk i (v (readCode c))) : n+1 ≤ i := by
-        by_contra! hi
-        exact hout ((mem _ _).mpr ⟨i,by omega,h⟩)
-      have eq : j = n+1 := le_antisymm hj (low _ w)
-      exact ⟨eq ▸ w,low⟩
+      apply (key_mem_shell_iff eqv spec n _).mp
+      rwa [rep c hc]
   rw [equal,Set.ncard_image_of_injOn,Set.ncard_coe_finset]
   intro c hc d hd he
   exact (rep _ hc).symm.trans (((eqv _ _).mpr he).trans (rep _ hd))

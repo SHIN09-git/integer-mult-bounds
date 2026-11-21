@@ -54,3 +54,5 @@ import AffineGuard
 #print axioms AffineGuard.Census.five_translation_ball_counts
 #print axioms AffineGuard.Census.five_translation_shell
 #print axioms AffineGuard.Census.five_three_shells_all
+#print axioms AffineGuard.Census.rowShellTranslations_cards
+#print axioms AffineGuard.Census.five_translation_shell_overlap

@@ -46,3 +46,6 @@ def main : IO Unit := do
     (shifts₂.card == 47 && shifts₃.card == 173 && (shifts₃ \ shifts₂).card == 126)
   check "five-row affine-image closed balls 42 and 122, shell 80"
     (new₂.card == 42 && new₃.card == 122 && (new₃ \ new₂).card == 80)
+  let projected := Census.projectRowCodes (old₃ \ old₂)
+  check "166 third-shell row classes project to 133 translation classes, 7 within two additions"
+    ((old₃ \ old₂).card == 166 && projected.card == 133 && (projected ∩ shifts₂).card == 7)

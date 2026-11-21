@@ -170,8 +170,11 @@ theorem translation_lift_walk {x y : TranslationVertex} {n} (w : TranslationWalk
     obtain ⟨r,hr,hy⟩ := ih (g.act s) hg
     exact ⟨r,(g.run s).trans hr,hy⟩
 
-def translationBall (n : ℕ) : Finset Code :=
-  (rowBall n).image fun c => translationKey (readCode c)
+/-- Identify common parameter translations in a specified set of complete-row codes. -/
+def projectRowCodes (rows : Finset Code) : Finset Code :=
+  rows.image fun c => translationKey (readCode c)
+
+def translationBall (n : ℕ) : Finset Code := projectRowCodes (rowBall n)
 
 theorem translationBall_spec (n : ℕ) (c : Code) :
     c ∈ translationBall n ↔ ∃ s : Model, translationKey s = c ∧
@@ -197,5 +200,49 @@ theorem translation_shell_card (n : ℕ) :
     (TranslationWalk (translationClass five))
     (fun _ _ w => by obtain ⟨s,_,h⟩ := translation_lift_walk w five rfl; exact ⟨s,h⟩)
     translationBall translationBall_spec n
+
+/-- Translation classes represented by a state at minimum distance n in the complete-row graph. -/
+def rowShellTranslations (n : ℕ) : Set TranslationVertex :=
+  translationClass '' {s : Model | OrbitGuard.Nearest (vertex five) n (vertex s)}
+
+private theorem translation_image_ncard (S : Set Model) :
+    (translationClass '' S).ncard = (translationKey '' S).ncard := by
+  let decode (c : Code) := translationClass (readCode c)
+  have roundTrip (s : Model) : decode (translationKey s) = translationClass s :=
+    (translationKey_iff _ _).mp (translationKey_read s)
+  have image_eq : decode '' (translationKey '' S) = translationClass '' S := by
+    rw [Set.image_image]
+    exact Set.image_congr fun s _ => roundTrip s
+  rw [← image_eq, Set.ncard_image_of_injOn]
+  rintro _ ⟨s,_,rfl⟩ _ ⟨t,_,rfl⟩ h
+  exact (translationKey_iff s t).mpr ((roundTrip s).symm.trans (h.trans (roundTrip t)))
+
+private theorem row_shell_translation_codes (n : ℕ) :
+    translationKey '' {s : Model | OrbitGuard.Nearest (vertex five) (n+1) (vertex s)} =
+      (projectRowCodes (rowBall (n+1) \ rowBall n) : Set Code) := by
+  have label (s : Model) : translationKey (readCode (rowKey s)) = translationKey s :=
+    (translationKey_iff _ _).mpr (translationClass_of_vertex (vertex_read s))
+  ext c
+  constructor
+  · rintro ⟨s,hs,rfl⟩
+    exact Finset.mem_image.mpr ⟨rowKey s,(key_mem_shell_iff rowKey_iff rowBall_spec n s).mpr hs,label s⟩
+  · intro hc
+    obtain ⟨r,hr,rfl⟩ := Finset.mem_image.mp hc
+    obtain ⟨s,rfl,_⟩ := (rowBall_spec _ _).mp (Finset.mem_sdiff.mp hr).1
+    exact ⟨s,(key_mem_shell_iff rowKey_iff rowBall_spec n s).mp hr,(label s).symm⟩
+
+/-- Project a complete-row sphere, then intersect its image with a translation ball. -/
+theorem rowShellTranslations_cards (n m : ℕ) :
+    (rowShellTranslations (n+1)).ncard = (projectRowCodes (rowBall (n+1) \ rowBall n)).card ∧
+    (rowShellTranslations (n+1) ∩ {v | Within (TranslationWalk (translationClass five)) m v}).ncard =
+      (projectRowCodes (rowBall (n+1) \ rowBall n) ∩ translationBall m).card := by
+  have early : translationClass ⁻¹' {v | Within (TranslationWalk (translationClass five)) m v} =
+      translationKey ⁻¹' (translationBall m : Set Code) := by
+    ext s
+    exact (key_mem_ball_iff translationKey_iff translationBall_spec m s).symm
+  constructor
+  · rw [rowShellTranslations, translation_image_ncard, row_shell_translation_codes, Set.ncard_coe_finset]
+  · rw [rowShellTranslations, ← Set.image_inter_preimage, translation_image_ncard, early,
+      Set.image_inter_preimage, row_shell_translation_codes, ← Finset.coe_inter, Set.ncard_coe_finset]
 
 end AffineGuard.Census

@@ -1,8 +1,8 @@
 {
   "status": "PASS",
-  "checked_at_utc": "2026-11-21T10:20:26.1988503Z",
+  "checked_at_utc": "2026-11-21T10:39:06.1733849Z",
   "paper_branch_parent": "f462e0d1e265ee85ea2edb2380435316f28e9af9",
-  "previous_formalization_commit": "3e43cc01ef3eec920801ddcc26601482c74de0ea",
+  "previous_formalization_commit": "2b843934509bc1c736dcbb317e3d8e88893c1bb6",
   "predecessor_packages_commit": "5703e56d6eb4b4f0a83af8c23a5d1dddd0b5474f",
   "lean": "Lean (version 4.24.0, x86_64-w64-windows-gnu, commit 797c613eb9b6d4ec95db23e3e00af9ac6657f24b, Release)",
   "mathlib_commit": "f897ebcf72cd16f89ab4577d0c826cd14afaafc7",
@@ -35,6 +35,14 @@
       "parameter_translations": 126,
       "affine_image": 80
     },
+    "translation_projection_of_row_sphere": {
+      "theorem": "AffineGuard.Census.five_translation_shell_overlap",
+      "complete_row_distance": 3,
+      "complete_row_classes": 166,
+      "distinct_translation_images": 133,
+      "intersection_with_translation_ball_of_radius_two": 7,
+      "outside_translation_ball_of_radius_two": 126
+    },
     "row_classes_expanded": 47,
     "paid_transitions_checked": 1880,
     "translation_labels_checked": 213,
@@ -50,7 +58,7 @@
     "checker_commit": "da26eb05e9959402afcb9bd6dfe5dc4f700f70d6",
     "windows_executable_sha256": "8ba83cd65a76c2ae2feb95dba71241368c3c50145881247cb12b21c3c7dafafc",
     "exit_code": 0,
-    "elapsed_seconds": 598.26,
+    "elapsed_seconds": 608.13,
     "stdout": [
       "replaying AffineGuard.FiveCounts with --fresh"
     ]
@@ -110,7 +118,9 @@
       "AffineGuard.Census.translation_shell_card",
       "AffineGuard.Census.five_translation_ball_counts",
       "AffineGuard.Census.five_translation_shell",
-      "AffineGuard.Census.five_three_shells_all"
+      "AffineGuard.Census.five_three_shells_all",
+      "AffineGuard.Census.rowShellTranslations_cards",
+      "AffineGuard.Census.five_translation_shell_overlap"
     ],
     "axioms_used": [
       "Classical.choice",
@@ -133,7 +143,8 @@
       "PASS three instructions replay on the original five labels in the identity order",
       "PASS five-row complete-row closed balls 47 and 213, shell 166",
       "PASS five-row translation-only closed balls 47 and 173, shell 126",
-      "PASS five-row affine-image closed balls 42 and 122, shell 80"
+      "PASS five-row affine-image closed balls 42 and 122, shell 80",
+      "PASS 166 third-shell row classes project to 133 translation classes, 7 within two additions"
     ]
   },
   "finite_census": {
@@ -163,11 +174,11 @@
     "AffineGuard/Distance.lean": "aa7fe879eb5781d41167bb62e3691d034695f18ffcfa1d0fd188e38d7f6bab4b",
     "AffineGuard/Examples.lean": "93e303ce43a029ef0098b00d9b373cd3e0ca51d6db25293dfbd730be41425f7f",
     "AffineGuard/FiveCertificate.lean": "1cbad8545fff800e3136efc28ea2f86d9e2d9b60a12ddaf2d0f277435315c001",
-    "AffineGuard/FiveCounts.lean": "16fe964463f127e9dcca03d113257336103ac3daaa64894bc197583d78ff83cb",
+    "AffineGuard/FiveCounts.lean": "176ccbe7908e1635da92c0e27b48500c0031a6f44b2da4706abe6c827af73366",
     "AffineGuard/FiveEncoding.lean": "eda98b3f6cf7380f77ae1283bc2d1283d5453a1e90dd4e0faa47197411dda849",
-    "AffineGuard/FiveShells.lean": "d57b98722e07960f51526b1d591f18d87abb78eb925f7407667bc929ed47c518",
+    "AffineGuard/FiveShells.lean": "3e027ef0866ec69c81b404d0199cd4af7241e1c85397c66dd3dad24bcac0a71c",
     "AffineGuard/FiveTable.lean": "ccaa260728a0e9d1cea471fe91754f68dddc452fd628635b8d378e64390b9a2a",
-    "AffineGuard/FiveTranslation.lean": "5fd34136e73ccb87387a3088892c60052e2afc0ad00c1373822e8bec4737a2f5",
+    "AffineGuard/FiveTranslation.lean": "ab9531225b48fdafa233af9e22f91ad5dda5316d8764d3ec44c1d6855a086a57",
     "AffineGuard/Image.lean": "687a6afccd96a05f6e0e29d94c92157f10ff7694f7f24b4799dfe32d6f812cb4",
     "AffineGuard/Quotient.lean": "a0e0a7acdb4be7f69591fb0b075a9e6b9321d2a1f62f5bc24af293c625b1de30",
     "AffineGuard/Search.lean": "798f27acd21907eb54138428524bfe5defdac3fdab57dfa327582fb05958122c",
@@ -177,8 +188,8 @@
     "lean-toolchain": "42779d67b81608af8a12aa4328d2ab47ca201925b3b2bd68369587b5340bb434"
   },
   "verification_input_sha256": {
-    "Audit.lean": "054c1e9697236bd7aa14962e7b3a2d5feafcad96b8a0a5e6daa5a77a7f9c430a",
-    "Checks.lean": "fcfb8dbfe02aa8a681fe711ca8e69e355106b90ef926fd85ae59a3f3823d5d4e",
+    "Audit.lean": "86bbb6b4349883f8725347efc07ebada9b9bdaf9ce8c3ebafe9fbb8e0bdf8e94",
+    "Checks.lean": "01aaa0efd132c6f4ba5c771317e91b33bab46bb62c0ccb2ea72e24bb2f269831",
     "verify.py": "ae79cfb367ec6e822f549107896a4204507c5874e9e379e9b7056ddca7b98c24",
     "generate_shell_certificate.py": "2538d16a7dd7cf8767277321542cda80afcbf7f9cf3940b35f7a5afef28354a7"
   }

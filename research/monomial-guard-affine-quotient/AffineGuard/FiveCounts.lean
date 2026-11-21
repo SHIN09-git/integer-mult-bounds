@@ -96,4 +96,23 @@ theorem five_three_shells_all :
     {v | AffineGuard.Nearest (key five) 3 v}.ncard = 80 :=
   ⟨five_three_shells.1,five_translation_shell,five_three_shells.2⟩
 
+/-- The 166 vertices of the original third sphere have 133 distinct translation classes.
+Exactly seven of those images are already reachable in at most two paid additions. -/
+theorem five_translation_shell_overlap :
+    {v | OrbitGuard.Nearest (OrbitGuard.vertex five) 3 v}.ncard = 166 ∧
+    (rowShellTranslations 3).ncard = 133 ∧
+    (rowShellTranslations 3 ∩ {v | Within (TranslationWalk (translationClass five)) 2 v}).ncard = 7 := by
+  have rows : rowBall 3 \ rowBall 2 = entries (fun i => rowAt (47+i)) 166 := by
+    rw [row3,row2]
+    decide +kernel
+  have images : projectRowCodes (rowBall 3 \ rowBall 2) = entries (fun i => translationAt (47+i)) 166 :=
+    map_entries (fun i => rowAt (47+i)) (fun i => translationAt (47+i))
+      (fun c => translationKey (readCode c)) rows (fun i => allTranslations ⟨47+i,by omega⟩)
+  obtain ⟨projected,overlap⟩ := rowShellTranslations_cards 2 2
+  refine ⟨five_three_shells.1,?_,?_⟩
+  · rw [projected,images]
+    decide +kernel
+  · rw [overlap,images,translation_table row2 (by decide)]
+    decide +kernel
+
 end AffineGuard.Census

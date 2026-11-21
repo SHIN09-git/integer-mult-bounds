@@ -31,7 +31,9 @@ The general Lean solver enumerates the affine points and their signed row frames
 
 In the middle row, a single shift $a \mapsto a+t$ changes the intercept column to $b+tW$ and preserves the slope column $W$. Lean proves that these three shifts, together with the free row operations, give exactly the stated equivalence and that paid walks lift from any representative. [Translation classes and paths](AffineGuard/FiveTranslation.lean)
 
-For each quotient the proof projects both complete-row balls before taking their difference. For example, the 166 third-shell row classes have 133 distinct images under translations. Seven of these already occur within two additions, leaving 126 at distance three. Lean identifies each ball difference with the set of vertices at minimum paid distance three in the corresponding graph. [Exact-distance proof](AffineGuard/FiveShells.lean)
+For each quotient the proof projects both complete-row balls before taking their difference. Lean identifies each ball difference with the set of vertices at minimum paid distance three in the corresponding graph. [Exact-distance proof](AffineGuard/FiveShells.lean)
+
+The 166 complete-row classes at minimum distance three have 133 distinct images under common translations. Exactly seven of these images are reachable in at most two additions in the translation graph. The remaining 126 form its third shell. [five_translation_shell_overlap](AffineGuard/FiveCounts.lean) · [Definition of the projected sphere](AffineGuard/FiveTranslation.lean)
 
 The certificate lists the 40 legal paid additions from each of the 47 complete-row classes within two steps. Lean recomputes the resulting 1,880 target codes, checks a parent for each newly listed class, and checks both the translation code and the full affine code for each of the 213 representatives. The numerical theorem uses ordinary kernel reduction. Run `lake build AffineGuard.FiveCounts` in this directory to check it. Python can regenerate the witness table. [Certificate verifier](AffineGuard/FiveCertificate.lean) · [Witness table](AffineGuard/FiveTable.lean) · [Generator](generate_shell_certificate.py)
 
