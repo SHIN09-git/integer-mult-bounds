@@ -1,0 +1,87 @@
+% !TeX program = xelatex
+\documentclass[UTF8,scheme=plain,a4paper,11pt]{ctexart}
+\usepackage[margin=26mm,top=23mm,bottom=23mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[unicode,hidelinks]{hyperref}
+\hypersetup{pdftitle={三元域单参数前缀主子式的最坏代价}}
+\ctexset{section={format=\large\bfseries\raggedright,name={},number=\arabic{section},aftername=\quad}}
+\newcommand{\F}{\mathbb F_3}
+\newcommand{\cost}{\lfloor 2m/3\rfloor}
+\newtheorem{thm}{定理}
+\newtheorem{lem}[thm]{引理}
+\renewcommand{\proofname}{证明}
+\renewcommand{\refname}{参考文献}
+\setlength{\emergencystretch}{1em}
+\begin{document}
+\fontsize{12}{18}\selectfont
+\begin{center}
+{\LARGE\bfseries 三元域单参数前缀主子式的最坏代价\par}
+\medskip 研究短稿 \quad 2026 年 11 月 21 日
+\end{center}
+\noindent\textbf{摘要}\quad 对 $m$ 行归一化三元单参数矩阵族，允许免费行置换和逐行变号，每次行加法收费一步。我们证明，使全部参数在同一行序下通过所有真前缀主子式检验，最坏恰需 $\cost$ 步。上界用至多两步消去一个三行块，下界由一个每步至多下降三的整数权重给出。
+
+\section{模型与结论}
+取 $u,w,b\in\F^m$，令 $z(a)=b+aw$，其中 $a$ 遍历整个 $\F$。假定
+\[
+             u^\top w=0,\qquad u^\top b=1 .
+\]
+对行指标集 $B$，秩一行列式恒等式给出
+$\det(I-u_Bz_B(a)^\top)=1-\sum_{i\in B}u_i(b_i+aw_i)$。
+若存在一个行序，使前 $k$ 行的主子式对每个 $1\le k<m$ 和每个 $a$ 都非零，就称该输入通过检验。
+行变换 $P$ 同时作用为 $(Pu,P^{-\top}w,P^{-\top}b)$。置换与逐行变号免费，
+$R_i\gets R_i+cR_j$ 收费一步，其中 $i\ne j$，$c=\pm1$。记通过检验所需的最少行加法次数为 $C(u,w,b)$。
+令 $M_1(m)$ 为归一化输入上 $C$ 的最大值，含 $w=0$ 的常数族。
+\begin{thm}对每个正整数 $m$，有 $M_1(m)=\cost$。当 $m\ge2$ 时，有斜率 $w\ne0$ 的输入达到这个最大值。\end{thm}
+$m=1$ 时归一化强制 $w=0$，费用为零。前序工作给出了斜率与标量的代价界，并枚举了至多十二行的非恒定族\cite{prior,census}。下面的证明适用于任意行数。
+
+\section{三行消去与上界}
+记 $p_i=u_iw_i$，$s_i=u_ib_i$。一次行加法保持所涉两行的 $p$ 之和与 $s$ 之和。
+在任意非空块 $B$ 中，只要有某个 $u_j\ne0$，就以 $j$ 为支点，对其余 $u_i\ne0$ 的行做
+$R_i\gets R_i-(u_i/u_j)R_j$。至多 $|B|-1$ 步后，只有支点可能有非零 $u$，
+其两个电荷恰为块内原来的总和。若块内 $u$ 全零，两个电荷原已全零。
+块外的行在这些操作下保持原值。
+\begin{lem}从 $\F^2$ 中任取九个点，允许重复，总能选出三个不同位置，使所取三点的和为零。\end{lem}
+\begin{proof}
+同一点出现三次时即可取这三项。否则至少有五个不同的点。若其中没有三点共线，则在四个方向的每一个方向上，
+平行线至多容纳两对点。这样五点至多给出八对，而实际有十对。故存在共线三点，其和为零。
+\end{proof}
+\newpage
+当 $m\ge9$ 时，对 $(p_i,s_i)$ 应用引理。把所选三行的 $u$ 集中到一个支点，至多花两步。
+此后三行各自对每个参数的前缀和贡献为零。余下 $m-3$ 行仍归一化，
+可只在其中操作，再把这三行排在最前。因此
+\[
+                    M_1(m)\le 2+M_1(m-3).
+\]
+
+设 $1\le m\le8$，置 $k=\lceil m/3\rceil\le3$。把零斜率电荷单独成组，
+把异号非零斜率电荷尽量两两配对，再将剩余的同号电荷每三项成组。斜率总和为零保证最后一步恰好分尽。
+各组大小至多三，故至少有 $k$ 组。合并若干组至恰有 $k$ 组，仍各自斜率和为零。
+在每组集中 $u$，总费用至多 $m-k$。此时斜率电荷全零，非零标量电荷至多三项，总和为 $1$。
+它们必能排成 $(1)$、$(-1,-1)$ 或 $(-1,1,1)$ 中的一种。把零项放在最前，
+所有真前缀和都避开 $1$。于是 $M_1(m)\le m-k=\cost$。结合递推便得全体 $m$ 的上界。
+
+\section{达到上界的输入}
+定义整数权重 $\omega(0)=0,\ \omega(1)=2,\ \omega(-1)=1$，令
+$V=\sum_i\omega(p_i)$。免费操作保持 $V$。行加法涉及的两项斜率电荷总和不变，
+且 $\omega(x)\equiv -x\pmod3$。两项的权重和介于 $0$ 与 $4$，所以一次行加法至多使 $V$ 下降三。
+
+通过检验时 $p_i$ 必全零。事实上，若某个真前缀的斜率和非零，其仿射前缀和便随 $a$ 取遍 $\F$，
+必在某处等于 $1$。故所有真前缀的斜率和均为零，再用总斜率和为零，相邻作差即得断言。因此 $3C\ge V$。
+
+取 $u_i=1$，$b=(1,0,\ldots,0)$，首行斜率为 $-(m-1)$，其余各行斜率为 $1$，均按模三取值。
+两项归一化条件成立。令 $n=m-1$，$[n]_3\in\{0,1,2\}$ 为其余数。此时
+\[
+       V=2n+[n]_3=3\left\lfloor\frac{2(n+1)}3\right\rfloor .
+\]
+最后的等式由 $n$ 的三个余数直接得出。故该输入至少需要 $\cost$ 步。
+当 $m\ge2$ 时它有非零斜率，结合上界即证定理。\hfill$\square$
+
+\smallskip\noindent\textbf{形式化。}
+Lean 4.24.0 中的 \href{https://github.com/SHIN09-git/integer-mult-bounds/blob/codex/ternary-guard-affine-quotient/research/monomial-guard-affine-quotient/AffineGuard/OneParameter/WorstCase.lean}{\texttt{worst\_case\_eq} 与 \texttt{nonconstant\_attainment}}
+分别给出最大值公式和非恒定取等族。
+
+\begin{thebibliography}{9}\small
+\bibitem{prior} SHIN09-git 项目，\href{https://github.com/SHIN09-git/integer-mult-bounds/tree/5703e56d6eb4b4f0a83af8c23a5d1dddd0b5474f/research/monomial-guard-ternary-lean}{三元域完整主子式代价界的 Lean 验证}，特别见 \texttt{Ternary.Envelope}。
+\bibitem{census} SHIN09-git 项目，\href{https://github.com/SHIN09-git/integer-mult-bounds/tree/b6509f720197a2a760b8c06125e5bfc56bc736dd/research/monomial-guard-settlement}{单项式行操作与三元单参数枚举}，见 \texttt{ORBITS.md} 和 \texttt{LARGE-ORBITS.json}。
+\end{thebibliography}
+\end{document}

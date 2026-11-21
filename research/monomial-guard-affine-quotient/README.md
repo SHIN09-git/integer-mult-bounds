@@ -6,6 +6,18 @@ For a normalized state $(u,W,b)$ over $\mathbb F_3$, the dual column $z=b+Wa$ ru
 
 In the predecessor's five-row example, the old row quotient has 166 classes at distance exactly three from the start. Adding parameter translations gives 126. Allowing all six affine changes of the single parameter gives 80. Each search returns a three-addition witness that passes in the original row order.
 
+## Exact worst-case cost for one parameter
+
+For every positive row count $m$, the maximum of the minimum paid cost over all normalized one-parameter ternary inputs is $\lfloor 2m/3\rfloor$. This includes constant families. For every $m\ge2$, a nonconstant pencil attains the maximum. The proof constructs the upper bound using three-row blocks and proves the lower bound by tracking an integer weight on slope charges. [中文短稿](paper/single-parameter-worst-case/zh.pdf) · [English note](paper/single-parameter-worst-case/en.pdf) · [Chinese and English LaTeX sources](paper/single-parameter-worst-case)
+
+The declarations `AffineGuard.OneParameter.worst_case_eq` and `nonconstant_attainment` use the predecessor's minimum cost `Ternary.C`. Both are available through `import AffineGuard`. [Lean theorems](AffineGuard/OneParameter/WorstCase.lean) · [Verification record](verification/ONE_PARAMETER.json)
+
+~~~sh
+lake build AffineGuard
+lake env lean -DwarningAsError=true OneParameterAudit.lean
+lake env lean4checker --fresh -v AffineGuard.OneParameter.WorstCase
+~~~
+
 ## Lean formalization
 
 Lean 4.24.0 proves the following against the predecessor's definitions of legal operations, literal principal minors and paid cost $C$. The row set and both parameter sets may have arbitrary finite sizes.
@@ -46,7 +58,7 @@ lake env lean -DwarningAsError=true --run Checks.lean
 lake env lean4checker --fresh -v AffineGuard.FiveCounts
 ~~~
 
-The final command uses the official Lean 4.24.0 checker on the command path. Its target imports the solver, all general proofs and the concrete example theorems. The executable checks include all 72 normalized two-row, one-parameter inputs and replay each returned word. [Checker source](https://github.com/leanprover/lean4checker/tree/da26eb05e9959402afcb9bd6dfe5dc4f700f70d6) · [Verification record](verification/RESULT.json) · [Axiom audit](Audit.lean) · [Executable checks](Checks.lean)
+The final command uses the official Lean 4.24.0 checker on the command path. Its target imports the affine-image quotient solver, its general proofs and the five-row example theorems. The executable checks include all 72 normalized two-row, one-parameter inputs and replay each returned word. [Checker source](https://github.com/leanprover/lean4checker/tree/da26eb05e9959402afcb9bd6dfe5dc4f700f70d6) · [Verification record](verification/RESULT.json) · [Axiom audit](Audit.lean) · [Executable checks](Checks.lean)
 
 ## Reproduce the finite checks
 
@@ -59,7 +71,7 @@ python -B generate_shell_certificate.py --check
 
 The script compares each quotient with a labeled 0–1 search on all 2,106 normalized three-row, one-parameter inputs. The reference search applies dense primal and inverse-transpose matrices and evaluates the literal prefix determinants. The script also reproduces all five-row shells through depth three, replays the recovered instructions, and checks a homogeneous row-space key against point enumeration for all 819 two-row presentations with zero, one, or two parameters.
 
-The PDF contains three pages in each language. From the paper directory, two XeLaTeX passes on [the source](paper/main.tex) build the manuscript.
+The affine-image quotient note contains three pages in each language. From the paper directory, two XeLaTeX passes on [the source](paper/main.tex) build that manuscript.
 
 ## Sources and scope
 

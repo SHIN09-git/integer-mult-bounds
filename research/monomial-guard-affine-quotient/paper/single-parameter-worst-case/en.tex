@@ -1,0 +1,73 @@
+% !TeX program = xelatex
+\documentclass[a4paper,11pt]{article}
+\usepackage[margin=26mm,top=23mm,bottom=23mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[unicode,hidelinks]{hyperref}
+\hypersetup{pdftitle={The worst-case cost of one-parameter ternary prefix minors}}
+\newcommand{\F}{\mathbb F_3}
+\newcommand{\cost}{\lfloor 2m/3\rfloor}
+\newtheorem{thm}{Theorem}
+\newtheorem{lem}[thm]{Lemma}
+\setlength{\emergencystretch}{1em}
+\begin{document}
+\begin{center}
+{\LARGE\bfseries The worst-case cost of one-parameter\\ ternary prefix minors\par}
+\medskip Research note \quad 21 November 2026
+\end{center}
+\noindent\textbf{Abstract.} For a normalized ternary pencil on $m$ rows, permutations and row signs are free and each row addition costs one. The worst cost of making every proper leading principal minor nonzero in one order valid for all parameters is exactly $\cost$. The upper bound removes a block of three rows with at most two additions. An integer weight that drops by at most three per addition gives a matching family.
+
+\section{Model and result}
+Let $u,w,b\in\F^m$, and let $z(a)=b+aw$ for $a\in\F$. Assume
+\[
+                    u^\top w=0,\qquad u^\top b=1 .
+\]
+For a row set $B$, the rank-one determinant identity gives
+$\det(I-u_B z_B(a)^\top)=1-\sum_{i\in B}u_i(b_i+aw_i)$.
+An input passes if one row order makes the determinant on its first $k$ rows nonzero for every $1\le k<m$ and every parameter.
+A change of rows $P$ acts by $(Pu,P^{-\top}w,P^{-\top}b)$. Permutations and independent row signs are free. Each addition $R_i\gets R_i+cR_j$ costs one, with $i\ne j$ and $c=\pm1$.
+Write $C(u,w,b)$ for the least cost of passing and $M_1(m)$ for its maximum over all normalized inputs, including constant families.
+\begin{thm}
+For every positive integer $m$, $M_1(m)=\cost$. For $m\ge2$, a pencil with $w\ne0$ attains the maximum.
+\end{thm}
+For $m=1$, normalization forces $w=0$ and the cost is zero. Earlier work bounds the cost using slope and scalar charges and gives finite censuses for nonconstant pencils through twelve rows \cite{prior,census}. The proof below applies to every row count.
+
+\section{Removing three rows}
+Set $p_i=u_iw_i$ and $s_i=u_ib_i$. Each addition preserves the sum of the two affected $p_i$ and the sum of the two affected $s_i$. In a nonempty block $B$ with some $u_j\ne0$, use $j$ as pivot and apply $R_i\gets R_i-(u_i/u_j)R_j$ to each other row with $u_i\ne0$. After at most $|B|-1$ additions, only the pivot can have nonzero $u$, and its two charges equal the original block sums. If every $u_i$ in the block vanishes, all its charges already vanish. The operations preserve every row outside the block.
+\begin{lem}
+Among nine points of $\F^2$, with repetition allowed, three distinct positions have entries summing to zero.
+\end{lem}
+\begin{proof}
+Three copies of one point suffice. Otherwise there are at least five distinct points. Choose five. If no three are collinear, each of the four directions accounts for at most two pairs on its parallel lines. This gives at most eight pairs, whereas five points give ten. A line of three points in the ternary plane has sum zero.
+\end{proof}
+\newpage
+For $m\ge9$, apply the lemma to $(p_i,s_i)$. Concentrate the three chosen rows on a pivot with at most two additions. Each of these rows now contributes zero to every prefix sum for every parameter. The remaining $m-3$ rows still satisfy both normalization conditions. Apply a word on those rows and place the three inactive rows first. Thus
+\[
+                         M_1(m)\le2+M_1(m-3).
+\]
+
+For $1\le m\le8$, put $k=\lceil m/3\rceil\le3$. Make a singleton block for each zero slope charge. Pair opposite nonzero charges while possible, and group the remaining equal charges into triples. Their total is zero, so the triples exhaust the remainder. Every block has size at most three, hence there are at least $k$ blocks. Merge blocks until exactly $k$ remain. Each still has slope sum zero. Concentrate $u$ within each block for a total cost at most $m-k$.
+All slope charges now vanish. At most three scalar charges are nonzero, and their sum is one. They admit one of the orders $(1)$, $(-1,-1)$ or $(-1,1,1)$. Putting the zeros first keeps every proper prefix sum different from one. This gives $M_1(m)\le m-k=\cost$ for the initial cases. The recurrence proves the same bound for every $m$.
+
+\section{A family attaining the bound}
+Give each slope charge an integer weight by
+$\omega(0)=0,\ \omega(1)=2,\ \omega(-1)=1$, and put $V=\sum_i\omega(p_i)$.
+Free operations preserve $V$. An addition preserves the field sum of the two affected charges. Since $\omega(x)\equiv-x\pmod3$, their old and new weight totals are congruent modulo three. Both totals lie between zero and four. Thus one addition decreases $V$ by at most three.
+
+At a passing state all $p_i$ vanish. Indeed, a proper prefix with nonzero slope sum has an affine prefix sum ranging over $\F$, so it takes the value one for some parameter. All proper prefix slope sums therefore vanish. The full slope sum also vanishes by normalization. Taking consecutive differences gives the claim, and hence $3C\ge V$.
+
+Take every $u_i=1$, take $b=(1,0,\ldots,0)$, and use slope $-(m-1)$ on the first row and slope one elsewhere, with field entries reduced modulo three. Both normalization conditions hold. Write $n=m-1$ and let $[n]_3\in\{0,1,2\}$ denote its residue. The three possible residues give
+\[
+             V=2n+[n]_3=3\left\lfloor\frac{2(n+1)}3\right\rfloor .
+\]
+This input requires at least $\cost$ additions and has nonzero slope for $m\ge2$. The upper bound proves the theorem.\hfill$\square$
+
+\smallskip\noindent\textbf{Formalization.}
+The Lean 4.24.0 declarations
+\href{https://github.com/SHIN09-git/integer-mult-bounds/blob/codex/ternary-guard-affine-quotient/research/monomial-guard-affine-quotient/AffineGuard/OneParameter/WorstCase.lean}{\texttt{worst\_case\_eq} and \texttt{nonconstant\_attainment}}
+give the maximum and a nonconstant pencil attaining it.
+
+\begin{thebibliography}{9}\small
+\bibitem{prior} SHIN09-git project, \href{https://github.com/SHIN09-git/integer-mult-bounds/tree/5703e56d6eb4b4f0a83af8c23a5d1dddd0b5474f/research/monomial-guard-ternary-lean}{Lean verification of the ternary full-guard cost envelope}, especially \texttt{Ternary.Envelope}.
+\bibitem{census} SHIN09-git project, \href{https://github.com/SHIN09-git/integer-mult-bounds/tree/b6509f720197a2a760b8c06125e5bfc56bc736dd/research/monomial-guard-settlement}{Monomial guard settlement and ternary pencil censuses}, \texttt{ORBITS.md} and \texttt{LARGE-ORBITS.json}.
+\end{thebibliography}
+\end{document}

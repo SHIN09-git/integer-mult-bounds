@@ -1,0 +1,107 @@
+{
+  "status": "PASS",
+  "checked_at_utc": "2026-11-21T11:09:56.6120026Z",
+  "research_branch_parent": "b6509f720197a2a760b8c06125e5bfc56bc736dd",
+  "predecessor_packages_commit": "5703e56d6eb4b4f0a83af8c23a5d1dddd0b5474f",
+  "lean": "Lean (version 4.24.0, x86_64-w64-windows-gnu, commit 797c613eb9b6d4ec95db23e3e00af9ac6657f24b, Release)",
+  "mathlib_commit": "f897ebcf72cd16f89ab4577d0c826cd14afaafc7",
+  "result": {
+    "namespace": "AffineGuard.OneParameter",
+    "cost": "Ternary.C, the least paid cost of a legal run to a common order passing all proper prefix minors.",
+    "definition": "M₁ m is the supremum of the attained costs over all normalized one-parameter pencils with m rows.",
+    "upper_bound": "cost_upper",
+    "lower_bound": "potential_lower",
+    "attained_maximum": "greatest_cost",
+    "formula": "worst_case_eq: for every positive integer m, M₁(m) = floor(2m/3).",
+    "explicit_maximizer": "extremal_cost",
+    "nonconstant_maximizer": "nonconstant_attainment covers every m >= 2."
+  },
+  "build": {
+    "command": "lake build AffineGuard",
+    "exit_code": 0,
+    "elapsed_seconds": 19.71,
+    "summary": "Build completed successfully (1627 jobs)."
+  },
+  "fresh_kernel_replay": {
+    "command": "lake env lean4checker --fresh -v AffineGuard.OneParameter.WorstCase",
+    "checker_tag": "v4.24.0",
+    "checker_commit": "da26eb05e9959402afcb9bd6dfe5dc4f700f70d6",
+    "windows_executable_sha256": "8ba83cd65a76c2ae2feb95dba71241368c3c50145881247cb12b21c3c7dafafc",
+    "exit_code": 0,
+    "elapsed_seconds": 550.52,
+    "stdout": [
+      "replaying AffineGuard.OneParameter.WorstCase with --fresh"
+    ]
+  },
+  "axiom_audit": {
+    "command": "lake env lean -DwarningAsError=true OneParameterAudit.lean",
+    "exit_code": 0,
+    "declarations": [
+      "AffineGuard.OneParameter.plane_triple",
+      "AffineGuard.OneParameter.slope_block",
+      "AffineGuard.OneParameter.concentrate",
+      "AffineGuard.OneParameter.cost_upper",
+      "AffineGuard.OneParameter.weight_run",
+      "AffineGuard.OneParameter.potential_lower",
+      "AffineGuard.OneParameter.extremal_normalized",
+      "AffineGuard.OneParameter.extremal_weight",
+      "AffineGuard.OneParameter.extremal_cost",
+      "AffineGuard.OneParameter.greatest_cost",
+      "AffineGuard.OneParameter.worst_case_eq",
+      "AffineGuard.OneParameter.nonconstant_attainment"
+    ],
+    "axioms_of_each_declaration": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  "finite_census_comparison": {
+    "basis": "Maxima read from the two published nonconstant-pencil census histograms.",
+    "commit": "b6509f720197a2a760b8c06125e5bfc56bc736dd",
+    "sources": [
+      "research/monomial-guard-settlement/TERNARY-ORBITS.json",
+      "research/monomial-guard-settlement/LARGE-ORBITS.json"
+    ],
+    "cost_by_row_count": {
+      "2": 1,
+      "3": 2,
+      "4": 2,
+      "5": 3,
+      "6": 4,
+      "7": 4,
+      "8": 5,
+      "9": 6,
+      "10": 6,
+      "11": 7,
+      "12": 8
+    }
+  },
+  "proof_inputs_unchanged_during_replay": true,
+  "proof_input_sha256": {
+    "AffineGuard.lean": "8477bf8e34ec948010d5d45caf83f281770e2f5317494971a0995ac74d7271ea",
+    "AffineGuard/OneParameter/Blocks.lean": "b91be979943e48c52ac06b8fc28bc1d05f2c4bf642321eab65419f1c1ebf7bfb",
+    "AffineGuard/OneParameter/Lower.lean": "3b5194883eae4a3e95980fec2d72c083b9bd3e12f8fc1ad662e841636a8b0c3c",
+    "AffineGuard/OneParameter/Plane.lean": "355c9dbe3dbca03dbfc55cc2230408fc9e8ad9f33b27245dd00d24d625da186e",
+    "AffineGuard/OneParameter/Upper.lean": "8e480b872c72e246347f7227384d65ca2be4f518271ced06855b5202002858ce",
+    "AffineGuard/OneParameter/WorstCase.lean": "759808f0bb328c425e31eba0da98901162b702ef3005c8689da319d170564f76",
+    "OneParameterAudit.lean": "e7279ccb8b85355f23722a6cef4fd5b5173f1e4ab51736c1c2e256be7354e3f8",
+    "lake-manifest.json": "0bfd8e4e652b3e2c5d557bf3052ab020848eb96d68303d7be5128c083975bf74",
+    "lakefile.lean": "456493f13fb6e07187ad7737f926fc8f5d56ef2fc2fcc8996a7516cc0b6a24f4",
+    "lean-toolchain": "42779d67b81608af8a12aa4328d2ab47ca201925b3b2bd68369587b5340bb434"
+  },
+  "papers": {
+    "engine": "MiKTeX-XeTeX 4.16 (MiKTeX 25.12)",
+    "build": "Two XeLaTeX passes per edition, zh.tex and en.tex.",
+    "pages_per_edition": {
+      "zh": 2,
+      "en": 2
+    },
+    "sha256": {
+      "paper/single-parameter-worst-case/en.pdf": "ca2bc92fdd6a127a6d36a0afca1f1ffac57ec58565936e66ea652dd4b1e2f41b",
+      "paper/single-parameter-worst-case/en.tex": "b235793f1d194ed8a87fca299ff536dac989f7cfe5c7909acc351df8aa49e04c",
+      "paper/single-parameter-worst-case/zh.pdf": "4b39701aa4e856df3d3668f1baaa36bb2463b835ece568a689f265c269ba611a",
+      "paper/single-parameter-worst-case/zh.tex": "d3241d3ae2f675dbe772dc600cad0db048c1ba92eaadd3ee7b10dddc98453f55"
+    }
+  }
+}
