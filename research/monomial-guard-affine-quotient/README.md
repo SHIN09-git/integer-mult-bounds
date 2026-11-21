@@ -18,6 +18,21 @@ lake env lean -DwarningAsError=true OneParameterAudit.lean
 lake env lean4checker --fresh -v AffineGuard.OneParameter.WorstCase
 ~~~
 
+## Exact worst-case cost for two parameters
+
+Let the parameter range over all of $\mathbb F_3^2$ and keep the same normalization and paid row additions. For every positive $m$, the maximum is $\min\{m-1,\lceil2m/3\rceil\}$. The first two values are zero and one. For $m\ge3$ the maximum is $\lceil2m/3\rceil$, and two independent slope columns attain it. Rank two is possible precisely from three rows onward. [中文短稿](paper/two-parameter-worst-case/zh.pdf) · [English note](paper/two-parameter-worst-case/en.pdf) · [LaTeX sources](paper/two-parameter-worst-case)
+
+The upper bound removes at most three rows whose slope charges sum to zero and whose removal preserves a nonzero scalar total. The explicit maximizing family has no zero slope charge or pair of opposite slope charges. Each connected component of a successful execution needs at least three initial rows. [Short-block lemma](AffineGuard/TwoParameter/ShortBlock.lean) · [Formula and rank-two maximum](AffineGuard/TwoParameter/WorstCase.lean)
+
+The complete breadth-first searches through six rows give maxima $0,1,2,3,4,4$. The script also checks that the labeled input counts exhaust every slope rank. The verification record includes the distance histograms, axiom audit and fresh kernel replay. [Census script](two_parameter_census.py) · [Verification record](verification/TWO_PARAMETER.json)
+
+~~~sh
+python -I -B two_parameter_census.py
+lake build AffineGuard
+lake env lean -DwarningAsError=true TwoParameterAudit.lean
+lake env lean4checker --fresh -v AffineGuard.TwoParameter.WorstCase
+~~~
+
 ## Lean formalization
 
 Lean 4.24.0 proves the following against the predecessor's definitions of legal operations, literal principal minors and paid cost $C$. The row set and both parameter sets may have arbitrary finite sizes.

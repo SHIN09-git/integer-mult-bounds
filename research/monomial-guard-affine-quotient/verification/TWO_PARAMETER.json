@@ -1,0 +1,247 @@
+{
+  "status": "PASS",
+  "checked_at_utc": "2026-11-21T11:43:46.9955926Z",
+  "research_branch_parent": "2556fb1920c70ce7141a3fe66d46d3d32a45198f",
+  "predecessor_packages_commit": "5703e56d6eb4b4f0a83af8c23a5d1dddd0b5474f",
+  "lean": "Lean (version 4.24.0, x86_64-w64-windows-gnu, commit 797c613eb9b6d4ec95db23e3e00af9ac6657f24b, Release)",
+  "mathlib_commit": "f897ebcf72cd16f89ab4577d0c826cd14afaafc7",
+  "result": {
+    "namespace": "AffineGuard.TwoParameter",
+    "cost": "Ternary.C",
+    "domain": "All normalized m-row pencils over F_3 with two named parameters ranging over F_3^2. Dependent or zero slope columns are allowed.",
+    "theorem": "worst_case_eq: M₂(m) = min(m-1, ceil(2m/3)) for all positive m.",
+    "three_or_more_rows": "worst_case_of_three_le: M₂(m) = ceil(2m/3) for every m >= 3.",
+    "attainment": "rank_two_greatest: the same attained maximum on inputs with two linearly independent slope columns.",
+    "rank_boundary": "rank_two_requires_three: a normalized rank-two input requires m >= 3.",
+    "upper_bound": "twelve_block, cost_plan, Plan.realize, cost_upper",
+    "lower_bound": "component_bound, extremal_cost",
+    "extremizer": "m=n+3; all u_i=1, b=e_1, slope rows (1,1),(-1,1),(-n,1) followed by n copies of (1,0)."
+  },
+  "build": {
+    "command": "lake build AffineGuard",
+    "summary": "Build completed successfully (1634 jobs).",
+    "exit_code": 0
+  },
+  "fresh_kernel_replay": {
+    "command": "lake env lean4checker --fresh -v AffineGuard.TwoParameter.WorstCase",
+    "exit_code": 0,
+    "checker_tag": "v4.24.0",
+    "checker_commit": "da26eb05e9959402afcb9bd6dfe5dc4f700f70d6",
+    "windows_executable_sha256": "8ba83cd65a76c2ae2feb95dba71241368c3c50145881247cb12b21c3c7dafafc",
+    "elapsed_seconds": 565.0,
+    "stdout": [
+      "replaying AffineGuard.TwoParameter.WorstCase with --fresh"
+    ]
+  },
+  "axiom_audit": {
+    "command": "lake env lean -DwarningAsError=true TwoParameterAudit.lean",
+    "exit_code": 0,
+    "declarations": [
+      "AffineGuard.TwoParameter.support_geometry",
+      "AffineGuard.TwoParameter.five_block",
+      "AffineGuard.TwoParameter.twelve_block",
+      "AffineGuard.TwoParameter.cost_plan",
+      "AffineGuard.TwoParameter.Plan.realize",
+      "AffineGuard.TwoParameter.cost_upper",
+      "AffineGuard.TwoParameter.component_bound",
+      "AffineGuard.TwoParameter.extremal_normalized",
+      "AffineGuard.TwoParameter.extremal_rank_two",
+      "AffineGuard.TwoParameter.extremal_cost",
+      "AffineGuard.TwoParameter.twoRows_cost",
+      "AffineGuard.TwoParameter.greatest_cost",
+      "AffineGuard.TwoParameter.worst_case_eq",
+      "AffineGuard.TwoParameter.worst_case_of_three_le",
+      "AffineGuard.TwoParameter.rank_two_greatest",
+      "AffineGuard.TwoParameter.rank_two_requires_three"
+    ],
+    "axioms_of_each_declaration": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  "finite_census": {
+    "command": "python -I -B two_parameter_census.py",
+    "python": "Python 3.12.10",
+    "script_sha256": "c3b6c56b5ead173dedbddfc892b29f0336272036d254e824561b9fabd6adbb7d",
+    "rank_order": [
+      0,
+      1,
+      2
+    ],
+    "method": "Complete multi-source BFS modulo row signs and permutations. Histograms count labeled inputs; rank coverage is checked against the ordered-column count.",
+    "rows": [
+      {
+        "m": 1,
+        "row_orbits": 1,
+        "maxima_by_rank": [
+          0,
+          null,
+          null
+        ],
+        "labeled_histograms_by_rank": [
+          {
+            "0": 2
+          },
+          {},
+          {}
+        ]
+      },
+      {
+        "m": 2,
+        "row_orbits": 28,
+        "maxima_by_rank": [
+          0,
+          1,
+          null
+        ],
+        "labeled_histograms_by_rank": [
+          {
+            "0": 24
+          },
+          {
+            "0": 96,
+            "1": 96
+          },
+          {}
+        ]
+      },
+      {
+        "m": 3,
+        "row_orbits": 436,
+        "maxima_by_rank": [
+          0,
+          2,
+          2
+        ],
+        "labeled_histograms_by_rank": [
+          {
+            "0": 234
+          },
+          {
+            "0": 2592,
+            "1": 4320,
+            "2": 576
+          },
+          {
+            "0": 2592,
+            "1": 5184,
+            "2": 3456
+          }
+        ]
+      },
+      {
+        "m": 4,
+        "row_orbits": 4935,
+        "maxima_by_rank": [
+          1,
+          2,
+          3
+        ],
+        "labeled_histograms_by_rank": [
+          {
+            "0": 2144,
+            "1": 16
+          },
+          {
+            "0": 50112,
+            "1": 129600,
+            "2": 44928
+          },
+          {
+            "0": 165888,
+            "1": 497664,
+            "2": 559872,
+            "3": 124416
+          }
+        ]
+      },
+      {
+        "m": 5,
+        "row_orbits": 44898,
+        "maxima_by_rank": [
+          1,
+          3,
+          4
+        ],
+        "labeled_histograms_by_rank": [
+          {
+            "0": 19170,
+            "1": 432
+          },
+          {
+            "0": 853440,
+            "1": 3234240,
+            "2": 2081280,
+            "3": 103680
+          },
+          {
+            "0": 7387200,
+            "1": 31259520,
+            "2": 53809920,
+            "3": 27993600,
+            "4": 1866240
+          }
+        ]
+      },
+      {
+        "m": 6,
+        "row_orbits": 345726,
+        "maxima_by_rank": [
+          1,
+          4,
+          4
+        ],
+        "labeled_histograms_by_rank": [
+          {
+            "0": 169560,
+            "1": 7344
+          },
+          {
+            "0": 13674528,
+            "1": 72443808,
+            "2": 74355840,
+            "3": 10644480,
+            "4": 124416
+          },
+          {
+            "0": 287297280,
+            "1": 1634100480,
+            "2": 4008648960,
+            "3": 3601774080,
+            "4": 742763520
+          }
+        ]
+      }
+    ]
+  },
+  "proof_inputs_unchanged_during_replay": true,
+  "proof_input_sha256": {
+    "AffineGuard.lean": "eee21727f3b6a512579ef7ffe9a1934697f030df1d87e3b0666903c75bee7f7a",
+    "AffineGuard/OneParameter/Plane.lean": "355c9dbe3dbca03dbfc55cc2230408fc9e8ad9f33b27245dd00d24d625da186e",
+    "AffineGuard/TwoParameter/Geometry.lean": "7890471f5396ebfe3c33b42d67e43828c7159fb0c1656979222a987294fe46b1",
+    "AffineGuard/TwoParameter/Lower.lean": "57181c02f3d906bc15dd6b4e7d87296e63f4547d35db97fc6c873a0478c10617",
+    "AffineGuard/TwoParameter/Plan.lean": "bc6838d3574bdf23295a7f2299e914f601533ddfd1110aa02c7695ef2dcac28e",
+    "AffineGuard/TwoParameter/ShortBlock.lean": "b7a70787473f82476762c0b9dbee70a8ae9ca0093538f4221887e3c973317dec",
+    "AffineGuard/TwoParameter/Upper.lean": "67657ab904a534fbbc10e78df99befdd55c1da2e5ce2db96d5951ea7240c1526",
+    "AffineGuard/TwoParameter/WorstCase.lean": "91828349b8c59e133742b6c7a16273049d9810f558c15f37b30ae10efab713db",
+    "TwoParameterAudit.lean": "714c28f44a5fa45cbd637757246f546af994db15d52ce3dca6ed274a892fdf26",
+    "lake-manifest.json": "0bfd8e4e652b3e2c5d557bf3052ab020848eb96d68303d7be5128c083975bf74",
+    "lakefile.lean": "456493f13fb6e07187ad7737f926fc8f5d56ef2fc2fcc8996a7516cc0b6a24f4",
+    "lean-toolchain": "42779d67b81608af8a12aa4328d2ab47ca201925b3b2bd68369587b5340bb434"
+  },
+  "papers": {
+    "build": "Two XeLaTeX passes for each standalone edition.",
+    "engine": "MiKTeX-XeTeX 4.16 (MiKTeX 25.12)",
+    "pages_per_edition": {
+      "zh": 3,
+      "en": 3
+    },
+    "sha256": {
+      "paper/two-parameter-worst-case/en.pdf": "27f7b56192ece82516126acd72a3648c820124af517f5357715f5f1914b683c2",
+      "paper/two-parameter-worst-case/en.tex": "7c48f8f9e6702701e7595f576f1940652ec1288e9844419877ef232f140593e7",
+      "paper/two-parameter-worst-case/zh.pdf": "8905b46465999489e645ab4ebc241cc6810d1699573dea8d0de928f65c408ac2",
+      "paper/two-parameter-worst-case/zh.tex": "0b0e15ab5ec248bebfa9cf3ed8ba62f4b6f4aad17840fd4db0c06b52e91ac127"
+    }
+  }
+}

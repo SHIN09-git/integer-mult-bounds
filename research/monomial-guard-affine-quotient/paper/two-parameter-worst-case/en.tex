@@ -1,0 +1,88 @@
+% !TeX program = xelatex
+\documentclass[a4paper,12pt]{article}
+\usepackage[margin=25mm,top=21mm,bottom=22mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,booktabs}
+\usepackage[unicode,hidelinks]{hyperref}
+\hypersetup{pdftitle={The worst-case cost of ternary two-parameter prefix minors}}
+\newcommand{\F}{\mathbb F_3}
+\newcommand{\N}{\mathbb N}
+\newtheorem{thm}{Theorem}
+\newtheorem{lem}[thm]{Lemma}
+\setlength{\emergencystretch}{1em}
+\linespread{1.06}
+\begin{document}
+\begin{center}
+{\LARGE\bfseries The worst-case cost of ternary\\ two-parameter prefix minors\par}
+\medskip Research note \quad 21 November 2026
+\end{center}
+\noindent\textbf{Abstract.} We determine the maximum number of paid row additions needed to make all proper leading principal minors nonzero in one common order over a normalized two-parameter family. For $m\ge3$ rows the maximum is $\lceil2m/3\rceil$, attained with independent slope columns. The upper bound uses a short block whose removal preserves a nonzero scalar total. The lower bound counts components of any successful sequence of operations.
+
+\section{The model and the first six values}
+Let $u,b\in\F^m$, let $W$ be an $m\times2$ matrix over $\F$, and put $z(a)=b+Wa$ for $a\in\F^2$. Assume $u^\top W=0$ and $u^\top b=1$. For a set $B$ of rows write $p_i=u_iW_{i,*}\in\F^2$ and $s_i=u_i b_i\in\F$. The determinant on $B$ is
+\[
+ \det\bigl(I-u_B z_B(a)^\top\bigr)=1-\sum_{i\in B}(s_i+p_i a).
+\]
+A state passes if there is one row order in which this is nonzero for every proper prefix and every $a$. A row transformation $P$ acts by $(Pu,P^{-\top}W,P^{-\top}b)$. Row permutations and sign changes are free. An addition $R_i\gets R_i+cR_j$, $i\ne j$, $c=\pm1$, costs one. Let $C$ be the least cost of reaching a passing state and $M_2(m)$ its maximum over normalized inputs of all slope ranks.
+\begin{thm}\label{th}
+For $m\ge1$,
+\[
+ M_2(m)=\min\{m-1,\lceil2m/3\rceil\}.
+\]
+Thus $M_2(1)=0$, $M_2(2)=1$, and $M_2(m)=\lceil2m/3\rceil$ for $m\ge3$. In the last range the maximum is attained with $\operatorname{rank}W=2$.
+\end{thm}
+A complete breadth-first search on row multisets, modulo permutations and signs, gives the following values. The rank columns record separate maxima. A dash marks an empty class.
+\begin{center}\small
+\begin{tabular}{r r r r r r}\toprule
+$m$ & Row orbits & Rank 0 & Rank 1 & Rank 2 & $M_2(m)$\\\midrule
+1&1&0&--&--&0\\2&28&0&1&--&1\\3&436&0&2&2&2\\
+4&4,935&1&2&3&3\\5&44,898&1&3&4&4\\6&345,726&1&4&4&4\\\bottomrule
+\end{tabular}
+\end{center}
+The search starts simultaneously at the passing orbits and reverses legal additions. Weighting the orbits recovers the labeled input counts at each rank. Rank two requires $m\ge3$, since both columns of $W$ belong to the hyperplane $u^\perp$ and $u\ne0$.
+
+\newpage
+\section{Removing a block without losing normalization}
+A block means a nonempty set of labeled rows. A line in $\F^2$ consists of three distinct points whose sum is zero. Any five distinct points contain a line. Otherwise each of the four directions contributes at most two pairs, whereas five points give ten pairs.
+\begin{lem}\label{short}
+Given at least twelve pairs $(p_i,s_i)\in\F^2\times\F$ and $t\in\F^\times$, there is a block $B$ of at most three rows with $\sum_B p_i=0$ and $\sum_B s_i\ne t$.
+\end{lem}
+\begin{proof}
+Scale the scalars so that $t=1$. Suppose every block of at most three rows with slope sum zero has scalar sum one. Write $P$ for the set of distinct slopes. Each slope occurs at most three times. Indeed, among four copies every triple has scalar sum one. Comparing triples makes all four scalars equal, and a triple of equal scalars sums to zero.
+
+If $x\ne0$ and $-x\in P$, every occurrence of $x$ has the same scalar, by pairing it with one fixed occurrence of $-x$. The same conclusion holds for any slope on a line in $P$, by fixing representatives of the other two points. In either case the slope occurs at most twice. Where a scalar is thus fixed, denote it by $f(x)$.
+
+A zero slope has scalar one and occurs at most once. If it occurs, an opposite pair $x,-x$ would have scalar sum one. Adding the zero row would give a forbidden three-row sum of two. If there is no opposite pair, there are at most four nonzero slopes. In the case of four, adjoining the point $0$ gives a line among three of the four, since no two are opposite. Even with a zero row this gives at most $1+3\cdot2+3=10$ rows. At most three nonzero slopes give the same bound.
+
+If there is exactly one opposite pair, there are at most three other slopes. With at most two others there are at most ten rows. With three others, the five points contain a line, which uses at least two of the three other slopes. At least four of the five slopes therefore occur at most twice, giving at most eleven rows.
+
+Three complete opposite pairs cannot occur. Choose signs so that the pairs are $\pm x,\pm y,\pm(x+y)$. Their six scalars sum to zero by the three pair equations, and to two by the equations for the line $x,y,-x-y$ and its negative.
+
+It remains to consider two complete pairs $\pm x,\pm y$. If both other directions occur, change signs or exchange $x,y$ so that $w=x+y$ and $z=x-y$ are present. Put $A=f(x)$ and $B=f(y)$. The two opposite scalars are $1-A$ and $1-B$. The lines $(-x,-y,w)$ and $(-x,y,z)$ give $f(w)=A+B-1$ and $f(z)=A-B$. The line $(w,z,x)$ then has scalar sum $-1$, a contradiction. Thus at most one other slope occurs. It lies on a line with two slopes from the complete pairs, so there are at most $5\cdot2=10$ rows. All cases contradict the assumed length.
+\end{proof}
+
+Two smaller facts supply the initial cases. Among nine slopes, three sum to zero. Take three equal entries if possible, and otherwise take a line among five distinct entries. Five slopes contain a nonempty zero-sum subset. To see this, use the group algebra $\F[X,Y]/(X^3-1,Y^3-1)$. Each $1-X^aY^b$ belongs to $(X-1,Y-1)$, whose fifth power vanishes since $(X-1)^3=(Y-1)^3=0$. In a product of five such factors, absence of a nonempty zero sum would leave the coefficient of $X^0Y^0$ equal to one. These are the ternary-plane cases of the classical results in \cite{olson,reiher}.
+
+\newpage
+\section{The upper bound and a family attaining it}
+Write $F(m)=m-\max\{1,\lfloor m/3\rfloor\}$ for $m>0$ and lift field elements $0,1,-1$ to the corresponding integers. A zero-slope block of $r$ rows costs at most $r-1$ additions to gather. Choose a pivot $j$ with $u_j\ne0$ and clear every other nonzero $u_i$ by subtracting $(u_i/u_j)R_j$. Both charge sums are conserved. Only the pivot can retain a charge, with slope zero and scalar $\sum_B s_i$. If $u$ vanishes on the block, all its charges already vanish.
+
+We prove that rows of total slope zero and nonzero scalar total $t$ can be gathered at cost at most $F(m)$ with final integer scalar sum $D\in\{\tilde t,-2\tilde t\}$, where $\tilde t$ is the signed lift. For $m\le5$ take one block. For $6\le m\le8$ the five-term fact gives a proper zero-slope block. Take its nonempty complement as the second block. For $9\le m\le11$ first take a zero-slope triple, then split the remainder in two. Gathering uses at most $F(m)$ additions. There are at most three surviving scalars, so $|D|\le3$ and $D\equiv t\bmod3$, as required.
+
+For $m\ge12$ take a block from Lemma~\ref{short}. Its size $r$ is at most three, and its scalar sum $\sigma$ is either $0$ or $-t$. The remaining scalar total $t-\sigma$ is nonzero. Apply induction to the remainder. If $\sigma=0$, its signed sum needs no adjustment. If $\sigma=-t$, the remainder has total $-t$. Adding $-\tilde t$ to either $-\tilde t$ or $2\tilde t$ gives $-2\tilde t$ or $\tilde t$. The cost is at most $r-1+F(m-r)\le F(m)$ because removing at most three rows decreases $\lfloor m/3\rfloor$ by at most one.
+
+For normalized inputs $t=1$. Order the zero charges first, then cancel pairs in the order $(-1,1)$. The leftover scalars are $(1)$ or $(-1,-1)$. Every proper prefix avoids one, so the common order passes.
+
+For the reverse inequality put $m=n+3$, take all $u_i=1$, put $b=(1,0,\ldots,0)$ and take slope rows
+\[
+ (1,1),\quad(-1,1),\quad(-n,1),\quad
+ \underbrace{(1,0),\ldots,(1,0)}_{n}.
+\]
+The slopes sum to zero, and the first two are independent. No slope is zero and no two are opposite. At a passing state every proper prefix has slope sum zero, since a nonzero prefix slope makes its affine scalar attain one. The full slope sum is also zero. Consecutive differences give zero slope charge on every row. Relabel through free permutations and join the two labels of each paid addition by an edge. Component slope sums are conserved. Each final component therefore contains at least three initial rows. After $k$ additions there are at least $m-k$ components, hence $k\ge m-\lfloor m/3\rfloor$. At $m=2$, take $u=(1,1)$, $b=(1,0)$ and opposite nonzero slopes. This costs at least one. At $m=1$ there is no proper nonempty prefix. This proves Theorem~\ref{th}.
+
+\smallskip\noindent\textbf{Reproducibility.} The \href{https://github.com/SHIN09-git/integer-mult-bounds/tree/codex/ternary-guard-affine-quotient/research/monomial-guard-affine-quotient}{research branch} contains the exact census and the Lean 4.24.0 proofs \texttt{worst\_case\_eq} and \texttt{rank\_two\_greatest}, using the predecessor's operational cost \texttt{Ternary.C}.
+
+\begin{thebibliography}{2}\footnotesize
+\bibitem{olson} J.~E. Olson, \href{https://doi.org/10.1016/0022-314X(69)90021-3}{A combinatorial problem on finite Abelian groups, I}, J. Number Theory (1969).
+\bibitem{reiher} C. Reiher, \href{https://www.math.uni-hamburg.de/en/personen/reiher/artikel/Kemnitz.pdf}{On Kemnitz' conjecture concerning lattice points in the plane}, Ramanujan J. (2007).
+\end{thebibliography}
+\end{document}
