@@ -34,3 +34,11 @@ def main : IO Unit := do
     (tinyCases.length == 72 && tinyCases.all checkTiny)
   check "three instructions replay on the original five labels in the identity order"
     (Examples.fiveWord.length == 3 && directPass (replay OrbitGuard.Examples.five Examples.fiveWord))
+  let old₂ := Census.rowBall 2
+  let old₃ := Census.rowBall 3
+  let new₂ := Census.affineBall 2
+  let new₃ := Census.affineBall 3
+  check "five-row complete-row closed balls 47 and 213, shell 166"
+    (old₂.card == 47 && old₃.card == 213 && (old₃ \ old₂).card == 166)
+  check "five-row affine-image closed balls 42 and 122, shell 80"
+    (new₂.card == 42 && new₃.card == 122 && (new₃ \ new₂).card == 80)

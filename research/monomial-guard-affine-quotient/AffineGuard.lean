@@ -1,3 +1,3 @@
-import AffineGuard.Examples
+import AffineGuard.FiveCounts
 
-/-! Affine-image classes for ternary guard search, with exact distances and labeled witnesses. -/
+/-! Affine-image classes for ternary guard search, with exact distances, labeled witnesses and the five-row shell counts. -/

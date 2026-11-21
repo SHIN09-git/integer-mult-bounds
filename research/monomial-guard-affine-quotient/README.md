@@ -17,8 +17,20 @@ Lean 4.24.0 proves the following against the predecessor's definitions of legal 
 | At every paid length, a quotient walk to a successful class is equivalent to an actual successful execution. Its minimum on normalized inputs is attained and equals $C$. | [lift_walk, winningCost_iff_word, distance_eq_C, distance_minimum](AffineGuard/Distance.lean) |
 | The breadth-first solver retains one word per newly reached class. On normalized inputs it returns a shortest word on the original labels and a final free permutation that passes every proper prefix. | [advance_nodup, solve_optimal, solveFixed_correct](AffineGuard/Search.lean) |
 | The five-row example has optimal cost three. Its explicit word passes in the original order. The two translated states in Section 2 share a key and have no zero-cost execution between them. | [five_distance, five_passes, endpoint_example](AffineGuard/Examples.lean) |
+| In the five-row example the complete-row graph has exactly 166 vertices at minimum distance three. The affine-image graph has exactly 80. | [five_three_shells, five_ball_counts](AffineGuard/FiveCounts.lean) |
 
-The Lean implementation enumerates the affine points and their signed row frames. This choice makes the equality test executable across parameter dimensions. The Python census uses the faster six-map encoding for one parameter and separately tests the homogeneous row-space encoding.
+The general Lean solver enumerates the affine points and their signed row frames. For the five-row count, Lean proves that sorting the five signed row codes preserves exactly the predecessor's row classes. Taking the least such code over the six invertible affine changes of the parameter preserves exactly the affine-image classes, including constant affine families. [Equivalence of the two encodings](AffineGuard/FiveEncoding.lean)
+
+### The five-row count
+
+| Classes counted from the five-row start | At most two additions | At most three additions | Minimum exactly three |
+| --- | ---: | ---: | ---: |
+| Complete rows modulo free row operations | 47 | 213 | 166 |
+| Primal column and dual affine image modulo free row operations | 42 | 122 | 80 |
+
+The proof projects each complete closed ball to the affine quotient before taking the difference. This excludes a class whenever any representative reaches it in at most two additions. Lean identifies each resulting finite count with the cardinality of the set of vertices satisfying the original graph's minimum-distance predicate. [Closed-ball semantics and exact shells](AffineGuard/FiveShells.lean)
+
+The certificate lists the 40 legal paid additions from each of the 47 complete-row classes within two steps. Lean recomputes the resulting 1,880 target codes, checks a parent for each newly listed class, and computes the affine code for each of the 213 representatives. The numerical theorem uses ordinary kernel reduction. Run `lake build AffineGuard.FiveCounts` in this directory to check it. Python can regenerate the witness table. [Certificate verifier](AffineGuard/FiveCertificate.lean) · [Witness table](AffineGuard/FiveTable.lean) · [Generator](generate_shell_certificate.py)
 
 With this package and both adjacent predecessor packages from the same branch, run the following commands in this directory. Lake reads the pinned mathlib revision from the manifest. A matching mathlib binary cache can be fetched with `lake exe cache get` before building.
 
@@ -26,7 +38,7 @@ With this package and both adjacent predecessor packages from the same branch, r
 lake build AffineGuard
 lake env lean -DwarningAsError=true Audit.lean
 lake env lean -DwarningAsError=true --run Checks.lean
-lake env lean4checker --fresh -v AffineGuard.Examples
+lake env lean4checker --fresh -v AffineGuard.FiveCounts
 ~~~
 
 The final command uses the official Lean 4.24.0 checker on the command path. Its target imports the solver, all general proofs and the concrete example theorems. The executable checks include all 72 normalized two-row, one-parameter inputs and replay each returned word. [Checker source](https://github.com/leanprover/lean4checker/tree/da26eb05e9959402afcb9bd6dfe5dc4f700f70d6) · [Verification record](verification/RESULT.json) · [Axiom audit](Audit.lean) · [Executable checks](Checks.lean)
@@ -37,6 +49,7 @@ From this directory, run the following command with Python 3. The published resu
 
 ~~~sh
 python -I -B verify.py
+python -B generate_shell_certificate.py --check
 ~~~
 
 The script compares each quotient with a labeled 0–1 search on all 2,106 normalized three-row, one-parameter inputs. The reference search applies dense primal and inverse-transpose matrices and evaluates the literal prefix determinants. The script also reproduces all five-row shells through depth three, replays the recovered instructions, and checks a homogeneous row-space key against point enumeration for all 819 two-row presentations with zero, one, or two parameters.

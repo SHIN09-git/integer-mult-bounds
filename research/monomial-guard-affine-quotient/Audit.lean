@@ -29,3 +29,17 @@ import AffineGuard
 #print axioms AffineGuard.Examples.redundant_data
 #print axioms AffineGuard.Examples.five_passes
 #print axioms AffineGuard.Examples.five_distance
+
+#print axioms AffineGuard.Census.rowKey_iff
+#print axioms AffineGuard.Census.data_change
+#print axioms AffineGuard.Census.change_of_data
+#print axioms AffineGuard.Census.key_iff_variant
+#print axioms AffineGuard.Census.affineKey_iff
+#print axioms AffineGuard.Census.rowBall_spec
+#print axioms AffineGuard.Census.affineBall_spec
+#print axioms AffineGuard.Census.row_shell_card
+#print axioms AffineGuard.Census.affine_shell_card
+#print axioms AffineGuard.Census.expand_table
+#print axioms AffineGuard.Census.project_table
+#print axioms AffineGuard.Census.five_ball_counts
+#print axioms AffineGuard.Census.five_three_shells

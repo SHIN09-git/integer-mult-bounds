@@ -170,7 +170,9 @@ $b=(1,1,1,1,0)^\top$。搜索在第 3 层首次成功，恢复出的零起始行
 
 \medskip\noindent\textbf{形式化与后续问题。}
 Lean 4.24.0 已验证定理~\ref{z:main} 的任意长度路径提升、最优指令恢复和五行例的三步最优性。
-Lean 直接枚举仿射像中的点。表中类数由 Python 脚本复算。多参数时，齐次矩阵化简与枚举换元的耗时仍待比较。
+Lean 还验证了五行例的闭球计数。半径从二增至三时，按免费行操作归类的类数由 $47$ 增至 $213$，
+进一步按仿射像归类的类数由 $42$ 增至 $122$。取差得到第三层的 $166$ 和 $80$ 类。表中各数均可用 Python 复算。
+多参数时，两种编码的耗时仍待比较。
 \sources{z}
 
 \clearpage
@@ -326,8 +328,9 @@ the Python 3.12.10 standard library and can be reproduced from the package direc
 
 \medskip\noindent\textbf{Formal verification and an open question.}
 Lean 4.24.0 verifies path lifting at every length, optimal witness recovery in Theorem~\ref{e:main},
-and the five-row optimum of three. Lean enumerates the affine points. The Python script
-reproduces the class counts. For several parameters, the runtime of homogeneous row reduction
-versus explicit parameter changes remains to be measured.
+and the five-row optimum of three. It also verifies the five-row closed balls of radii two and three.
+The row quotient grows from $47$ to $213$ classes and the affine quotient from $42$ to $122$.
+Subtraction gives the shell counts $166$ and $80$. Python reproduces the full table.
+The relative runtime of the encodings for several parameters remains open.
 \sources{e}
 \end{document}

@@ -1,23 +1,50 @@
 {
   "status": "PASS",
-  "checked_at_utc": "2026-11-21T09:11:44.2013777Z",
+  "checked_at_utc": "2026-11-21T09:50:37.7473940Z",
   "paper_branch_parent": "f462e0d1e265ee85ea2edb2380435316f28e9af9",
+  "previous_formalization_commit": "0a8cfce9ec08dea58c5380ae4d6f8f96e2db71ce",
   "predecessor_packages_commit": "5703e56d6eb4b4f0a83af8c23a5d1dddd0b5474f",
   "lean": "Lean (version 4.24.0, x86_64-w64-windows-gnu, commit 797c613eb9b6d4ec95db23e3e00af9ac6657f24b, Release)",
   "mathlib_commit": "f897ebcf72cd16f89ab4577d0c826cd14afaafc7",
+  "five_row_shells": {
+    "starting_state": "OrbitGuard.Examples.five",
+    "closed_ball_theorem": "AffineGuard.Census.five_ball_counts",
+    "exact_distance_theorem": "AffineGuard.Census.five_three_shells",
+    "closed_ball_radii": [
+      2,
+      3
+    ],
+    "closed_ball_counts": {
+      "complete_rows": [
+        47,
+        213
+      ],
+      "affine_image": [
+        42,
+        122
+      ]
+    },
+    "minimum_distance_three": {
+      "complete_rows": 166,
+      "affine_image": 80
+    },
+    "row_classes_expanded": 47,
+    "paid_transitions_checked": 1880,
+    "affine_labels_checked": 213
+  },
   "build": {
     "command": "lake build AffineGuard",
     "exit_code": 0,
     "warnings_as_errors": true
   },
   "fresh_kernel_replay": {
-    "command": "lake env lean4checker --fresh -v AffineGuard.Examples",
+    "command": "lake env lean4checker --fresh -v AffineGuard.FiveCounts",
     "checker_commit": "da26eb05e9959402afcb9bd6dfe5dc4f700f70d6",
     "windows_executable_sha256": "8ba83cd65a76c2ae2feb95dba71241368c3c50145881247cb12b21c3c7dafafc",
     "exit_code": 0,
-    "elapsed_seconds": 557.6,
+    "elapsed_seconds": 574.89,
     "stdout": [
-      "replaying AffineGuard.Examples with --fresh"
+      "replaying AffineGuard.FiveCounts with --fresh"
     ]
   },
   "axiom_audit": {
@@ -52,7 +79,20 @@
       "AffineGuard.Examples.endpoint_example",
       "AffineGuard.Examples.redundant_data",
       "AffineGuard.Examples.five_passes",
-      "AffineGuard.Examples.five_distance"
+      "AffineGuard.Examples.five_distance",
+      "AffineGuard.Census.rowKey_iff",
+      "AffineGuard.Census.data_change",
+      "AffineGuard.Census.change_of_data",
+      "AffineGuard.Census.key_iff_variant",
+      "AffineGuard.Census.affineKey_iff",
+      "AffineGuard.Census.rowBall_spec",
+      "AffineGuard.Census.affineBall_spec",
+      "AffineGuard.Census.row_shell_card",
+      "AffineGuard.Census.affine_shell_card",
+      "AffineGuard.Census.expand_table",
+      "AffineGuard.Census.project_table",
+      "AffineGuard.Census.five_ball_counts",
+      "AffineGuard.Census.five_three_shells"
     ],
     "axioms_used": [
       "Classical.choice",
@@ -72,7 +112,9 @@
       "PASS two paid additions with one parameter",
       "PASS two paid additions with two independent parameters",
       "PASS all 72 normalized two-row one-parameter inputs versus exhaustive labeled words",
-      "PASS three instructions replay on the original five labels in the identity order"
+      "PASS three instructions replay on the original five labels in the identity order",
+      "PASS five-row complete-row closed balls 47 and 213, shell 166",
+      "PASS five-row affine-image closed balls 42 and 122, shell 80"
     ]
   },
   "finite_census": {
@@ -90,21 +132,34 @@
       "Five rows, affine: [1, 6, 35, 80]; replayed [(0, 1, 1), (0, 2, 1), (3, 4, 2)], final order (0, 1, 2, 3, 4)."
     ]
   },
+  "witness_generation": {
+    "command": "python -B generate_shell_certificate.py --check",
+    "exit_code": 0,
+    "stdout": [
+      "The generated table matches the checked-in file."
+    ]
+  },
   "proof_inputs_unchanged_during_replay": true,
   "proof_input_sha256": {
-    "AffineGuard.lean": "78ea7b3210cea7d187b079c06942267969bd4711e2999bbad6313f39034f1b24",
     "AffineGuard/Distance.lean": "aa7fe879eb5781d41167bb62e3691d034695f18ffcfa1d0fd188e38d7f6bab4b",
     "AffineGuard/Examples.lean": "93e303ce43a029ef0098b00d9b373cd3e0ca51d6db25293dfbd730be41425f7f",
+    "AffineGuard/FiveCertificate.lean": "98f92e4112f7e48faf6eae059ec89c7edef9d457cf6a52f55a27ea9a421ac700",
+    "AffineGuard/FiveCounts.lean": "b3c7aab7080bb545d09a1402998479549d5a1a915c572eb07f245bdd60c3b3d9",
+    "AffineGuard/FiveEncoding.lean": "eda98b3f6cf7380f77ae1283bc2d1283d5453a1e90dd4e0faa47197411dda849",
+    "AffineGuard/FiveShells.lean": "23fb518a65d4a8a18715d325b4616e8290b41324db508cf07829043a815d3d68",
+    "AffineGuard/FiveTable.lean": "d674e6b8271bac0925fbb1342e558a72c80ea8e4e57c53fe86b88e0df2fc1fbb",
     "AffineGuard/Image.lean": "687a6afccd96a05f6e0e29d94c92157f10ff7694f7f24b4799dfe32d6f812cb4",
     "AffineGuard/Quotient.lean": "a0e0a7acdb4be7f69591fb0b075a9e6b9321d2a1f62f5bc24af293c625b1de30",
     "AffineGuard/Search.lean": "798f27acd21907eb54138428524bfe5defdac3fdab57dfa327582fb05958122c",
+    "AffineGuard.lean": "e526c2061caf8da5b35413cb43d45c9887a65cb9fdee18f296cceaf42eb25aab",
     "lake-manifest.json": "0bfd8e4e652b3e2c5d557bf3052ab020848eb96d68303d7be5128c083975bf74",
     "lakefile.lean": "456493f13fb6e07187ad7737f926fc8f5d56ef2fc2fcc8996a7516cc0b6a24f4",
     "lean-toolchain": "42779d67b81608af8a12aa4328d2ab47ca201925b3b2bd68369587b5340bb434"
   },
   "verification_input_sha256": {
-    "Audit.lean": "56f6c71131da22d2f5682134ab64d05ed03bf4afdf1cef3acbda43fc38067c88",
-    "Checks.lean": "1f0d3ae076eebe47adc1785147530dd2e9d00aadc4951851d912db79ac58f7c5",
-    "verify.py": "ae79cfb367ec6e822f549107896a4204507c5874e9e379e9b7056ddca7b98c24"
+    "Audit.lean": "4a24da6f92fb709a2fd28775f0acf884fee97bd0b73a79c08663e51a41ff47a2",
+    "Checks.lean": "c1b062176a611345207f486ae1ef99d5f9cb258c00d13d1a5134135a56c7dd39",
+    "verify.py": "ae79cfb367ec6e822f549107896a4204507c5874e9e379e9b7056ddca7b98c24",
+    "generate_shell_certificate.py": "202292cbacde2b8b19fb534bbc4abe94329af23e3ad44fc082406dafb17e12bb"
   }
 }
