@@ -1,0 +1,332 @@
+% !TeX program = xelatex
+% Compile twice with XeLaTeX. The numbered displays and census entries are shared by both editions.
+\documentclass[UTF8,a4paper,11pt,scheme=plain]{ctexart}
+\usepackage[left=26mm,right=26mm,top=23mm,bottom=24mm,footskip=11mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[unicode,hidelinks]{hyperref}
+\hypersetup{pdftitle={三元域前缀主子式最短路的仿射像约化 / An affine-image quotient for ternary prefix minors},pdfauthor={}}
+\ctexset{section={format=\large\bfseries\raggedright,name={},number=\arabic{section},
+  aftername=\quad,beforeskip=2.4ex plus .3ex,afterskip=.9ex plus .2ex}}
+\newtheoremstyle{zh}{.55\baselineskip}{.38\baselineskip}{\normalfont}{}{\bfseries}{}{.7em}{}
+\theoremstyle{zh}
+\newtheorem{zhthm}{定理}
+\theoremstyle{plain}
+\newtheorem{enthm}{Theorem}
+\linespread{1.07}
+\setlength{\emergencystretch}{1.2em}
+\setlength{\parindent}{2em}
+\newcommand{\F}{\mathbb F_3}
+\newcommand{\A}{\mathcal A}
+\newcommand{\im}{\operatorname{im}}
+\newcommand{\GL}{\operatorname{GL}}
+\newcommand{\stateeq}{u^\top b=1,\qquad u^\top W=0,\qquad \A(s)=b+\im W.}
+\newcommand{\minoreq}{\det (I-u_B z_B^\top)=1-\sum_{i\in B}u_i z_i.}
+\newcommand{\actioneq}{(u,W,b)\longmapsto(Pu,P^{-\top}W,P^{-\top}b),\qquad
+       (u,\A)\longmapsto(Pu,P^{-\top}\A).}
+\newcommand{\frameeq}{(W,b)\longmapsto(WT,b+Wt),\qquad T\in\GL_d(\F),\quad t\in\F^d.}
+\newcommand{\homoeq}{H(W,b)=\im\begin{pmatrix}W&b\\0&1\end{pmatrix}\subseteq \F^{m+1},
+       \qquad (z,1)\in H(W,b)\ \Longleftrightarrow\ z\in\A(s).}
+\newcommand{\fivewitness}{R_0\gets R_0+R_1,\qquad R_0\gets R_0+R_2,\qquad R_3\gets R_3-R_4.}
+\newcommand{\counttable}[6]{%
+  \begin{center}
+  \begingroup\small\setlength{\tabcolsep}{8pt}\renewcommand{\arraystretch}{1.18}
+  \begin{tabular}{@{}lrrr@{}}
+  \hline
+  #1 & #2 & #3 & #4\\ \hline
+  #5 & 58 & 26 & 24\\
+  #6 0 & 1 & 1 & 1\\
+  #6 1 & 6 & 6 & 6\\
+  #6 2 & 40 & 40 & 35\\
+  #6 3 & 166 & 126 & 80\\ \hline
+  \end{tabular}
+  \endgroup
+  \end{center}}
+\newcommand{\sources}[1]{%
+  \begin{thebibliography}{9}\small
+  \bibitem{#1orbits}
+  SHIN09-git. Monomial guard settlement, \texttt{ORBITS.md}.
+  \href{https://github.com/SHIN09-git/integer-mult-bounds/blob/03caa7f6cb5bd21c834024e9d81f6b43eb325b91/research/monomial-guard-settlement/ORBITS.md}{Source at \texttt{03caa7f}.}
+  \bibitem{#1lean}
+  SHIN09-git. Exact shortest paid paths for normalized full affine guards over $\F$.
+  \href{https://github.com/SHIN09-git/integer-mult-bounds/blob/5703e56d6eb4b4f0a83af8c23a5d1dddd0b5474f/research/monomial-guard-orbit-lean/README.md}{Lean package at \texttt{5703e56}.}
+  \bibitem{#1charge}
+  N.~Petalas. Charge-only ternary guard costs through two additions.
+  \href{https://github.com/CrocSwap/integer-mult-bounds/pull/6793}{Project contribution 6793.}
+  \end{thebibliography}}
+
+\begin{document}
+\fontsize{12}{16.5}\selectfont
+\renewcommand{\proofname}{证明}
+\renewcommand{\refname}{参考文献}
+\pdfbookmark[0]{中文}{edition-zh}
+\begin{center}
+  {\sffamily\bfseries\fontsize{20}{26}\selectfont 三元域前缀主子式最短路的仿射像约化\par}
+  \vspace{.5em}
+  {\small 研究短稿\quad 2026 年 11 月 21 日\qquad\hyperlink{edition-en.0}{English version}}
+\end{center}
+\noindent\textbf{摘要}\quad
+在三元域上，对一族秩一扰动矩阵，目标是用最少的收费行加法，使同一行序下所有参数的真前缀主子式都非零。
+现有算法已合并免费行置换和逐行变号。我们证明，还可以用对偶向量的仿射像代替它的参数表示。
+给定原始列，相同仿射像保留每个操作序列的成功判定，从商图仍能恢复在原行号上可执行的最优指令。
+在原五行算例中，距起点恰好三步的状态类从 166 个减至 80 个，最优代价仍为 3。
+
+\section{模型与最短路定理}
+记 $K=\F$，行号为 $0,\ldots,m-1$，其中 $m\ge1$。一个带行号的状态为
+$s=(u,W,b)$，其中 $u,b\in K^m$、$W\in K^{m\times d}$。
+参数 $a$ 遍历整个 $K^d$，对应的对偶列为 $z=b+Wa$。原问题的归一化条件与这些列组成的仿射像分别写为
+\begin{equation}\label{z:state}\stateeq\end{equation}
+对行指标集 $B$，秩一行列式恒等式给出
+\begin{equation}\label{z:minor}\minoreq\end{equation}
+给定一个行序 $\pi$，取其前 $k$ 项的指标集 $B_k^\pi$，其中 $0\le k<m$。
+若对每个 $z\in\A(s)$ 和每个这样的 $k$，式~\eqref{z:minor} 均非零，则称 $\pi$ 通过检验。
+空前缀的行列式为 $1$。整矩阵的行列式由归一化条件恒为零，故只检验真前缀。
+成功要求存在一个对全族同时有效的行序。
+
+行置换与逐行乘以非零标量免费，在 $K$ 上后者就是逐行变号。
+每次 $R_i\gets R_i+cR_j$ 收费 $1$，其中 $i\ne j$，$c\in\{1,-1\}$。
+令 $P$ 为该操作在原始列 $u$ 上的矩阵，记 $P^{-\top}=(P^{-1})^\top$。
+状态和仿射像按下式变换。
+\begin{equation}\label{z:action}\actioneq\end{equation}
+例如，收费加法更新 $u_i\gets u_i+cu_j$，并对每个对偶列更新 $z_j\gets z_j-cz_i$。
+记 $C(s)$ 为从 $s$ 到任一成功状态所需的最少收费次数，免费操作可以穿插在任意位置。
+
+\begin{zhthm}\label{z:main}
+设两个带行号的状态有相同的 $u$ 和 $\A$，其参数维数可以不同。对任意合法操作序列及任意指定的最终行序，
+从两个状态执行该序列得到相同的成功判定。因此它们到成功集合的最短距离相等。
+进一步按免费行置换和变号合并这些 $(u,\A)$ 后，商图仍给出 $C(s)$，并可恢复原输入上的最优指令。
+\end{zhthm}
+\noindent\emph{证明。}\enspace
+同一操作按式~\eqref{z:action} 将相等的两对 $(u,\A)$ 送到相等的两对。
+对序列长度归纳，再用式~\eqref{z:minor} 检查给定行序的每个前缀，即得第一句。
+两边能成功的指令及其收费次数相同。免费行操作还可能改变行号，需要另行处理。
+
+\newpage
+\section{免费操作、参数换元与指令恢复}
+令 $Q$ 为带符号的置换矩阵。若两个代表的 $(u,\A)$ 相差 $Q$ 的作用，
+则在第二个代表上做加法 $E=I+ce_i e_j^\top$，等价于先在第一个代表上做 $Q^{-1}EQ$，
+再施加同一个 $Q$。共轭后的矩阵仍是一次合法行加法，只有行号和系数可能改变。
+免费操作自身留在同一类内。若第二个代表有通过检验的行序，把行号换回便得到第一个代表的可用行序。
+这一论证只用到仿射像的作用，因而也适用于参数写法不同的代表。
+
+在商图中以收费加法作单位长度的有向边，允许自环。原执行投影为同收费长度的游走。反过来，
+上一段的共轭关系允许从任一实际代表逐边执行，并在终点选择一个通过检验的免费行序。
+因此商图到成功集合的距离就是 $C(s)$。按层搜索时，每个新类保存一个从原输入到达的带行号状态、
+它的父类和最后一次加法。沿父指针反向读取并倒序排列，即得实际输入上的最短指令。
+这完成了定理~\ref{z:main} 的证明。\qed
+
+\medskip\noindent\textbf{仿射像的判定。}
+公共换元 $a\mapsto Ta+t$ 在数据上给出
+\begin{equation}\label{z:frame}\frameeq\end{equation}
+它保持仿射像。反之，在参数维数 $d$ 相同时，如果 $b+\im W=b'+\im W'$，
+就有 $\im W=\im W'$ 且 $b'-b=Wt$。把 $\ker W'$ 同构到 $\ker W$，
+再把两者的补空间通过共同的像对应起来，所得可逆映射 $T$ 满足 $W'=WT$。
+该论证允许斜率列线性相关，也包括 $d=0$。
+
+不同参数维数也可直接比较。引入齐次坐标，令
+\begin{equation}\label{z:hom}\homoeq\end{equation}
+最后坐标为 $1$ 的切片张成整个 $H$。事实上，两个切片向量的差遍历
+$\im W\times\{0\}$，再添上 $(b,1)$ 即可。因此，固定行号时，$u$ 与上述分块矩阵转置的
+简化行阶梯形中的非零行，完整刻画了 $(u,\A)$。如需再合并免费操作，可对每个 $Q$
+计算 $Qu$ 与 $\operatorname{diag}(Q^{-\top},1)H$ 的编码，再取字典序最小值。
+
+对一个参数，式~\eqref{z:frame} 只有六种换元 $a\mapsto\pm a+t$。
+对每种换元，把每个完整行三元组 $(u_i,w_i,b_i)$ 与它的负值取较小者，再排序全部行并保留重数。
+六种结果中的最小者就是本文复算使用的编码。斜率和常数项在 $u_i=0$ 的行上也保留。
+
+\medskip\noindent\textbf{指定终点时的区别。}
+取 $u=(1,0)^\top$、$W=(0,1)^\top$，分别令 $b=(1,0)^\top$ 和 $b'=(1,1)^\top$。
+两者的仿射像都是 $\{(1,a)^\top:a\in K\}$，因而在新商图中是同一顶点。
+但非零的 $u$ 固定第一行，逐行变号也无法把第二行的常数从 $0$ 变为 $1$。
+所以两个指定的原始状态之间没有零成本路径。
+
+\newpage
+\section{精确枚举与适用范围}
+旧算法用完整行的多重集表示免费等价类，并已在 Lean 中证明其最短路和指令恢复正确\cite{zorbits,zlean}。
+另有一个只用电荷的结果判定至多两步的代价\cite{zcharge}。本稿保留原始列和整个对偶仿射像，
+所证的最短路结论适用于任意步数。
+
+下表比较三种编码。每列都先合并免费行置换和变号，后两列还分别合并参数平移及全部可逆仿射换元。
+五行例的第 $k$ 层按各商图中到起点的\emph{最短}距离恰为 $k$ 计数。
+\counttable{计数范围}{仅免费行操作}{加参数平移}{加全部换元}{三行全部归一化输入}{五行例，距离 }
+
+三行、一个参数时，归一化输入共 $26\cdot9\cdot9=2\,106$ 个。
+有 $26$ 个非零的 $u$ 可选，内积条件分别为 $W$ 和 $b$ 留下 $9$ 个选择。
+脚本对原始带行号的图作多源 $0$--$1$ 广度优先搜索，显式枚举免费交换、变号和收费加法，
+并直接计算 $I-uz^\top$ 的各前缀行列式。商图程序对每个前缀 $B$ 检查
+$u_B^\top W_B=0$ 和 $u_B^\top b_B\ne1$，因为非零线性泛函取遍 $K$。将两种方法所得距离逐个比较，
+全部吻合。最优代价为 $0$ 的有 $882$ 个，为 $1$ 的有 $1\,080$ 个，为 $2$ 的有 $144$ 个。
+
+五行例沿用前序包的 $u=(1,1,1,1,1)^\top$、$W=(1,1,1,1,-1)^\top$、
+$b=(1,1,1,1,0)^\top$。搜索在第 3 层首次成功，恢复出的零起始行号指令为
+\[
+  \fivewitness
+\]
+执行后，对每个参数都有 $(u_i z_i)_i=(0,0,0,0,1)$，故原行序的每个真前缀主子式均为 $1$。
+第三层少了 $86$ 个状态类。表中给出的是层大小，实际运行时间还取决于编码成本。
+
+另对两行、$d=0,1,2$ 的全部 $819$ 个 $(W,b)$，脚本比较式~\eqref{z:hom} 的编码和逐点生成的仿射像。
+两者给出完全相同的 $22$ 类。这项检查针对像集编码，不加归一化条件。
+复算使用 Python 3.12.10 标准库，在本研究包目录执行 \texttt{python -B verify.py} 即可。
+
+\medskip\noindent\textbf{后续问题。}
+新商图的路径提升和指令恢复在本文中给出数学证明，尚待在 Lean 中形式化。
+若用于多参数搜索，可以先比较齐次矩阵化简与逐个尝试公共换元的耗时，再判断何时值得采用新编码。
+\sources{z}
+
+\clearpage
+\normalsize
+\pdfbookmark[0]{English}{edition-en}
+\setcounter{section}{0}\setcounter{equation}{0}
+\renewcommand*{\theHsection}{en.\arabic{section}}
+\renewcommand*{\theHequation}{en.\arabic{equation}}
+\renewcommand{\proofname}{Proof}
+\renewcommand{\refname}{References}
+\setlength{\parindent}{1.5em}
+\begin{center}
+  {\sffamily\bfseries\fontsize{17}{22}\selectfont
+  An affine-image quotient for shortest paths\\
+  to nonvanishing prefix minors over $\F$\par}
+  \vspace{.5em}
+  {\small Research note\quad 21 November 2026\qquad\hyperlink{edition-zh.0}{Chinese version}}
+\end{center}
+\noindent\textbf{Abstract.}\quad
+For a family of rank-one perturbations of the identity over $\F$, we seek the fewest paid row
+additions that make every proper leading principal minor nonzero in one order common to all
+parameters. The existing search quotients out free row permutations and sign changes. We show
+that the parametrized dual vector can also be replaced by its affine image. With the primal
+column fixed, equal images give the same success test after every operation word. An optimal
+word can be recovered on the original row labels. In a five-row example the number of classes
+at distance exactly three from the start drops from 166 to 80, and the optimum remains three.
+
+\section{The model and the shortest-path theorem}
+Write $K=\F$ and index the $m\ge1$ rows from $0$ to $m-1$. A labeled state is
+$s=(u,W,b)$ with $u,b\in K^m$ and $W\in K^{m\times d}$. The dual column is $z=b+Wa$
+as $a$ runs over all of $K^d$. We assume the usual normalization and write $\A(s)$ for the
+set of dual columns, so that
+\begin{equation}\label{e:state}\stateeq\end{equation}
+For an index set $B$, the rank-one determinant identity gives
+\begin{equation}\label{e:minor}\minoreq\end{equation}
+For an order $\pi$, let $B_k^\pi$ consist of its first $k$ indices, $0\le k<m$.
+The order passes if~\eqref{e:minor} is nonzero for every $z\in\A(s)$ and every such $k$.
+The empty minor is $1$. The determinant of the full matrix is zero by normalization.
+Success means that one order passes for the entire family.
+
+Row permutations and independent row scalings by nonzero field elements are free. Over $K$
+the scalings are sign changes. Each addition $R_i\gets R_i+cR_j$ with $i\ne j$ and
+$c\in\{1,-1\}$ costs one. Let $P$ denote the operation matrix on the primal column $u$ and
+put $P^{-\top}=(P^{-1})^\top$. The actions on the presentation and on the affine image are
+\begin{equation}\label{e:action}\actioneq\end{equation}
+For an addition, $u_i$ becomes $u_i+cu_j$ and each dual column has $z_j$ replaced by
+$z_j-cz_i$. Let $C(s)$ be the minimum number of paid additions to a successful state, allowing
+free operations anywhere.
+
+\begin{enthm}\label{e:main}
+Suppose two labeled states have the same $u$ and $\A$, possibly with different parameter
+dimensions. For any legal operation word and any
+prescribed final order, the word passes the test from one state if and only if it passes from
+the other. In particular their distances to the successful set agree. Quotienting the pairs
+$(u,\A)$ further by free row permutations and sign changes still gives $C(s)$ and permits
+recovery of an optimal word on the original input.
+\end{enthm}
+\noindent\emph{Proof.}\enspace
+By~\eqref{e:action}, applying the same operation sends equal pairs to equal pairs. Induct on
+word length, then use~\eqref{e:minor} on each prefix of the final order. This proves the
+first assertion and preserves the paid length of every successful word. Free operations can
+also change row labels and require a lifting argument.
+
+\newpage
+\section{Free operations, parameter changes, and recovery of a word}
+Let $Q$ be a signed permutation matrix. Suppose the pair $(u,\A)$ of a second representative
+is obtained from that of a first by $Q$. An addition $E=I+ce_i e_j^\top$ on the second has
+the same effect on the pair as first applying $Q^{-1}EQ$ to the first and then applying $Q$.
+The conjugate is again a single legal addition, with possibly different indices and coefficient.
+Free operations stay in one class. A passing order on the second representative pulls back to
+one on the first. These statements use only the action on pairs and apply to representatives
+with different parameter presentations.
+
+Give the quotient graph a directed unit edge for each paid addition, allowing loops. A physical
+execution projects to a walk of the same paid length. Conversely, the conjugation rule lifts each edge from any
+chosen physical representative, and a passing order can be chosen by a final free permutation.
+The distance to the successful classes is therefore $C(s)$. In breadth-first search, store
+one labeled state actually reached from the input for each new class, together with its
+parent class and the addition used. Reversing the list of additions along the parent chain
+recovers a shortest word on the input. This proves Theorem~\ref{e:main}.\qed
+
+\medskip\noindent\textbf{Recognizing the same affine image.}
+A common change of parameters $a\mapsto Ta+t$ acts by
+\begin{equation}\label{e:frame}\frameeq\end{equation}
+It preserves the affine image. Conversely, for fixed parameter dimension $d$, equality
+$b+\im W=b'+\im W'$ gives $\im W=\im W'$ and $b'-b=Wt$ for some $t$. Map $\ker W'$
+isomorphically onto $\ker W$, and identify complements of these kernels through their common
+image. The resulting invertible map $T$ satisfies $W'=WT$. This includes dependent slope
+columns and $d=0$.
+
+Presentations of different dimensions can be compared directly. In homogeneous coordinates,
+put
+\begin{equation}\label{e:hom}\homoeq\end{equation}
+The slice at last coordinate $1$ spans $H$. Differences of points in that slice give all of
+$\im W\times\{0\}$, and the slice also contains $(b,1)$. Thus, with row labels fixed, a
+complete key for $(u,\A)$ consists of $u$ and the nonzero rows of the reduced row-echelon
+form of the transposed block matrix in~\eqref{e:hom}. For the free quotient, take the
+lexicographically least key of $Qu$ and $\operatorname{diag}(Q^{-\top},1)H$ over all signed
+permutations $Q$.
+
+With one parameter, \eqref{e:frame} consists of the six maps $a\mapsto\pm a+t$. For each one,
+replace every transformed row triple $(u_i,w_i,b_i)$ by the smaller of the triple and its
+negative, and sort the list with multiplicities. The least of the six lists is the key used
+in the census. In particular it retains the dual data in rows with $u_i=0$.
+
+\medskip\noindent\textbf{Prescribed endpoints.}
+Take $u=(1,0)^\top$, $W=(0,1)^\top$, and use $b=(1,0)^\top$ in one state and $b'=(1,1)^\top$
+in the other. Both images are $\{(1,a)^\top:a\in K\}$, so the states give the same quotient
+vertex. The support of $u$ fixes the first row, however, and sign changes cannot turn the
+second constant entry from $0$ into $1$. There is no zero-cost path between these prescribed
+labeled states.
+
+\newpage
+\section{Exact enumeration and scope}
+The predecessor search uses a multiset of complete rows modulo signs. Its shortest-path
+algorithm and recovery of a word were verified in Lean.~\cite{eorbits,elean} A separate
+charge-only criterion decides the sublevels through two additions.~\cite{echarge} The present
+quotient retains the primal column and the full affine image of the dual column, and its
+distance theorem holds at every depth.
+
+All three columns below include the free row operations. The other identifications are
+parameter translations in the middle column and all invertible affine changes in the last.
+For the five-row input, shell $k$ consists of classes whose shortest distance from the start
+in the corresponding quotient graph is exactly $k$.
+\counttable{Objects counted}{Free rows}{With translations}{With all affine maps}
+  {All normalized three-row inputs}{Five rows, shell }
+
+For three rows and one parameter there are $26\cdot9\cdot9=2\,106$ normalized inputs.
+There are $26$ choices for nonzero $u$, and the separate dot-product conditions leave
+$9$ choices each for $W$ and $b$. The verifier runs a multi-source $0$--$1$ breadth-first
+search on labeled states. It includes explicit free swaps, sign changes and paid additions,
+and evaluates the determinants of the actual prefix submatrices of $I-uz^\top$.
+The quotient search tests $u_B^\top W_B=0$ and $u_B^\top b_B\ne1$ on each prefix $B$,
+since a nonzero linear functional takes every value in $K$.
+All three quotient distances agree with the labeled distance on each input. There are
+$882$ inputs of cost zero, $1\,080$ of cost one, and $144$ of cost two.
+
+The five-row input from the predecessor has $u=(1,1,1,1,1)^\top$,
+$W=(1,1,1,1,-1)^\top$, and $b=(1,1,1,1,0)^\top$. The first successful shell is shell
+three. With zero-based labels the search recovers the word
+\[
+  \fivewitness
+\]
+After execution $(u_i z_i)_i=(0,0,0,0,1)$ for every parameter. All proper leading minors in
+the original order are therefore $1$. The third shell has 86 fewer classes. Runtime also
+depends on the cost of computing a key.
+
+For two rows, the verifier separately checks all $819$ presentations $(W,b)$ with
+$d=0,1,2$. The key in~\eqref{e:hom} and explicit enumeration of affine points give the
+same $22$ classes. This image-key check uses unrestricted $(W,b)$. All computations use
+the Python 3.12.10 standard library and can be reproduced from the package directory with
+\texttt{python -B verify.py}.
+
+\medskip\noindent\textbf{Open next questions.}
+The lifting and recovery arguments for the new quotient are written proofs. Formalizing
+them in Lean remains open. For several parameters, timing homogeneous row reduction against
+explicit parameter changes would help determine when the smaller search pays off.
+\sources{e}
+\end{document}
