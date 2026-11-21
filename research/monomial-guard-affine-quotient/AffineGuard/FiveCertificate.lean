@@ -45,7 +45,7 @@ theorem expand_table {n k l : ℕ} (old : rowBall n = entries rowAt k) (inc : k 
     · exact Or.inl ⟨j,small,rfl⟩
     · exact Or.inr ⟨_,⟨_,hi,rfl⟩,(neighbors ⟨_,hi⟩ _).mpr ⟨j,he,rfl⟩⟩
 
-private theorem map_entries (f : Code → Code) {s : Finset Code} {k : ℕ}
+theorem map_entries (f : Code → Code) {s : Finset Code} {k : ℕ}
     (old : s = entries rowAt k) (h : ∀ i : Fin k, f (rowAt i) = affineAt i) :
     s.image f = entries affineAt k := by
   subst s

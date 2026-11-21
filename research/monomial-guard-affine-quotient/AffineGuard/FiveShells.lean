@@ -35,7 +35,7 @@ def Within {V : Type*} (walk : ℕ → V → Prop) (n : ℕ) (x : V) : Prop :=
 abbrev rowWalk := OrbitGuard.Walk (vertex five)
 abbrev affineWalk := Walk (key five)
 
-private theorem vertex_read (s : Model) : vertex (readCode (rowKey s)) = vertex s :=
+theorem vertex_read (s : Model) : vertex (readCode (rowKey s)) = vertex s :=
   (rowKey_iff _ _).mp (rowKey_read s)
 
 theorem rowBall_spec (n : ℕ) (c : Code) :
@@ -98,7 +98,7 @@ private theorem affineKey_read (s : Model) : affineKey (readCode (affineKey s)) 
     (((affineKey_iff t s).mpr (congrArg orbit (data_change s p.1 p.2 p.1.ne_zero))).trans he.symm)
 
 /-- A closed ball difference counts exactly the vertices whose least paid length is n+1. -/
-private theorem count_shell {V : Type*} (v : Model → V) (code : Model → Code)
+theorem count_shell {V : Type*} (v : Model → V) (code : Model → Code)
     (eqv : ∀ s t, code s = code t ↔ v s = v t)
     (restore : ∀ s, code (readCode (code s)) = code s)
     (walk : ℕ → V → Prop) (realized : ∀ j x, walk j x → ∃ s, v s = x)

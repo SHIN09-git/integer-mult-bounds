@@ -43,6 +43,7 @@ def generate():
                 targets.append(positions[child])
             edges.append(targets)
         first = end
+    translations = [encode(unpack(row), "translations") for row in rows]
     affine = [encode(unpack(row), "affine") for row in rows]
     blocks = [
         "import AffineGuard.FiveEncoding\n",
@@ -50,6 +51,7 @@ def generate():
         "namespace AffineGuard.Census.Table\n",
         table("rows", "Code", map(lean_list, rows)),
         table("edges", "(List ℕ)", map(lean_list, edges)),
+        table("translations", "Code", map(lean_list, translations)),
         table("affine", "Code", map(lean_list, affine)),
         "def parent : List ℕ := " + lean_list(parent) + "\n",
         "end AffineGuard.Census.Table\n",

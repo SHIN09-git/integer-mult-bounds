@@ -40,5 +40,9 @@ def main : IO Unit := do
   let new₃ := Census.affineBall 3
   check "five-row complete-row closed balls 47 and 213, shell 166"
     (old₂.card == 47 && old₃.card == 213 && (old₃ \ old₂).card == 166)
+  let shifts₂ := Census.translationBall 2
+  let shifts₃ := Census.translationBall 3
+  check "five-row translation-only closed balls 47 and 173, shell 126"
+    (shifts₂.card == 47 && shifts₃.card == 173 && (shifts₃ \ shifts₂).card == 126)
   check "five-row affine-image closed balls 42 and 122, shell 80"
     (new₂.card == 42 && new₃.card == 122 && (new₃ \ new₂).card == 80)

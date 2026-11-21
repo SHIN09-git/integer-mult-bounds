@@ -43,3 +43,14 @@ import AffineGuard
 #print axioms AffineGuard.Census.project_table
 #print axioms AffineGuard.Census.five_ball_counts
 #print axioms AffineGuard.Census.five_three_shells
+
+#print axioms AffineGuard.Census.translationClass_iff
+#print axioms AffineGuard.Census.translationKey_iff
+#print axioms AffineGuard.Census.translation_edge_from
+#print axioms AffineGuard.Census.translation_project_run
+#print axioms AffineGuard.Census.translation_lift_walk
+#print axioms AffineGuard.Census.translationBall_spec
+#print axioms AffineGuard.Census.translation_shell_card
+#print axioms AffineGuard.Census.five_translation_ball_counts
+#print axioms AffineGuard.Census.five_translation_shell
+#print axioms AffineGuard.Census.five_three_shells_all

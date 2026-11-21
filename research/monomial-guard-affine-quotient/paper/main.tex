@@ -68,7 +68,7 @@
 在三元域上，对一族秩一扰动矩阵，目标是用最少的收费行加法，使同一行序下所有参数的真前缀主子式都非零。
 现有算法已合并免费行置换和逐行变号。我们证明，还可以用对偶向量的仿射像代替它的参数表示。
 给定原始列，相同仿射像保留每个操作序列的成功判定，从商图仍能恢复在原行号上可执行的最优指令。
-在原五行算例中，距起点恰好三步的状态类从 166 个减至 80 个，最优代价仍为 3。
+在原五行算例中，距起点恰好三步的状态类原有 166 个，加入参数平移后有 126 个，允许全部仿射换元后有 80 个。最优代价仍为 3。
 
 \section{模型与最短路定理}
 记 $K=\F$，行号为 $0,\ldots,m-1$，其中 $m\ge1$。一个带行号的状态为
@@ -170,8 +170,9 @@ $b=(1,1,1,1,0)^\top$。搜索在第 3 层首次成功，恢复出的零起始行
 
 \medskip\noindent\textbf{形式化与后续问题。}
 Lean 4.24.0 已验证定理~\ref{z:main} 的任意长度路径提升、最优指令恢复和五行例的三步最优性。
-Lean 还验证了五行例的闭球计数。半径从二增至三时，按免费行操作归类的类数由 $47$ 增至 $213$，
-进一步按仿射像归类的类数由 $42$ 增至 $122$。取差得到第三层的 $166$ 和 $80$ 类。表中各数均可用 Python 复算。
+五行例中，把三步以内的类数减去两步以内的类数，就得到距起点恰好三步的类数。
+仅合并免费行操作时有 $213-47=166$ 类，再允许所有行共用参数平移 $a\mapsto a+t$ 时有 $173-47=126$ 类，
+允许全部仿射换元时有 $122-42=80$ 类。Lean 验证了这三项计数。表中各数均可用 Python 复算。
 多参数时，两种编码的耗时仍待比较。
 \sources{z}
 
@@ -197,8 +198,8 @@ additions that make every proper leading principal minor nonzero in one order co
 parameters. The existing search quotients out free row permutations and sign changes. We show
 that the parametrized dual vector can also be replaced by its affine image. With the primal
 column fixed, equal images give the same success test after every operation word. An optimal
-word can be recovered on the original row labels. In a five-row example the number of classes
-at distance exactly three from the start drops from 166 to 80, and the optimum remains three.
+word can be recovered on the original row labels. In a five-row example the third shell shrinks
+from 166 classes to 126 with translations and to 80 with all affine changes. The optimum is three.
 
 \section{The model and the shortest-path theorem}
 Write $K=\F$ and index the $m\ge1$ rows from $0$ to $m-1$. A labeled state is
@@ -327,10 +328,10 @@ the Python 3.12.10 standard library and can be reproduced from the package direc
 \texttt{python -B verify.py}.
 
 \medskip\noindent\textbf{Formal verification and an open question.}
-Lean 4.24.0 verifies path lifting at every length, optimal witness recovery in Theorem~\ref{e:main},
-and the five-row optimum of three. It also verifies the five-row closed balls of radii two and three.
-The row quotient grows from $47$ to $213$ classes and the affine quotient from $42$ to $122$.
-Subtraction gives the shell counts $166$ and $80$. Python reproduces the full table.
-The relative runtime of the encodings for several parameters remains open.
+Lean 4.24.0 verifies path lifting at every length, optimal word recovery in Theorem~\ref{e:main},
+and the five-row optimum of three. It certifies the third shells by subtracting closed-ball sizes
+at radii three and two. Free row operations give $213-47=166$ classes, adding common translations
+gives $173-47=126$, and all affine changes give $122-42=80$. Python reproduces the table.
+The relative runtime for several parameters remains open.
 \sources{e}
 \end{document}
